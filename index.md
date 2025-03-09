@@ -8,7 +8,6 @@ last_updated: 2024
 tags: [overview, documentation, architecture]
 ---
 
-# meows.space
 
 Welcome to the meows.space documentation. This knowledge base contains comprehensive documentation for the meows.space URL command multiplexer project.
 
