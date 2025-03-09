@@ -12,22 +12,45 @@ Welcome to the meows.space documentation. This knowledge base contains detailed 
 
 ![meows.space logo](https://cdn.midjourney.com/ba85aca6-a44e-4edd-9a03-020bfdd3ba7e/0_2.png)
 
+Table of Contents
+
 - [Overview](#overview)
 - [Core Concept](#core-concept)
-- [Command Types](#command-types)
-  - [Static Commands](#static-commands)
-  - [Dynamic Commands](#dynamic-commands)
-- [Command Execution](#command-execution)
+- [System Architecture](#system-architecture)
+- [Command System](#command-system)
+  - [Command Types](#command-types)
+    - [Static Commands](#static-commands)
+    - [Dynamic Commands](#dynamic-commands)
+  - [Command Processing Pipeline](#command-processing-pipeline)
+  - [Command Execution](#command-execution)
 - [Command Organization and Catalog](#command-organization-and-catalog)
   - [Global Catalog](#global-catalog)
   - [Personal Catalog](#personal-catalog)
   - [User Profiles](#user-profiles)
+- [State Management](#state-management)
+  - [State Architecture](#state-architecture)
+  - [Runtime State](#runtime-state)
+  - [Persistent State](#persistent-state)
+- [Data Synchronization](#data-synchronization)
+  - [Local-First Operations](#local-first-operations)
+  - [System Flow](#system-flow)
+- [Frontend Architecture](#frontend-architecture)
+  - [Technical Implementation](#technical-implementation)
+  - [Component Architecture](#component-architecture)
+  - [Loading \& Performance](#loading--performance)
+    - [Progressive Loading Strategy](#progressive-loading-strategy)
+    - [Performance Optimization Techniques](#performance-optimization-techniques)
+- [Backend Architecture](#backend-architecture)
+  - [API Implementation](#api-implementation)
+  - [Data Storage](#data-storage)
+  - [Security Implementation](#security-implementation)
 - [Artifacts](#artifacts)
-- [Flow Documentation](#flow-documentation)
-- [Data Models](#data-models)
-- [Pages](#pages)
-- [Components](#components)
-- [API Endpoints](#api-endpoints)
+  - [Documents](#documents)
+  - [Flows](#flows)
+  - [Data Models](#data-models)
+  - [Pages](#pages)
+  - [Components](#components)
+  - [API Endpoints](#api-endpoints)
 
 ---
 
@@ -49,9 +72,51 @@ The browser-based execution enables direct navigation to destinations. Command m
 
 ---
 
-## Command Types
+## System Architecture
 
-### Static Commands
+```mermaid
+graph TD
+    User[User] --> |Inputs Command| Client[Browser Client]
+    Client --> |Parses Input| Parser[Command Parser]
+    Parser --> |Resolves Command| Generator[URL Generator]
+    Generator --> |Creates URL| Navigation[Browser Navigation]
+    Navigation --> |Opens URL| Destination[Web Destination]
+
+    Client --> |Stores| LocalDB[IndexedDB]
+    LocalDB <--> |Syncs| SyncEngine[Sync Engine]
+    SyncEngine <--> |Communicates| API[API Server]
+    API <--> |Persists| Database[Database]
+
+    Client --> |Records| History[Command History]
+    Client --> |Manages| Preferences[User Preferences]
+```
+
+meows.space transforms text inputs into parameterized URLs through a local-first architecture. The system operates as a command multiplexer with URL routing and command history management, enabling offline command management and online URL resolution.
+
+---
+
+## Command System
+
+The command system forms the core of meows.space, transforming user text inputs into parameterized URLs through a structured pipeline. It processes raw text commands, identifies command patterns, extracts parameters, and constructs destination URLs based on predefined templates. This system enables users to quickly navigate to web destinations using shorthand commands rather than typing full URLs.
+
+### Command Types
+
+```mermaid
+graph TD
+    subgraph "Command Types"
+        Static["Static Commands<br/><i>Direct URL mapping</i>"]
+        Dynamic["Dynamic Commands<br/><i>Parameter interpolation</i>"]
+    end
+
+    subgraph "Examples"
+        Static --- StaticEx["gh → github.com<br/>cal → calendar.google.com<br/>mail → gmail.com"]
+        Dynamic --- DynamicEx["g {query} → google.com/search?q={query}<br/>gh {repo} → github.com/{repo}<br/>tr {from} {to} {text} → translate.google.com/?sl={from}&tl={to}&text={text}"]
+    end
+```
+
+The system supports two fundamental command types:
+
+#### Static Commands
 
 Static commands provide direct URL mappings without parameters:
 
@@ -63,7 +128,7 @@ docs → docs.google.com
 
 These commands navigate directly to the specified URL when invoked, serving as shortcuts for frequently accessed destinations.
 
-### Dynamic Commands
+#### Dynamic Commands
 
 Dynamic commands incorporate parameters into URL templates:
 
@@ -84,9 +149,24 @@ tr {from} {to} {text} → translate.google.com/?sl={from}&tl={to}&text={text}
 
 These commands support multiple parameters with interpolation into the final URL.
 
----
+### Command Processing Pipeline
 
-## Command Execution
+```mermaid
+flowchart LR
+    A[Raw Input] --> B[Parsing & Tokenization]
+    B --> C[Command Lookup]
+    C --> D[Template Hydration]
+    D --> F[Browser Navigation]
+```
+
+The pipeline processes commands through these stages:
+
+1. **Input parsing and tokenization** - Breaks down raw input into tokens
+2. **Command lookup and parameter extraction** - Matches tokens to commands
+3. **URL template hydration** - Populates templates with parameters
+4. **Browser navigation** - Performs the navigation operation
+
+### Command Execution
 
 When a user interacts with meows.space, the command execution process follows a natural flow from input to navigation:
 
@@ -186,7 +266,232 @@ Each profile functions as a separate workspace, allowing users to maintain diffe
 
 ---
 
+## State Management
+
+```mermaid
+graph TD
+    A[App State] --> B[Runtime State]
+    A --> C[Persistent State]
+
+    B --> D[Command Context]
+    B --> E[Search State]
+    B --> F[Navigation State]
+
+    C --> G[IndexedDB]
+    C --> H[Local Storage]
+```
+
+The state management system handles data persistence and retrieval across different storage layers. It maintains application state during runtime and across sessions.
+
+### State Architecture
+
+The state architecture consists of two primary components: runtime state in memory and persistent state in IndexedDB. Runtime state provides fast access to frequently used data, while persistent state ensures data durability across sessions.
+
+### Runtime State
+
+Runtime state contains the active application context during a session:
+
+- **Command context** maintains the currently active command and its parameters. This includes the command being edited or executed, along with any extracted parameters.
+- **UI state** tracks the current interface configuration, including selected commands, active panels, search queries, and scroll positions.
+- **Command history** keeps a record of recently executed commands in an LRU cache, enabling quick access to frequently used commands without database queries.
+- **Search index** provides an in-memory structure for fast command lookup, using prefix-based searching and fuzzy matching algorithms.
+
+### Persistent State
+
+Persistent state maintains durable data across browser sessions:
+
+- **Command definitions** store all user-defined commands, including their URLs, parameters, and metadata. This forms the core of the user's command library.
+- **User profiles** contain user information, including display name, email, and authentication details.
+- **User preferences** store interface settings, default behaviors, and personalization options that persist across sessions.
+- **Command history** maintains a comprehensive log of executed commands with timestamps and execution contexts.
+- **Organization structure** stores the folder hierarchy, labels, and categorization system for commands.
+- **Pending changes** queue modifications made while offline, ensuring they're synchronized when connectivity is restored.
+
+---
+
+## Data Synchronization
+
+The data synchronization system manages bidirectional data flow between client and server databases.
+
+### Local-First Operations
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant C as Client
+    participant D as IndexedDB
+    participant S as Server
+
+    U->>C: Execute Command
+    C->>D: Store History
+    C->>S: Log Usage
+    S-->>C: Sync State
+```
+
+The system handles two primary processes:
+
+**Command Management Synchronization** uses a transaction-based approach. When users modify commands, the system first applies changes to the local IndexedDB, then queues them for server synchronization. Each change is timestamped and assigned a unique transaction ID. When online, the system transmits these changes to the server in batches. For concurrent edits from multiple devices, the system applies last-writer-wins conflict resolution, with special handling for structural conflicts like command deletion followed by modification.
+
+**Command Execution** records command usage statistics. When a user executes a command, the system logs this event locally and, when online, transmits usage data to the server for analytics. The browser handles the actual URL navigation after command processing.
+
+### System Flow
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Browser
+    participant IndexedDB
+    participant API
+    participant Database
+
+    User->>Browser: Edit/Create Command
+    Browser->>IndexedDB: Store Changes
+    Browser-->>User: Update UI
+
+    Browser->>API: Sync Changes
+    API->>Database: Update Commands
+    Database-->>API: Sync Complete
+    API-->>Browser: Sync Confirmed
+
+    User->>Browser: Execute Command
+    Browser->>Browser: Navigate to URL
+```
+
+This diagram shows the data flow during command management and execution. Command edits are immediately stored in IndexedDB and reflected in the UI. When online, changes are synchronized with the server. For command execution, the browser constructs the URL and performs navigation directly.
+
+---
+
+## Frontend Architecture
+
+The frontend architecture implements a React-based single-page application with a focus on performance, offline capabilities, and responsive design.
+
+### Technical Implementation
+
+The frontend is built using:
+
+- **React** for component-based UI development
+- **TypeScript** for type safety and developer experience
+- **CSS Modules** for component-scoped styling
+- **IndexedDB** for client-side storage
+- **Service Workers** for offline capabilities
+
+### Component Architecture
+
+The component architecture follows a hierarchical structure with:
+
+- **Container Components**: Handle data fetching and state management
+- **Presentational Components**: Focus on rendering UI elements
+- **Hooks**: Encapsulate reusable logic and state management
+- **Context Providers**: Manage global state and theme
+
+For detailed information about components, see the [Components](#components) section.
+
+### Loading & Performance
+
+```mermaid
+graph LR
+    subgraph "Progressive Loading"
+        direction TB
+        Shell["Shell<br/><i>10KB</i>"]
+        Core["Core<br/><i>50KB</i>"]
+        GlobalData["Global Data<br/><i>100KB</i>"]
+        UserData["User Data<br/><i>Variable</i>"]
+    end
+
+    subgraph "Lazy-loaded Features"
+        direction TB
+        Settings["Settings<br/><i>15KB</i>"]
+        Catalog["Catalog<br/><i>15KB</i>"]
+        Search["Search<br/><i>10KB</i>"]
+        Sync["Sync<br/><i>20KB</i>"]
+    end
+
+    Shell --> Core
+    Core --> GlobalData
+    GlobalData --> UserData
+
+    UserData -.-> Settings
+    UserData -.-> Catalog
+    UserData -.-> Search
+    UserData -.-> Sync
+```
+
+The application implements a sequential loading strategy to reduce initial load time. Through progressive loading and code splitting, the system loads critical functionality first while deferring non-essential features.
+
+#### Progressive Loading Strategy
+
+The application loads in a defined sequence:
+
+1. **Shell (10KB)** loads first, containing the HTML structure, critical CSS, and minimal JavaScript for command input. This initial payload loads in approximately 200ms on standard connections, providing immediate access to the command input field.
+
+2. **Core (50KB)** loads second, including the command parser, state management system, and primary UI components. This enables basic command execution while additional components continue loading.
+
+3. **Global Data (100KB)** loads third, containing the public command catalog, default templates, and system configuration. This data is cached and shared across users, allowing non-authenticated users to access public commands.
+
+4. **User Data (Variable Size)** loads last for authenticated users, including personal commands, preferences, history, and folder structure.
+
+#### Performance Optimization Techniques
+
+The application implements multiple optimization techniques:
+
+**Code Splitting** divides the application into separate chunks that load on demand. Features like settings, command catalog, search functionality, and synchronization components load only when accessed, reducing initial load time.
+
+**Virtual Rendering** for grids and lists renders only visible items, maintaining consistent performance with large command sets. This uses windowed rendering that creates DOM elements only for items in the viewport.
+
+**Bundle Optimization** includes tree-shaking to remove unused code, module deduplication to reduce redundancy, and critical CSS extraction. The delivery pipeline uses Brotli compression, cache control with ETags, and content-based versioning.
+
+**Data Prefetching** loads data before user interaction, such as prefetching command details on hover or loading the next page of results before reaching the current page end.
+
+**Caching Strategy** uses multiple storage mechanisms:
+
+- Browser cache for static assets
+- IndexedDB for command data and user preferences
+- Memory cache for frequently accessed data
+- Service worker for offline functionality
+
+---
+
+## Backend Architecture
+
+### API Implementation
+
+The backend implements a REST API with endpoints for:
+
+- Command storage and retrieval
+- User authentication
+- Cross-device synchronization
+
+API endpoints use standard HTTP methods and return JSON responses with appropriate status codes. Authentication uses session tokens with configurable expiration.
+
+For detailed information about API endpoints, see the [API Endpoints](#api-endpoints) section.
+
+### Data Storage
+
+Data is stored in two layers:
+
+- IndexedDB for local client-side persistence
+- PostgreSQL for server-side storage
+
+The database schema mirrors the data models with tables for commands, users, and usage data. Indexes are implemented on frequently queried fields to optimize read performance.
+
+### Security Implementation
+
+```mermaid
+graph TD
+    A[Security] --> B[Authentication]
+    A --> C[Data Storage]
+
+    B --> D[Session Tokens]
+    C --> E[Encrypted Storage]
+```
+
+Authentication uses session-based tokens stored in HTTP-only cookies. User passwords are hashed using bcrypt with a work factor of 10. HTTPS is required for all API communications.
+
+---
+
 ## Artifacts
+
+### Documents
 
 | Document                                                 | Description                                                                                          | Key Topics                                                                      |
 | -------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
@@ -196,7 +501,7 @@ Each profile functions as a separate workspace, allowing users to maintain diffe
 | **[[technical/endpoints\|API Endpoints]]**               | Documentation of the API endpoints, request/response formats, and authentication requirements.       | REST endpoints, GraphQL schema, authentication, rate limiting, error handling   |
 | **[[technical/system-integration\|System Integration]]** | Guidelines for integrating with external systems, including webhooks, extensions, and data exchange. | Extension points, webhook specifications, data formats, security considerations |
 
-## Flow Documentation
+### Flows
 
 | Flow                                                  | Description                                                                                                                      | Key Steps                                                                                   |
 | ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
@@ -204,7 +509,7 @@ Each profile functions as a separate workspace, allowing users to maintain diffe
 | [[flows/command-management\|Command Management]]      | Documents the creation, editing, and organization of commands, including validation, storage, and synchronization processes.     | Command creation → Validation → Storage → Synchronization → Organization                    |
 | [[flows/user-interaction\|User Interaction Patterns]] | Illustrates common user workflows across different pages, highlighting interaction patterns and navigation flows.                | Search → Execute → Organize → Customize → Share                                             |
 
-## Data Models
+### Data Models
 
 | Model                                         | Description                                                                                                                                                                     | Key Properties                          |
 | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
@@ -215,7 +520,7 @@ Each profile functions as a separate workspace, allowing users to maintain diffe
 | [[models/user-preferences\|User Preferences]] | Stores user-specific settings including theme preferences, default behaviors, and interface configurations.                                                                     | theme, defaultBrowser, commandsPerPage  |
 | [[models/error-response\|Error Response]]     | Defines the standardized format for API error responses across the system.                                                                                                      | code, message, details, status          |
 
-## Pages
+### Pages
 
 | Page                                             | Route                                               | Description                                                                                                             | Key Features                                                |
 | ------------------------------------------------ | --------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
@@ -235,7 +540,7 @@ Each profile functions as a separate workspace, allowing users to maintain diffe
 | **[[pages/privacy-policy\|Privacy Policy]]**     | **/privacy**                                        | Legal information about data handling practices, user rights, and compliance measures.                                  | Data collection, user rights, security measures             |
 | **[[pages/terms-of-use\|Terms of Use]]**         | **/terms**                                          | Legal terms governing the use of the service, user responsibilities, and limitations.                                   | Usage terms, user obligations, liability limitations        |
 
-## Components
+### Components
 
 | Component                                     | Description                                                                                                                                  | Usage                                         |
 | --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
@@ -244,7 +549,7 @@ Each profile functions as a separate workspace, allowing users to maintain diffe
 | [[components/TagBar\|TagBar]]                 | Label-based filtering system allowing users to organize and filter commands by categories. Implements multi-select filtering with AND logic. | Personal Catalog, Global Catalog              |
 | [[components/CommandBuilder\|CommandBuilder]] | Form interface for creating and editing command templates. Includes parameter configuration, validation, and preview functionality.          | Personal Catalog, Service Details             |
 
-## API Endpoints
+### API Endpoints
 
 | Endpoint                    | Method | Description             | Cached   |
 | --------------------------- | ------ | ----------------------- | -------- |
