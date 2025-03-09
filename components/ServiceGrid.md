@@ -26,6 +26,7 @@ The ServiceGrid implements a responsive grid layout with the following features:
 ### Virtual Rendering
 
 The grid uses windowed rendering that creates DOM elements only for items in the viewport, providing:
+
 - Consistent performance with large command sets
 - Reduced memory usage
 - Smooth scrolling experience
@@ -33,6 +34,7 @@ The grid uses windowed rendering that creates DOM elements only for items in the
 ### Icon Display
 
 Each command is represented by an icon with:
+
 - Automatically fetched domain favicon or custom icon
 - Command name displayed underneath
 - Visual indicators for command type (static/dynamic)
@@ -41,6 +43,7 @@ Each command is represented by an icon with:
 ### Context Menus
 
 Right-clicking on icons provides context menus with actions:
+
 - Edit command
 - Delete command
 - Duplicate command
@@ -51,6 +54,7 @@ Right-clicking on icons provides context menus with actions:
 ### Interaction
 
 The grid supports several interaction patterns:
+
 - Click to execute command
 - Drag-and-drop for organization
 - Multi-select for batch operations
@@ -75,6 +79,7 @@ The ServiceGrid implements several key features:
 ## Usage in Pages
 
 The ServiceGrid appears on multiple pages:
+
 - Main Search (/)
 - Personal Catalog (/personal)
-- Global Catalog (/catalog) 
+- Global Catalog (/catalog)

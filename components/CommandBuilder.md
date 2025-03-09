@@ -28,6 +28,7 @@ The CommandBuilder implements a multi-step form interface with the following fea
 ### Command Definition
 
 The component allows users to define commands with:
+
 - Command name and description
 - Command key (invocation shortcut)
 - URL template
@@ -36,6 +37,7 @@ The component allows users to define commands with:
 ### Parameter Configuration
 
 For dynamic commands, users can configure parameters:
+
 - Parameter names
 - Placeholder text
 - Required/optional status
@@ -45,6 +47,7 @@ For dynamic commands, users can configure parameters:
 ### URL Template Builder
 
 The URL template builder provides:
+
 - Visual template construction
 - Parameter insertion points
 - Template validation
@@ -53,6 +56,7 @@ The URL template builder provides:
 ### Label Management
 
 The label management section allows:
+
 - Assigning existing labels
 - Creating new labels
 - Removing labels from command
@@ -61,6 +65,7 @@ The label management section allows:
 ### Testing
 
 The test functionality enables:
+
 - Entering test parameters
 - Previewing constructed URL
 - Test execution in new tab
@@ -69,6 +74,7 @@ The test functionality enables:
 ### Privacy Settings
 
 Privacy controls allow setting:
+
 - Private (only visible to owner)
 - Public (visible in global catalog)
 - Sharing permissions
@@ -92,5 +98,6 @@ The CommandBuilder implements several key features:
 ## Usage in Pages
 
 The CommandBuilder appears on:
+
 - Personal Catalog (/personal) - for creating/editing commands
-- Service Details (/service/[id]) - for viewing/editing command details 
+- Service Details (/service/[id]) - for viewing/editing command details
