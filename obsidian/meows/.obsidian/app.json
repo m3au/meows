@@ -1,0 +1,17 @@
+{
+  "promptDelete": false,
+  "alwaysUpdateLinks": true,
+  "newLinkFormat": "relative",
+  "useMarkdownLinks": false,
+  "showUnsupportedFiles": true,
+  "attachmentFolderPath": "assets",
+  "userIgnoreFilters": [
+    "node_modules/"
+  ],
+  "readableLineLength": true,
+  "strictLineBreaks": true,
+  "showFrontmatter": true,
+  "foldHeading": true,
+  "foldIndent": true,
+  "showLineNumber": false
+}
