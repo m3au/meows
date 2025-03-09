@@ -1,14 +1,14 @@
 ---
 title: meows.space Documentation
 project: meows
-description: Comprehensive documentation for the meows.space project
+description: Technical documentation for the meows.space project
 target: Technical stakeholders
 detail_level: System overview
 last_updated: 2024
 tags: [overview, documentation, architecture]
 ---
 
-Welcome to the meows.space documentation. This knowledge base contains comprehensive documentation for the meows.space URL command multiplexer project.
+Welcome to the meows.space documentation. This knowledge base contains detailed documentation for the meows.space URL command multiplexer project.
 
 ![meows.space logo](https://cdn.midjourney.com/ba85aca6-a44e-4edd-9a03-020bfdd3ba7e/0_2.png)
 
@@ -36,7 +36,7 @@ meows.space is a URL command multiplexer that transforms text commands into para
 
 Users define commands that expand to full URLs with optional parameters. For example, `g cats` expands to `google.com/search?q=cats`, and `gh profile` expands to `github.com/profile`.
 
-The system features a graphical interface with a Windows 95-style icon grid and organization tools. Its three-layer state management provides offline capabilities while maintaining cross-device synchronization. The architecture implements progressive loading and local-first operations for performance optimization.
+The system features a graphical interface with a Windows 95-style icon grid and organization tools. The three-layer state management provides offline capabilities while maintaining cross-device synchronization. The architecture implements progressive loading and local-first operations for performance optimization.
 
 ---
 
@@ -172,8 +172,6 @@ Each command is represented by an icon in the grid. These icons are either autom
 
 The organization system uses a flat label structure where each command can have multiple labels. This design enables commands to appear in different contexts based on their categorization. For example, a GitHub search command might appear under both "Development" and "Search" labels.
 
-Users can filter the icon grid by selecting one or more labels, with the interface showing only commands that match all selected labels. This approach provides a flexible yet powerful way to organize and access commands based on their purpose and usage context.
-
 ### User Profiles
 
 Users can create multiple profiles, each with its own:
@@ -189,60 +187,73 @@ Each profile functions as a separate workspace, allowing users to maintain diffe
 
 ## Artifacts
 
-| Document                                                 | Description                               |
-| -------------------------------------------------------- | ----------------------------------------- |
-| **[[technical/architecture\|System Architecture]]**      | System architecture and design principles |
-| **[[technical/technology\|Technical Implementation]]**   | Technical implementation details          |
-| **[[technical/components\|Component Architecture]]**     | UI component structure and interactions   |
-| **[[technical/endpoints\|API Endpoints]]**               | API specification and usage               |
-| **[[technical/system-integration\|System Integration]]** | Integration points and external systems   |
+| Document                                                 | Description                                                                                          | Key Topics                                                                      |
+| -------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| **[[technical/architecture\|System Architecture]]**      | Detailed overview of the system's structural design, core components, and their interactions.        | Component architecture, data flow, state management, performance optimization   |
+| **[[technical/technology\|Technical Implementation]]**   | In-depth documentation of the implementation technologies, patterns, and practices.                  | React implementation, TypeScript usage, build process, deployment strategy      |
+| **[[technical/components\|Component Architecture]]**     | Specification of the UI component system, including composition patterns and state management.       | Component hierarchy, state management, styling approach, accessibility features |
+| **[[technical/endpoints\|API Endpoints]]**               | Documentation of the API endpoints, request/response formats, and authentication requirements.       | REST endpoints, GraphQL schema, authentication, rate limiting, error handling   |
+| **[[technical/system-integration\|System Integration]]** | Guidelines for integrating with external systems, including webhooks, extensions, and data exchange. | Extension points, webhook specifications, data formats, security considerations |
+
+These technical documents are designed for developers and system architects who need to understand the inner workings of the system, whether for maintenance, extension, or integration purposes.
 
 ### Pages
 
-The application's page structure is organized by functional areas:
+```mermaid
+graph TD
+    MainSearch[Main Search] --> CommandExecution[Command Execution]
+    PersonalCatalog[Personal Catalog] --> CommandManagement[Command Management]
+    GlobalCatalog[Global Catalog] --> CommandDiscovery[Command Discovery]
+    Settings[Settings] --> UserPreferences[User Preferences]
 
-| Page                                             | Route                                               | Description                                               |
-| ------------------------------------------------ | --------------------------------------------------- | --------------------------------------------------------- |
-| **[[pages/main-search\|Main Search]]**           | **/**                                               | Primary search interface and command execution            |
-| **[[pages/personal-catalog\|Personal Catalog]]** | **/personal**                                       | User's workspace for managing personal commands           |
-| [[pages/settings\|Settings]]                     | &nbsp;&nbsp;&nbsp;&nbsp;/personal/settings          | User preferences and application configuration            |
-| [[pages/create-command\|Create Command]]         | &nbsp;&nbsp;&nbsp;&nbsp;/personal/command/create    | Interface for creating new command templates              |
-| [[pages/create-command\|Edit Command]]           | &nbsp;&nbsp;&nbsp;&nbsp;/personal/command/edit/[id] | Interface for editing existing command templates          |
-| **[[pages/global-catalog\|Global Catalog]]**     | **/catalog**                                        | Discovery of community-shared commands                    |
-| [[pages/service-details\|Service Details]]       | &nbsp;&nbsp;&nbsp;&nbsp;/catalog/service/[id]       | Detailed view of a specific service                       |
-| **Authentication**                               | **/auth**                                           | User authentication and registration                      |
-| [[pages/login\|Login]]                           | &nbsp;&nbsp;&nbsp;&nbsp;/auth/login                 | User authentication                                       |
-| [[pages/register\|Register]]                     | &nbsp;&nbsp;&nbsp;&nbsp;/auth/register              | New user registration                                     |
-| **[[pages/help\|Help]]**                         | **/help**                                           | Basic guidance with GIFs and descriptions on system usage |
-| **[[pages/about\|About]]**                       | **/about**                                          | Project information and team details                      |
-| **[[pages/feedback\|Feedback]]**                 | **/feedback**                                       | User feedback collection and issue reporting              |
-| **[[pages/privacy-policy\|Privacy Policy]]**     | **/privacy**                                        | Data handling practices and user rights                   |
-| **[[pages/terms-of-use\|Terms of Use]]**         | **/terms**                                          | Usage conditions and legal terms                          |
+    PersonalCatalog --> CreateCommand[Create Command]
+    GlobalCatalog --> ServiceDetails[Service Details]
+
+    Auth[Authentication] --> UserAccess[User Access]
+    Help[Help] --> UserGuidance[User Guidance]
+```
+
+| Page                                             | Route                                               | Description                                                                                                             | Key Features                                                |
+| ------------------------------------------------ | --------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| **[[pages/main-search\|Main Search]]**           | **/**                                               | Primary interface for command execution, featuring a prominent search bar and quick access to frequently used commands. | Command input, history, suggestions, quick execution        |
+| **[[pages/personal-catalog\|Personal Catalog]]** | **/personal**                                       | User's workspace for managing personal commands, with organization tools and customization options.                     | Command grid, label filtering, drag-and-drop organization   |
+| [[pages/settings\|Settings]]                     | &nbsp;&nbsp;&nbsp;&nbsp;/personal/settings          | Configuration interface for user preferences, appearance settings, and default behaviors.                               | Theme selection, display options, default settings          |
+| [[pages/create-command\|Create Command]]         | &nbsp;&nbsp;&nbsp;&nbsp;/personal/command/create    | Form interface for creating new command templates with parameter configuration and validation.                          | Template builder, parameter editor, preview functionality   |
+| [[pages/create-command\|Edit Command]]           | &nbsp;&nbsp;&nbsp;&nbsp;/personal/command/edit/[id] | Editing interface for existing commands, allowing modification of templates and parameters.                             | Template editing, parameter configuration, usage statistics |
+| **[[pages/global-catalog\|Global Catalog]]**     | **/catalog**                                        | Discovery interface for community-shared commands, with filtering, sorting, and import capabilities.                    | Command discovery, popularity sorting, import functionality |
+| [[pages/service-details\|Service Details]]       | &nbsp;&nbsp;&nbsp;&nbsp;/catalog/service/[id]       | Detailed view of a specific service or command, showing metadata, usage information, and related commands.              | Command details, usage statistics, related commands         |
+| **Authentication**                               | **/auth**                                           | User authentication and registration flows, supporting both email/password and OAuth providers.                         | Login, registration, account management                     |
+| [[pages/login\|Login]]                           | &nbsp;&nbsp;&nbsp;&nbsp;/auth/login                 | Authentication interface for existing users, with multiple login options and security features.                         | Email/password login, OAuth providers, security measures    |
+| [[pages/register\|Register]]                     | &nbsp;&nbsp;&nbsp;&nbsp;/auth/register              | Registration interface for new users, with account creation and verification processes.                                 | Account creation, email verification, initial setup         |
+| **[[pages/help\|Help]]**                         | **/help**                                           | User guidance with visual demonstrations and explanations of key features and workflows.                                | GIF demonstrations, feature explanations, usage tips        |
+| **[[pages/about\|About]]**                       | **/about**                                          | Information about the project, team, and technology stack, with links to resources and documentation.                   | Project information, team details, technology overview      |
+| **[[pages/feedback\|Feedback]]**                 | **/feedback**                                       | Interface for users to submit feedback, report issues, and suggest improvements.                                        | Feedback form, issue reporting, feature requests            |
+| **[[pages/privacy-policy\|Privacy Policy]]**     | **/privacy**                                        | Legal information about data handling practices, user rights, and compliance measures.                                  | Data collection, user rights, security measures             |
+| **[[pages/terms-of-use\|Terms of Use]]**         | **/terms**                                          | Legal terms governing the use of the service, user responsibilities, and limitations.                                   | Usage terms, user obligations, liability limitations        |
 
 ### Components
 
-| Component                                               | Description                                     |
-| ------------------------------------------------------- | ----------------------------------------------- |
-| [[components/index\|UI Components Overview]]            | Index of all UI components with relationships   |
-| [[components/SearchBar\|SearchBar Component]]           | Command input and autocomplete functionality    |
-| [[components/ServiceGrid\|ServiceGrid Component]]       | Grid display for command icons and organization |
-| [[components/TagBar\|TagBar Component]]                 | Label-based filtering and organization          |
-| [[components/CommandBuilder\|CommandBuilder Component]] | Interface for creating and editing commands     |
+| Component                                     | Description                                                                                                                                  | Usage                                         |
+| --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
+| [[components/SearchBar\|SearchBar]]           | Primary command input with autocomplete and history. Processes user text input and triggers command execution.                               | Main Search, Personal Catalog, Global Catalog |
+| [[components/ServiceGrid\|ServiceGrid]]       | Windows 95-style icon grid displaying commands as interactive tiles. Supports drag-and-drop organization and visual categorization.          | Main Search, Personal Catalog, Global Catalog |
+| [[components/TagBar\|TagBar]]                 | Label-based filtering system allowing users to organize and filter commands by categories. Implements multi-select filtering with AND logic. | Personal Catalog, Global Catalog              |
+| [[components/CommandBuilder\|CommandBuilder]] | Form interface for creating and editing command templates. Includes parameter configuration, validation, and preview functionality.          | Personal Catalog, Service Details             |
 
 ### Data Models
 
-| Model                                               | Description                                   |
-| --------------------------------------------------- | --------------------------------------------- |
-| [[models/command\|Command Model]]                   | Structure and properties of command objects   |
-| [[models/service\|Service Model]]                   | Service metadata and relationship definitions |
-| [[models/tag\|Tag Model]]                           | Label structure and organization system       |
-| [[models/user-profile\|User Profile Model]]         | User account and preference management        |
-| [[models/user-preferences\|User Preferences Model]] | User-specific settings and configurations     |
+| Model                                         | Description                                                                                                                                                                     | Key Properties                          |
+| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
+| [[models/command\|Command]]                   | Defines the structure of command objects, including static and dynamic variants. Commands connect user input to URL templates and manage parameter extraction.                  | id, key, url, type, params, metadata    |
+| [[models/service\|Service]]                   | Represents service metadata including icons, descriptions, and usage statistics. Services provide the visual representation of commands in the UI.                              | id, name, icon, description, popularity |
+| [[models/tag\|Tag]]                           | Implements the label-based organization system, allowing commands to be categorized and filtered. Tags can be applied to multiple commands and commands can have multiple tags. | id, name, color, commands               |
+| [[models/user-profile\|User Profile]]         | Manages user account information, authentication state, and cross-device synchronization. Profiles store user-specific data and preferences.                                    | id, displayName, email, preferences     |
+| [[models/user-preferences\|User Preferences]] | Stores user-specific settings including theme preferences, default behaviors, and interface configurations.                                                                     | theme, defaultBrowser, commandsPerPage  |
 
 ### Flow Documentation
 
-| Flow                                                  | Description                                     |
-| ----------------------------------------------------- | ----------------------------------------------- |
-| [[flows/command-execution\|Command Execution Flow]]   | Process of command parsing and URL generation   |
-| [[flows/command-management\|Command Management Flow]] | Creation, editing, and organization of commands |
-| [[flows/user-interaction\|User Interaction Patterns]] | Common user workflows and interaction patterns  |
+| Flow                                                  | Description                                                                                                                      | Key Steps                                                                                   |
+| ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| [[flows/command-execution\|Command Execution]]        | Traces the journey from user input to URL navigation, showing how commands are parsed, parameters extracted, and URLs generated. | Input parsing → Command lookup → Parameter extraction → URL generation → Browser navigation |
+| [[flows/command-management\|Command Management]]      | Documents the creation, editing, and organization of commands, including validation, storage, and synchronization processes.     | Command creation → Validation → Storage → Synchronization → Organization                    |
+| [[flows/user-interaction\|User Interaction Patterns]] | Illustrates common user workflows across different pages, highlighting interaction patterns and navigation flows.                | Search → Execute → Organize → Customize → Share                                             |
