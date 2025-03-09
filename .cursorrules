@@ -24,6 +24,7 @@ meows.space is a URL command multiplexer implementing static and dynamic command
 - Don't modify existing table of contents structures
 - Avoid using specific counts or numbers that require updates when the system changes
 - Use relative or general terms instead of exact quantities for elements that may change
+- Table of contents is auto-generated and should not be manually edited
 
 # File Structure
 
@@ -54,3 +55,31 @@ meows.space is a URL command multiplexer implementing static and dynamic command
 - Confirm that code examples are functional and follow project standards
 - Validate that API specifications match the implemented endpoints
 - Check that flow descriptions match the actual user experience
+
+# Chart Usage Guidelines
+
+For each section of content, evaluate which charts add value or clarity. Use the following chart types appropriately:
+
+| Chart Name | When to Use |
+| --- | --- |
+| Flowchart | To represent a process or sequence of steps, simplify complex procedures, or show decision points in a workflow |
+| Sequence Diagram | To illustrate interactions between different components in a system over time |
+| Class Diagram | To represent the structure of a system by showing classes, attributes, and relationships in object-oriented programming |
+| State Diagram | To model reactive systems and show what happens to objects under different circumstances |
+| Entity Relationship Diagram | To show the relationships between entities in a database or system |
+| User Journey | To map out the steps a user takes when interacting with a product or service |
+| Gantt Chart | To visualize project schedules, tasks, and timelines |
+| Pie Chart | To show the composition of a whole divided into parts |
+| Quadrant Chart | To plot data points in four quadrants for comparison and analysis |
+| Requirement Diagram | To document and analyze system requirements |
+| Gitgraph (Git) Diagram | To visualize Git branching and merging history |
+| C4 Diagram | To describe software architecture at different levels of abstraction |
+| Mindmaps | To visually organize information and show relationships between concepts |
+| Timeline | To display events in chronological order |
+| ZenUML | To create UML sequence diagrams with a simplified syntax |
+| Sankey Diagram | To visualize flow and quantity in a system or process |
+| XY Chart | To plot data points on two axes to show relationships between variables |
+| Block Diagram | To represent systems and processes using interconnected blocks |
+| Packet Diagram | To illustrate network packet structures and protocols |
+| Kanban | To visualize and manage workflow in agile project management |
+| Architecture Diagram | To represent the high-level structure and components of a system |
