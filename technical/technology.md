@@ -45,7 +45,7 @@ graph TD
         Static["Static Commands<br/><i>Direct URL mapping</i>"]
         Dynamic["Dynamic Commands<br/><i>Parameter interpolation</i>"]
     end
-    
+
     subgraph "Examples"
         Static --- StaticEx["gh → github.com<br/>cal → calendar.google.com<br/>mail → gmail.com"]
         Dynamic --- DynamicEx["g {query} → google.com/search?q={query}<br/>gh {repo} → github.com/{repo}<br/>tr {from} {to} {text} → translate.google.com/?sl={from}&tl={to}&text={text}"]
@@ -66,7 +66,7 @@ classDiagram
     Command "1" --> "1" Metadata: has
     UserProfile "1" --> "1" UserPreferences: has
     UserProfile "1" --> "*" Command: owns
-    
+
     class Command {
         id: string
         key: string
@@ -74,27 +74,27 @@ classDiagram
         type: "static"|"dynamic"
         userId: string
     }
-    
+
     class Parameter {
         name: string
         placeholder: string
         required: boolean
     }
-    
+
     class Metadata {
         icon: string
         tags: string[]
         shortcuts: string[]
         notes: string
     }
-    
+
     class UserProfile {
         id: string
         displayName: string
         email: string
         activeLabels: string[]
     }
-    
+
     class UserPreferences {
         theme: string
         defaultBrowser: string
@@ -110,16 +110,16 @@ The system uses several interconnected data structures:
 ```typescript
 // Command definition
 interface Command {
-  id: string;                // Unique identifier
-  key: string;               // Command invocation key
-  url: string;               // Target URL or template
+  id: string; // Unique identifier
+  key: string; // Command invocation key
+  url: string; // Target URL or template
   type: "static" | "dynamic"; // Execution model
-  params?: Parameter[];      // For dynamic commands
-  metadata: Metadata;        // Extended properties
-  folder?: string;           // Organizational structure
-  createdAt: Date;           // Creation timestamp
-  updatedAt: Date;           // Last update timestamp
-  userId: string;            // Owner identifier
+  params?: Parameter[]; // For dynamic commands
+  metadata: Metadata; // Extended properties
+  folder?: string; // Organizational structure
+  createdAt: Date; // Creation timestamp
+  updatedAt: Date; // Last update timestamp
+  userId: string; // Owner identifier
 }
 ```
 
@@ -128,9 +128,9 @@ interface Command {
 ```typescript
 // Parameter definition for dynamic commands
 interface Parameter {
-  name: string;              // Parameter identifier
-  placeholder: string;       // User-facing hint
-  required: boolean;         // Parameter requirement
+  name: string; // Parameter identifier
+  placeholder: string; // User-facing hint
+  required: boolean; // Parameter requirement
 }
 ```
 
@@ -139,10 +139,10 @@ interface Parameter {
 ```typescript
 // Command metadata
 interface Metadata {
-  icon?: string;             // Visual identifier
-  tags?: string[];           // Categorization
-  shortcuts?: string[];      // Keyboard bindings
-  notes?: string;            // Documentation
+  icon?: string; // Visual identifier
+  tags?: string[]; // Categorization
+  shortcuts?: string[]; // Keyboard bindings
+  notes?: string; // Documentation
 }
 ```
 
@@ -151,13 +151,13 @@ interface Metadata {
 ```typescript
 // User profile
 interface UserProfile {
-  id: string;                // User identifier
-  displayName: string;       // User display name
-  email: string;             // User email
+  id: string; // User identifier
+  displayName: string; // User display name
+  email: string; // User email
   preferences: UserPreferences; // User settings
-  activeLabels: string[];    // Currently active labels
-  createdAt: Date;           // Account creation date
-  lastLogin: Date;           // Last login timestamp
+  activeLabels: string[]; // Currently active labels
+  createdAt: Date; // Account creation date
+  lastLogin: Date; // Last login timestamp
 }
 ```
 
@@ -167,11 +167,11 @@ interface UserProfile {
 // User preferences
 interface UserPreferences {
   theme: "light" | "dark" | "system"; // UI theme
-  defaultBrowser: string;    // Default browser for commands
-  commandsPerPage: number;   // Display density
-  showLabels: boolean;       // Label visibility
-  autoSync: boolean;         // Automatic synchronization
-  defaultFolder: string;     // Default folder for new commands
+  defaultBrowser: string; // Default browser for commands
+  commandsPerPage: number; // Display density
+  showLabels: boolean; // Label visibility
+  autoSync: boolean; // Automatic synchronization
+  defaultFolder: string; // Default folder for new commands
 }
 ```
 
@@ -182,71 +182,71 @@ classDiagram
     class StateManagement {
         Handles data persistence and retrieval
     }
-    
+
     class RuntimeState {
         In-memory storage
         Volatile
         Fast access
     }
-    
+
     class PersistentState {
         IndexedDB storage
         Durable across sessions
         Offline-capable
     }
-    
+
     StateManagement --> RuntimeState
     StateManagement --> PersistentState
-    
+
     class CommandContext {
         Active command
         Current parameters
     }
-    
+
     class UIState {
         Selected icons
         Active panels
         Search queries
     }
-    
+
     class CommandHistory {
         Recent commands
         LRU cache
     }
-    
+
     class SearchIndex {
         Prefix-based lookup
         Fuzzy matching
     }
-    
+
     RuntimeState --> CommandContext
     RuntimeState --> UIState
     RuntimeState --> CommandHistory
     RuntimeState --> SearchIndex
-    
+
     class CommandDefinitions {
         User-defined commands
         Templates
         Metadata
     }
-    
+
     class UserData {
         Profiles
         Preferences
         Authentication
     }
-    
+
     class OrganizationStructure {
         Folders
         Labels
         Categories
     }
-    
+
     class PendingChanges {
         Offline modifications
         Sync queue
     }
-    
+
     PersistentState --> CommandDefinitions
     PersistentState --> UserData
     PersistentState --> OrganizationStructure
@@ -336,22 +336,22 @@ graph TD
         Auth["Authentication<br/><i>Login/Register</i>"]
         ServiceDetails["Service Details<br/><i>Command information</i>"]
     end
-    
+
     subgraph "Core Components"
         SearchBar["SearchBar<br/><i>Command input</i>"]
         ServiceGrid["ServiceGrid<br/><i>Icon display</i>"]
         TagBar["TagBar<br/><i>Category navigation</i>"]
         CommandBuilder["CommandBuilder<br/><i>Command creation</i>"]
     end
-    
+
     MainSearch --> SearchBar
     MainSearch --> ServiceGrid
-    
+
     PersonalCatalog --> SearchBar
     PersonalCatalog --> ServiceGrid
     PersonalCatalog --> TagBar
     PersonalCatalog --> CommandBuilder
-    
+
     GlobalCatalog --> SearchBar
     GlobalCatalog --> ServiceGrid
     GlobalCatalog --> TagBar
@@ -366,29 +366,34 @@ The application consists of several key pages, each serving a specific purpose i
 **Main Search (/)** serves as the landing page and primary command execution interface. It provides immediate access to the command input field, which automatically receives focus when the page loads. The page displays a grid of command icons sorted by popularity, with category filters below the search input. For first-time visitors, this page shows popular global commands, while returning users see their personal command collection.
 
 **Personal Catalog (/personal)** functions as the user's workspace for managing their command collection. It includes:
+
 - SearchHeader with full-text search and filtering controls
 - ServiceGrid displaying the user's commands as icons
 - TagBar for category-based navigation
 - Command editing capabilities
 
 **Global Catalog (/catalog)** enables service discovery through:
+
 - CatalogHeader with search and sorting options
 - ServiceGrid showing community-created commands
 - Usage statistics and popularity metrics
 - Add buttons for importing commands to personal catalog
 
 **Settings (/settings)** provides access to user preferences including:
+
 - Search provider defaults
 - UI theme settings
 - Tag management
 - Display density controls
 
 **Authentication (/auth/login, /auth/register)** handles user account management with:
+
 - Email/password authentication
 - OAuth providers (GitHub, Google)
 - Account creation and verification
 
 **Service Details (/service/[id])** shows detailed information about a specific command:
+
 - Service metadata and description
 - Usage statistics
 - Related commands
@@ -410,24 +415,28 @@ For a comprehensive overview of all components, see the [[../components/index|UI
 The UI implements several key interaction patterns:
 
 **Command Execution** follows this flow:
+
 1. User enters text in the command input
 2. System parses input to identify command and parameters
 3. URL is constructed based on command template
 4. Browser navigates to the constructed URL
 
 **Command Organization** uses a label-based system where:
+
 - Commands can have multiple labels
 - Users filter by selecting one or more labels
 - Multiple selected labels show commands with ALL labels (AND operation)
 - Drag-and-drop allows reorganizing commands between categories
 
 **Command Discovery** occurs through:
+
 - Global catalog browsing
 - Category-based navigation
 - Search functionality
 - Sorting by popularity or recency
 
 **Command Privacy** provides two levels:
+
 - Private (default): Only visible to the owner
 - Public: Visible in global catalog, can be forked by others
 
@@ -442,7 +451,7 @@ graph LR
         GlobalData["Global Data<br/><i>100KB</i>"]
         UserData["User Data<br/><i>Variable</i>"]
     end
-    
+
     subgraph "Lazy-loaded Features"
         direction TB
         Settings["Settings<br/><i>15KB</i>"]
@@ -450,11 +459,11 @@ graph LR
         Search["Search<br/><i>10KB</i>"]
         Sync["Sync<br/><i>20KB</i>"]
     end
-    
+
     Shell --> Core
     Core --> GlobalData
     GlobalData --> UserData
-    
+
     UserData -.-> Settings
     UserData -.-> Catalog
     UserData -.-> Search
@@ -488,6 +497,7 @@ The application implements multiple optimization techniques:
 **Data Prefetching** loads data before user interaction, such as prefetching command details on hover or loading the next page of results before reaching the current page end.
 
 **Caching Strategy** uses multiple storage mechanisms:
+
 - Browser cache for static assets
 - IndexedDB for command data and user preferences
 - Memory cache for frequently accessed data
@@ -509,10 +519,7 @@ Caching uses Redis to store frequently accessed data like public commands and us
 
 The infrastructure consists of:
 
-Serverless functions for API request handling
-PostgreSQL database for persistent storage
-Redis for caching and session management
-CDN for static asset delivery
+Serverless functions for API request handling PostgreSQL database for persistent storage Redis for caching and session management CDN for static asset delivery
 
 ### 4.3 Security
 
@@ -541,5 +548,4 @@ HTTPS-only cookies store authentication information with the Secure and HttpOnly
 
 Command execution includes:
 
-Parameter sanitization for URL construction
-Rate limiting for command execution frequency
+Parameter sanitization for URL construction Rate limiting for command execution frequency
