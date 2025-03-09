@@ -8,8 +8,31 @@ last_updated: 2024
 tags: [overview, documentation, architecture]
 ---
 
-
 Welcome to the meows.space documentation. This knowledge base contains comprehensive documentation for the meows.space URL command multiplexer project.
+
+![meows.space logo](./assets/meows-logo.png)
+
+- [Overview](#overview)
+- [Core Concept](#core-concept)
+- [Technical Architecture](#technical-architecture)
+- [Command Types](#command-types)
+  - [Static Commands](#static-commands)
+  - [Dynamic Commands](#dynamic-commands)
+- [Command Execution](#command-execution)
+- [Command Organization and Catalog](#command-organization-and-catalog)
+  - [Global Catalog](#global-catalog)
+  - [Personal Catalog](#personal-catalog)
+  - [User Profiles](#user-profiles)
+- [State Management](#state-management)
+- [Documentation Structure](#documentation-structure)
+  - [Core Documentation](#core-documentation)
+  - [Technical Documentation](#technical-documentation)
+  - [Pages](#pages)
+  - [Components](#components)
+  - [Data Models](#data-models)
+  - [Flow Documentation](#flow-documentation)
+
+---
 
 ## Overview
 
@@ -220,22 +243,63 @@ The system uses a synchronization mechanism that ensures changes made on one dev
 ## Documentation Structure
 
 ### Core Documentation
-- [[core/architecture|System Architecture]]
+
+- [[technical/architecture|System Architecture]]
 
 ### Technical Documentation
+
 - [[technical/technology|Technical Implementation]]
 - [[technical/components|Component Architecture]]
 - [[technical/endpoints|API Endpoints]]
-- [[technical/pages|Page Structure]]
 - [[technical/system-integration|System Integration & Feedback]]
 
 ### Pages
-- [[pages/main-search|Main Search Page]]
-- [[pages/personal-catalog|Personal Catalog Page]]
-- [[pages/global-catalog|Global Catalog Page]]
-- [[pages/settings|Settings Page]]
+
+The meows.space application pages are organized in a hierarchical structure. Each page serves a specific function within the application workflow, from command execution to user authentication. The pages are grouped by their primary functions: command management, catalog access, authentication, support, and legal information.
+
+```text
+meows.space/
+├── / (Main Search)
+├── /personal (Personal Catalog)
+│   └── /settings
+│   └── /command/create
+│   └── /command/edit/[id]
+├── /catalog (Global Catalog)
+│   └── /service/[id]
+├── /auth
+│   └── /auth/login
+│   └── /auth/register
+├── /help (Tutorial & Help)
+│   └── /help/tutorial
+│   └── /help/faq
+│   └── /help/troubleshooting
+├── /about
+├── /feedback
+├── /privacy
+└── /terms
+```
+
+The table below lists all application pages with their routes and primary functions. Linked pages contain technical specifications, component details, and implementation information.
+
+| Page                                             | Route                | Purpose                                          |
+| ------------------------------------------------ | -------------------- | ------------------------------------------------ |
+| **[[pages/main-search\|Main Search]]**           | `/`                  | Primary search interface and command execution   |
+| **[[pages/personal-catalog\|Personal Catalog]]** | `/personal`          | User's workspace for managing personal commands  |
+| **[[pages/settings\|Settings]]**                 | `/settings`          | User preferences and application configuration   |
+| **[[pages/create-command\|Create Command]]**     | `/command/create`    | Interface for creating new command templates     |
+| **[[pages/create-command\|Edit Command]]**       | `/command/edit/[id]` | Interface for editing existing command templates |
+| **[[pages/global-catalog\|Global Catalog]]**     | `/catalog`           | Discovery of community-shared commands           |
+| **[[pages/service-details\|Service Details]]**   | `/service/[id]`      | Detailed view of a specific service              |
+| **[[pages/login\|Login]]**                       | `/auth/login`        | User authentication                              |
+| **[[pages/register\|Register]]**                 | `/auth/register`     | New user registration                            |
+| **[[pages/help\|Help & Tutorial]]**              | `/help`              | User guidance and assistance                     |
+| **[[pages/about\|About]]**                       | `/about`             | Project information and team details             |
+| **[[pages/feedback\|Feedback]]**                 | `/feedback`          | User feedback collection and issue reporting     |
+| **[[pages/privacy-policy\|Privacy Policy]]**     | `/privacy`           | Data handling practices and user rights          |
+| **[[pages/terms-of-use\|Terms of Use]]**         | `/terms`             | Usage conditions and legal terms                 |
 
 ### Components
+
 - [[components/index|UI Components Overview]]
 - [[components/SearchBar|SearchBar Component]]
 - [[components/ServiceGrid|ServiceGrid Component]]
@@ -243,6 +307,7 @@ The system uses a synchronization mechanism that ensures changes made on one dev
 - [[components/CommandBuilder|CommandBuilder Component]]
 
 ### Data Models
+
 - [[models/command|Command Model]]
 - [[models/service|Service Model]]
 - [[models/tag|Tag Model]]
@@ -250,9 +315,7 @@ The system uses a synchronization mechanism that ensures changes made on one dev
 - [[models/user-preferences|User Preferences Model]]
 
 ### Flow Documentation
+
 - [[flows/command-execution|Command Execution Flow]]
 - [[flows/command-management|Command Management Flow]]
 - [[flows/user-interaction|User Interaction Patterns]]
-
-## Tags
-#meows #documentation #index 
