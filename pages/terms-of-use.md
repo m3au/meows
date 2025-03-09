@@ -1,86 +1,96 @@
 ---
 title: Terms of Use Page
 project: meows
-description: Terms of service and usage conditions
-target: All users and legal stakeholders
-detail_level: Legal and technical details
+description: Documentation for the Terms of Use page
+target: Technical stakeholders and developers
+detail_level: Page implementation
 last_updated: 2024
-tags: [frontend, pages, legal, terms]
+tags: [page, legal, documentation]
 ---
 
 # Terms of Use Page
 
-## Overview
+The Terms of Use page presents the legal terms governing the use of meows.space, including user responsibilities and limitations. It provides a comprehensive reference for the legal agreement between users and the service.
 
-The Terms of Use page outlines the conditions and requirements for using meows.space. It establishes the legal agreement between users and the service, defining acceptable use, limitations, and user responsibilities.
+## Page Structure
 
-## Route
+```mermaid
+flowchart TD
+    Terms[Terms of Use Container] --> Header[Page Header]
+    Terms --> TOC[Table of Contents]
+    Terms --> Sections[Content Sections]
+    Terms --> Footer[Page Footer]
 
+    Sections --> Section1[Service Description]
+    Sections --> Section2[User Obligations]
+    Sections --> Section3[Intellectual Property]
+    Sections --> Section4[Limitations of Liability]
+    Sections --> Section5[Dispute Resolution]
+    Sections --> Section6[Modifications to Terms]
+
+    TOC --> TOCItem1[Service Description Link]
+    TOC --> TOCItem2[User Obligations Link]
+    TOC --> TOCItem3[Intellectual Property Link]
+    TOC --> TOCItem4[Limitations Link]
+    TOC --> TOCItem5[Dispute Resolution Link]
+    TOC --> TOCItem6[Modifications Link]
 ```
-/terms
-```
 
-## Page Components
+## Implementation Details
 
-### Terms Document
+The Terms of Use page is implemented as a static React component with the following features:
 
-- Service description
-- User obligations
-- Prohibited activities
-- Intellectual property rights
-- Limitation of liability
-- Termination conditions
-- Governing law
-
-### Acceptance Mechanism
-
-- Explicit consent collection
-- Version tracking
-- Change notification system
-- Historical version access
+- Semantic HTML structure with proper heading hierarchy
+- Anchor links for in-page navigation
+- Responsive layout that adapts to different screen sizes
+- Print-friendly styling for offline reference
+- Last updated timestamp with version tracking
 
 ## Content Sections
 
-### Service Usage
+The page contains the following primary content sections:
 
-- Account requirements
-- Command creation guidelines
-- Content restrictions
-- API usage limitations
-- Performance expectations
+1. **Service Description**: Defines the scope and nature of meows.space
+2. **User Obligations**: Outlines user responsibilities and acceptable use
+3. **Intellectual Property**: Clarifies ownership and usage rights
+4. **Limitations of Liability**: Defines the boundaries of service responsibility
+5. **Dispute Resolution**: Establishes procedures for resolving conflicts
+6. **Modifications to Terms**: Explains how and when terms may change
 
-### User Responsibilities
+## Navigation
 
-- Account security
-- Content ownership
-- Data accuracy
-- System integrity
-- Compliance with laws
+The page implements the following navigation features:
 
-### Intellectual Property
+- Table of contents with anchor links to each section
+- Back-to-top links at the end of each section
+- Breadcrumb navigation showing the path from the home page
+- Related legal document links in the sidebar
 
-- Copyright information
-- Trademark usage
-- User-generated content rights
-- License grants
-- Open source components
+## Usage
 
-### Liability and Disclaimers
+```tsx
+import { TermsOfUsePage } from "pages/TermsOfUse";
 
-- Service availability
-- Data accuracy
-- Third-party services
-- Security limitations
-- Damage limitations
+function App() {
+  return (
+    <Router>
+      <Route path="/terms" component={TermsOfUsePage} />
+    </Router>
+  );
+}
+```
 
-## Version Management
+## Accessibility
 
-- Change tracking
-- Version history
-- Notification mechanisms
-- Consent renewal requirements
+The Terms of Use page implements the following accessibility features:
 
-## Related Documentation
+- Semantic HTML structure with proper heading hierarchy
+- High contrast text for readability
+- Keyboard navigable table of contents
+- Screen reader optimized content structure
 
-- [[privacy-policy|Privacy Policy Page]]
-- [[about|About Page]]
+## Related Pages
+
+- [PrivacyPolicy](privacy-policy.md): Complementary legal document
+- [DataProtection](data-protection.md): Information about data handling practices
+- [About](about.md): General information about the service
