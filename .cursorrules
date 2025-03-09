@@ -12,6 +12,8 @@ meows.space is a URL command multiplexer implementing static and dynamic command
 - Document only what exists, not planned features
 - Use technical, factual language instead of marketing terms
 - Avoid industry buzzwords and trendy terminology
+- Avoid subjective descriptors like "comprehensive," "cohesive," "consistent," "powerful," "elegant," etc.
+- Replace subjective qualifiers with specific, measurable characteristics
 - Don't include statements about future capabilities
 - Documentation should explain concepts, not generate implementation code
 - Target technical stakeholders with appropriate technical depth
@@ -29,7 +31,7 @@ meows.space is a URL command multiplexer implementing static and dynamic command
   - Document name, project, description
   - Target audience and detail level
   - Last updated date
-- Maintain comprehensive table of contents with proper hierarchy
+- Maintain complete table of contents with proper hierarchy
 - Start with an overview section introducing the document's purpose
 - Use clear headings and subheadings for content organization
 - Include visual diagrams for complex concepts
@@ -41,7 +43,8 @@ meows.space is a URL command multiplexer implementing static and dynamic command
 - Technical documentation is in separate specialized files
 - Flow documentation is organized in the docs/flows/ directory
 - Use mermaid diagrams for visual representations
-- Maintain consistent terminology across all documents
+- Use standardized terminology across all documents
+- Establish and follow a glossary of technical terms
 - Provide code examples where appropriate
 
 # Technical Accuracy
