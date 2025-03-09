@@ -36,7 +36,6 @@ Table of Contents
   - [System Flow](#system-flow)
 - [Frontend Architecture](#frontend-architecture)
   - [Technical Implementation](#technical-implementation)
-  - [Component Architecture](#component-architecture)
   - [Loading \& Performance](#loading--performance)
     - [Progressive Loading Strategy](#progressive-loading-strategy)
     - [Performance Optimization Techniques](#performance-optimization-techniques)
@@ -44,9 +43,20 @@ Table of Contents
   - [API Implementation](#api-implementation)
   - [Data Storage](#data-storage)
   - [Security Implementation](#security-implementation)
+- [System Integration \& Feedback](#system-integration--feedback)
+  - [Authentication Integration](#authentication-integration)
+  - [Local-First Architecture Integration](#local-first-architecture-integration)
+  - [Browser Integration](#browser-integration)
+  - [External Services](#external-services)
+  - [User Feedback Mechanisms](#user-feedback-mechanisms)
+    - [In-app Feedback](#in-app-feedback)
+    - [Analytics Integration](#analytics-integration)
+    - [Support Channels](#support-channels)
+  - [Future Development](#future-development)
+    - [Social Features](#social-features)
+- [Glossary](#glossary)
 - [Artifacts](#artifacts)
-  - [Documents](#documents)
-  - [Flows](#flows)
+  - [Flow charts](#flow-charts)
   - [Data Models](#data-models)
   - [Pages](#pages)
   - [Components](#components)
@@ -375,17 +385,6 @@ The frontend is built using:
 - **IndexedDB** for client-side storage
 - **Service Workers** for offline capabilities
 
-### Component Architecture
-
-The component architecture follows a hierarchical structure with:
-
-- **Container Components**: Handle data fetching and state management
-- **Presentational Components**: Focus on rendering UI elements
-- **Hooks**: Encapsulate reusable logic and state management
-- **Context Providers**: Manage global state and theme
-
-For detailed information about components, see the [Components](#components) section.
-
 ### Loading & Performance
 
 ```mermaid
@@ -489,36 +488,182 @@ Authentication uses session-based tokens stored in HTTP-only cookies. User passw
 
 ---
 
+## System Integration & Feedback
+
+### Authentication Integration
+
+meows.space implements authentication through OAuth-based providers including GitHub, LinkedIn, and Facebook. This approach eliminates the need for direct username/password management while providing secure identity verification. Authentication is only required for command management functions, not for basic command execution, maintaining a low barrier to entry for new users.
+
+The authentication system integrates with the local-first architecture, storing authentication tokens in secure browser storage and refreshing them as needed. This enables offline access to authenticated features while maintaining security standards.
+
+### Local-First Architecture Integration
+
+The local-first architecture forms the foundation of the system's integration approach. Command execution occurs primarily in the browser, with local storage handling command data persistence. This architecture enables offline functionality for core features while maintaining cross-device synchronization when connectivity is available.
+
+Synchronization is implemented selectively, focusing on command management rather than execution. This approach minimizes network dependencies while ensuring data consistency across devices. The system operates independently of external services for core functionality, enhancing reliability and reducing potential points of failure.
+
+### Browser Integration
+
+meows.space operates as a standalone web application without requiring browser extensions or plugins. This design decision simplifies deployment and reduces maintenance overhead while ensuring broad compatibility across browsers and platforms. The system maintains its own command history and state management, independent of browser history or bookmark systems.
+
+Future versions may implement optional browser integrations, such as bookmark synchronization or browser extension features, but these remain supplementary rather than core requirements. This approach maintains the system's independence while allowing for enhanced functionality for users who desire deeper browser integration.
+
+### External Services
+
+The system generates URLs without requiring external API access or service credentials, maintaining independence from third-party services for core functionality. This design eliminates API limits, quotas, and credential management concerns that typically accompany external service dependencies.
+
+For services that require authentication, such as private GitHub repositories, the system passes authentication through the browser's standard mechanisms rather than storing or managing service credentials directly. This approach maintains security while enabling access to authenticated services when needed.
+
+### User Feedback Mechanisms
+
+#### In-app Feedback
+
+The system implements a unified feedback mechanism accessible through the main navigation menu. Users can submit bug reports, feature suggestions, and general feedback through a single form interface that categorizes submissions for appropriate routing and response. This streamlined approach simplifies the feedback process while ensuring that user input reaches the appropriate teams.
+
+The feedback system captures contextual information such as browser version and system configuration to assist in issue diagnosis, while maintaining user privacy by excluding personal data unless explicitly provided by the user.
+
+#### Analytics Integration
+
+meows.space implements Google Analytics to monitor system usage patterns and identify opportunities for improvement. The analytics implementation tracks feature usage, user flows, and interaction patterns without capturing personally identifiable information. This data informs development priorities and interface optimizations based on actual usage rather than assumptions.
+
+The analytics system implements appropriate data retention policies and provides users with clear information about data collection practices. Users can opt out of analytics collection through the settings interface if desired.
+
+#### Support Channels
+
+The system provides a unified support channel through a dedicated email address that handles all types of inquiries. This approach simplifies the support process for users while ensuring that questions reach the appropriate team members for resolution. Support documentation complements direct assistance, providing self-service options for common questions and issues.
+
+### Future Development
+
+The system roadmap includes planned enhancements that build upon the current architecture while maintaining compatibility with existing functionality.
+
+#### Social Features
+
+Planned social capabilities will enable command sharing between users, including the ability to like or favorite commands and share command configurations with other users. These features will enhance the community aspects of the platform while maintaining the system's focus on individual productivity. Social features will be implemented as optional enhancements rather than core requirements.
+
+Implementation will follow a phased approach, with core functionality deployed first, followed by additional features based on user feedback and usage patterns. This approach ensures stability while enabling continuous improvement based on real-world usage.
+
+---
+
+## Glossary
+
+This glossary standardizes terminology used throughout the meows.space documentation to ensure consistency and clarity.
+
+| Term               | Definition                                                                                                                                                                       |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Command            | A text shortcut that expands to a full URL, optionally with parameters. The core unit of functionality in meows.space.                                                           |
+| Service            | A web destination that can be accessed via commands. Represented visually as an icon in the ServiceGrid.                                                                         |
+| Parameter          | A variable portion of a command that gets interpolated into the final URL.                                                                                                       |
+| Template           | The URL pattern associated with a command, containing placeholders for parameters.                                                                                               |
+| Label              | A categorization tag applied to commands for organization and filtering.                                                                                                         |
+| Global Catalog     | A shared, community-maintained collection of commands available to all users. Contains verified, popular commands that can be imported to a user's personal catalog.             |
+| Personal Catalog   | A user's private collection of commands, customized to their specific needs and preferences. Commands in the personal catalog can be created, edited, and organized by the user. |
+| Profile            | A user's workspace containing their personal commands, preferences, and settings.                                                                                                |
+| Static Command     | A command that maps directly to a URL without parameters.                                                                                                                        |
+| Dynamic Command    | A command that incorporates parameters into a URL template.                                                                                                                      |
+| ServiceGrid        | The Windows 95-style icon grid component that displays commands as interactive tiles.                                                                                            |
+| Command Execution  | The process of transforming a text command into a URL and navigating to it.                                                                                                      |
+| Command Management | The process of creating, editing, and organizing commands.                                                                                                                       |
+
+---
+
 ## Artifacts
 
-### Documents
-
-| Document                                                 | Description                                                                                          | Key Topics                                                                      |
-| -------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| **[[technical/architecture\|System Architecture]]**      | Detailed overview of the system's structural design, core components, and their interactions.        | Component architecture, data flow, state management, performance optimization   |
-| **[[technical/technology\|Technical Implementation]]**   | In-depth documentation of the implementation technologies, patterns, and practices.                  | React implementation, TypeScript usage, build process, deployment strategy      |
-| **[[technical/components\|Component Architecture]]**     | Specification of the UI component system, including composition patterns and state management.       | Component hierarchy, state management, styling approach, accessibility features |
-| **[[technical/endpoints\|API Endpoints]]**               | Documentation of the API endpoints, request/response formats, and authentication requirements.       | REST endpoints, GraphQL schema, authentication, rate limiting, error handling   |
-| **[[technical/system-integration\|System Integration]]** | Guidelines for integrating with external systems, including webhooks, extensions, and data exchange. | Extension points, webhook specifications, data formats, security considerations |
-
-### Flows
+### Flow charts
 
 | Flow                                                  | Description                                                                                                                      | Key Steps                                                                                   |
 | ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
 | [[flows/command-execution\|Command Execution]]        | Traces the journey from user input to URL navigation, showing how commands are parsed, parameters extracted, and URLs generated. | Input parsing → Command lookup → Parameter extraction → URL generation → Browser navigation |
 | [[flows/command-management\|Command Management]]      | Documents the creation, editing, and organization of commands, including validation, storage, and synchronization processes.     | Command creation → Validation → Storage → Synchronization → Organization                    |
 | [[flows/user-interaction\|User Interaction Patterns]] | Illustrates common user workflows across different pages, highlighting interaction patterns and navigation flows.                | Search → Execute → Organize → Customize → Share                                             |
+| [[flows/profile-management\|Profile Management]]      | Details the user authentication processes including login, logout, and registration flows with security considerations.          | Registration → Email verification → Login → Session management → Logout                     |
 
 ### Data Models
 
-| Model                                         | Description                                                                                                                                                                     | Key Properties                          |
-| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
-| [[models/command\|Command]]                   | Defines the structure of command objects, including static and dynamic variants. Commands connect user input to URL templates and manage parameter extraction.                  | id, key, url, type, params, metadata    |
-| [[models/service\|Service]]                   | Represents service metadata including icons, descriptions, and usage statistics. Services provide the visual representation of commands in the UI.                              | id, name, icon, description, popularity |
-| [[models/tag\|Tag]]                           | Implements the label-based organization system, allowing commands to be categorized and filtered. Tags can be applied to multiple commands and commands can have multiple tags. | id, name, color, commands               |
-| [[models/user-profile\|User Profile]]         | Manages user account information, authentication state, and cross-device synchronization. Profiles store user-specific data and preferences.                                    | id, displayName, email, preferences     |
-| [[models/user-preferences\|User Preferences]] | Stores user-specific settings including theme preferences, default behaviors, and interface configurations.                                                                     | theme, defaultBrowser, commandsPerPage  |
-| [[models/error-response\|Error Response]]     | Defines the standardized format for API error responses across the system.                                                                                                      | code, message, details, status          |
+The following class diagram provides a high-level overview of the data model relationships in meows.space. This is a simplified representation; complete and detailed models can be found in their respective model files. The diagram illustrates the relationships between commands, services, labels, users, and their associated entities.
+
+```mermaid
+classDiagram
+    Command "1" -- "0..*" Parameter: contains
+    Command "0..*" -- "0..*" Label: categorized by
+    Command "0..*" -- "1" Service: represents
+    User "1" -- "1" UserProfile: has
+    UserProfile "1" -- "0..*" Command: owns
+    UserProfile "1" -- "1" UserPreferences: configures
+    ErrorResponse -- API: returned by
+
+    class Command {
+        +String id
+        +String key
+        +String url
+        +String type
+        +Parameter[] params
+        +Object metadata
+    }
+
+    class Service {
+        +String id
+        +String name
+        +String icon
+        +String description
+        +Number popularity
+    }
+
+    class Label {
+        +String id
+        +String name
+        +String color
+        +Command[] commands
+    }
+
+    class UserProfile {
+        +String id
+        +String displayName
+        +String email
+        +UserPreferences preferences
+    }
+
+    class UserPreferences {
+        +String theme
+        +String defaultBrowser
+        +Number commandsPerPage
+    }
+
+    class Parameter {
+        +String name
+        +String type
+        +Boolean required
+        +String defaultValue
+    }
+
+    class ErrorResponse {
+        +String code
+        +String message
+        +Object details
+        +Number status
+    }
+
+    class User {
+        +String id
+        +String email
+        +String authProvider
+        +Date createdAt
+    }
+
+    class API {
+        +handleRequest()
+        +validateInput()
+        +formatResponse()
+    }
+```
+
+| Model                                         | Description                                                                                                                                                                         | Key Properties                          |
+| --------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
+| [[models/command\|Command]]                   | Defines the structure of command objects, including static and dynamic variants. Commands connect user input to URL templates and manage parameter extraction.                      | id, key, url, type, params, metadata    |
+| [[models/service\|Service]]                   | Represents service metadata including icons, descriptions, and usage statistics. Services provide the visual representation of commands in the UI.                                  | id, name, icon, description, popularity |
+| [[models/label\|Label]]                       | Implements the label-based organization system, allowing commands to be categorized and filtered. Labels can be applied to multiple commands and commands can have multiple labels. | id, name, color, commands               |
+| [[models/user-profile\|User Profile]]         | Manages user account information, authentication state, and cross-device synchronization. Profiles store user-specific data and preferences.                                        | id, displayName, email, preferences     |
+| [[models/user-preferences\|User Preferences]] | Stores user-specific settings including theme preferences, default behaviors, and interface configurations.                                                                         | theme, defaultBrowser, commandsPerPage  |
+| [[models/error-response\|Error Response]]     | Defines the standardized format for API error responses across the system.                                                                                                          | code, message, details, status          |
 
 ### Pages
 
@@ -542,8 +687,19 @@ Authentication uses session-based tokens stored in HTTP-only cookies. User passw
 
 ### Components
 
+The component architecture follows a hierarchical structure with:
+
+- **Container Components**: Handle data fetching and state management
+- **Presentational Components**: Focus on rendering UI elements
+- **Hooks**: Encapsulate reusable logic and state management
+- **Context Providers**: Manage global state and theme
+
+This architecture promotes separation of concerns, reusability, and maintainability across the application. Container components manage data flow and business logic, while presentational components focus on the UI rendering. Hooks extract and share stateful logic between components, and context providers manage global state accessible throughout the component tree.
+
 | Component                                     | Description                                                                                                                                  | Usage                                         |
 | --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
+| [[components/Header\|Header]]                 | Primary navigation interface with logo, navigation menu, search bar, and user menu. Maintains consistent placement across all pages.         | All pages                                     |
+| [[components/Footer\|Footer]]                 | Secondary navigation with legal links, support resources, and copyright information. Provides access to terms, privacy policy, and help.     | All pages                                     |
 | [[components/SearchBar\|SearchBar]]           | Primary command input with autocomplete and history. Processes user text input and triggers command execution.                               | Main Search, Personal Catalog, Global Catalog |
 | [[components/ServiceGrid\|ServiceGrid]]       | Windows 95-style icon grid displaying commands as interactive tiles. Supports drag-and-drop organization and visual categorization.          | Main Search, Personal Catalog, Global Catalog |
 | [[components/TagBar\|TagBar]]                 | Label-based filtering system allowing users to organize and filter commands by categories. Implements multi-select filtering with AND logic. | Personal Catalog, Global Catalog              |
