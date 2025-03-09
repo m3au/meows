@@ -10,11 +10,10 @@ tags: [overview, documentation, architecture]
 
 Welcome to the meows.space documentation. This knowledge base contains comprehensive documentation for the meows.space URL command multiplexer project.
 
-![meows.space logo](./assets/meows-logo.png)
+![meows.space logo](https://cdn.midjourney.com/ba85aca6-a44e-4edd-9a03-020bfdd3ba7e/0_2.png)
 
 - [Overview](#overview)
 - [Core Concept](#core-concept)
-- [Technical Architecture](#technical-architecture)
 - [Command Types](#command-types)
   - [Static Commands](#static-commands)
   - [Dynamic Commands](#dynamic-commands)
@@ -23,10 +22,7 @@ Welcome to the meows.space documentation. This knowledge base contains comprehen
   - [Global Catalog](#global-catalog)
   - [Personal Catalog](#personal-catalog)
   - [User Profiles](#user-profiles)
-- [State Management](#state-management)
-- [Documentation Structure](#documentation-structure)
-  - [Core Documentation](#core-documentation)
-  - [Technical Documentation](#technical-documentation)
+- [Artifacts](#artifacts)
   - [Pages](#pages)
   - [Components](#components)
   - [Data Models](#data-models)
@@ -42,24 +38,15 @@ Users define commands that expand to full URLs with optional parameters. For exa
 
 The system features a graphical interface with a Windows 95-style icon grid and organization tools. Its three-layer state management provides offline capabilities while maintaining cross-device synchronization. The architecture implements progressive loading and local-first operations for performance optimization.
 
+---
+
 ## Core Concept
 
 meows.space transforms text inputs into navigable URLs through predefined templates. The system processes user commands and converts them to structured URLs using either static mappings or dynamic parameter interpolation.
 
 The browser-based execution enables direct navigation to destinations. Command management functions offline, while URL resolution requires network connectivity.
 
-## Technical Architecture
-
-The system architecture prioritizes performance, offline capability, and security:
-
-- Local-first implementation with client-side command execution
-- Progressive loading sequence:
-  - Initial shell (30KB)
-  - Core runtime (100KB)
-  - User context data (70KB)
-- CRDT-based synchronization for conflict resolution
-- Full offline support for command management
-- Security implementation with JWT, HTTPS, and URL validation
+---
 
 ## Command Types
 
@@ -96,6 +83,8 @@ tr {from} {to} {text} → translate.google.com/?sl={from}&tl={to}&text={text}
 
 These commands support multiple parameters with interpolation into the final URL.
 
+---
+
 ## Command Execution
 
 When a user interacts with meows.space, the command execution process follows a natural flow from input to navigation:
@@ -131,6 +120,8 @@ The user begins by either typing a command or clicking an icon in the grid. For 
 When a user clicks an icon, the system checks if there's text in the input field that should be used as a parameter. If parameters are needed, they're extracted from the input; otherwise, the system uses the direct URL associated with the command.
 
 Once the final URL is constructed, the browser opens it in a new tab, and focus returns to meows.space for the next command. This streamlined process allows users to quickly navigate to their desired destinations with minimal effort.
+
+---
 
 ## Command Organization and Catalog
 
@@ -194,128 +185,64 @@ Users can create multiple profiles, each with its own:
 
 Each profile functions as a separate workspace, allowing users to maintain different command sets for different contexts, such as work, personal, or specific projects. The same command cannot have different parameters across profiles - if a user needs a variation of a command, they must create a new command in that profile.
 
-## State Management
+---
 
-The system implements a three-layer state architecture:
+## Artifacts
 
-```mermaid
-graph TB
-    subgraph "Runtime State (Memory)"
-        Context[Active Context]
-        Mode[UI Mode]
-        History[Command History]
-        Search[Search Index]
-    end
-
-    subgraph "Persistent State (IndexedDB)"
-        Commands[Command Definitions]
-        Prefs[User Preferences]
-        Logs[Execution Logs]
-        Labels[Label Definitions]
-    end
-
-    subgraph "Sync State (CRDT)"
-        Queue[Change Queue]
-        Conflicts[Conflict Resolution]
-        Updates[Real-time Updates]
-    end
-
-    Context --> Commands
-    Mode --> Prefs
-    History --> Logs
-    Search --> Labels
-
-    Commands --> Queue
-    Prefs --> Queue
-    Logs --> Queue
-    Labels --> Queue
-
-    Queue --> Updates
-    Updates --> Conflicts
-```
-
-- Runtime state: In-memory storage for active context, UI state, history, and search
-- Persistent state: IndexedDB storage for commands, preferences, logs, and label definitions
-- Sync state: Simple change queue with conflict resolution
-
-The system uses a synchronization mechanism that ensures changes made on one device are propagated to all other devices where the user is logged in. Changes are queued locally and synchronized when the device is online, ensuring a seamless experience across devices.
-
-## Documentation Structure
-
-### Core Documentation
-
-- [[technical/architecture|System Architecture]]
-
-### Technical Documentation
-
-- [[technical/technology|Technical Implementation]]
-- [[technical/components|Component Architecture]]
-- [[technical/endpoints|API Endpoints]]
-- [[technical/system-integration|System Integration & Feedback]]
+| Document                                                 | Description                               |
+| -------------------------------------------------------- | ----------------------------------------- |
+| **[[technical/architecture\|System Architecture]]**      | System architecture and design principles |
+| **[[technical/technology\|Technical Implementation]]**   | Technical implementation details          |
+| **[[technical/components\|Component Architecture]]**     | UI component structure and interactions   |
+| **[[technical/endpoints\|API Endpoints]]**               | API specification and usage               |
+| **[[technical/system-integration\|System Integration]]** | Integration points and external systems   |
 
 ### Pages
 
-The meows.space application pages are organized in a hierarchical structure. Each page serves a specific function within the application workflow, from command execution to user authentication. The pages are grouped by their primary functions: command management, catalog access, authentication, support, and legal information.
+The application's page structure is organized by functional areas:
 
-```text
-meows.space/
-├── / (Main Search)
-├── /personal (Personal Catalog)
-│   └── /settings
-│   └── /command/create
-│   └── /command/edit/[id]
-├── /catalog (Global Catalog)
-│   └── /service/[id]
-├── /auth
-│   └── /auth/login
-│   └── /auth/register
-├── /help (Tutorial & Help)
-│   └── /help/tutorial
-│   └── /help/faq
-│   └── /help/troubleshooting
-├── /about
-├── /feedback
-├── /privacy
-└── /terms
-```
-
-The table below lists all application pages with their routes and primary functions. Linked pages contain technical specifications, component details, and implementation information.
-
-| Page                                             | Route                | Purpose                                          |
-| ------------------------------------------------ | -------------------- | ------------------------------------------------ |
-| **[[pages/main-search\|Main Search]]**           | `/`                  | Primary search interface and command execution   |
-| **[[pages/personal-catalog\|Personal Catalog]]** | `/personal`          | User's workspace for managing personal commands  |
-| **[[pages/settings\|Settings]]**                 | `/settings`          | User preferences and application configuration   |
-| **[[pages/create-command\|Create Command]]**     | `/command/create`    | Interface for creating new command templates     |
-| **[[pages/create-command\|Edit Command]]**       | `/command/edit/[id]` | Interface for editing existing command templates |
-| **[[pages/global-catalog\|Global Catalog]]**     | `/catalog`           | Discovery of community-shared commands           |
-| **[[pages/service-details\|Service Details]]**   | `/service/[id]`      | Detailed view of a specific service              |
-| **[[pages/login\|Login]]**                       | `/auth/login`        | User authentication                              |
-| **[[pages/register\|Register]]**                 | `/auth/register`     | New user registration                            |
-| **[[pages/help\|Help & Tutorial]]**              | `/help`              | User guidance and assistance                     |
-| **[[pages/about\|About]]**                       | `/about`             | Project information and team details             |
-| **[[pages/feedback\|Feedback]]**                 | `/feedback`          | User feedback collection and issue reporting     |
-| **[[pages/privacy-policy\|Privacy Policy]]**     | `/privacy`           | Data handling practices and user rights          |
-| **[[pages/terms-of-use\|Terms of Use]]**         | `/terms`             | Usage conditions and legal terms                 |
+| Page                                             | Route                                               | Description                                               |
+| ------------------------------------------------ | --------------------------------------------------- | --------------------------------------------------------- |
+| **[[pages/main-search\|Main Search]]**           | **/**                                               | Primary search interface and command execution            |
+| **[[pages/personal-catalog\|Personal Catalog]]** | **/personal**                                       | User's workspace for managing personal commands           |
+| [[pages/settings\|Settings]]                     | &nbsp;&nbsp;&nbsp;&nbsp;/personal/settings          | User preferences and application configuration            |
+| [[pages/create-command\|Create Command]]         | &nbsp;&nbsp;&nbsp;&nbsp;/personal/command/create    | Interface for creating new command templates              |
+| [[pages/create-command\|Edit Command]]           | &nbsp;&nbsp;&nbsp;&nbsp;/personal/command/edit/[id] | Interface for editing existing command templates          |
+| **[[pages/global-catalog\|Global Catalog]]**     | **/catalog**                                        | Discovery of community-shared commands                    |
+| [[pages/service-details\|Service Details]]       | &nbsp;&nbsp;&nbsp;&nbsp;/catalog/service/[id]       | Detailed view of a specific service                       |
+| **Authentication**                               | **/auth**                                           | User authentication and registration                      |
+| [[pages/login\|Login]]                           | &nbsp;&nbsp;&nbsp;&nbsp;/auth/login                 | User authentication                                       |
+| [[pages/register\|Register]]                     | &nbsp;&nbsp;&nbsp;&nbsp;/auth/register              | New user registration                                     |
+| **[[pages/help\|Help]]**                         | **/help**                                           | Basic guidance with GIFs and descriptions on system usage |
+| **[[pages/about\|About]]**                       | **/about**                                          | Project information and team details                      |
+| **[[pages/feedback\|Feedback]]**                 | **/feedback**                                       | User feedback collection and issue reporting              |
+| **[[pages/privacy-policy\|Privacy Policy]]**     | **/privacy**                                        | Data handling practices and user rights                   |
+| **[[pages/terms-of-use\|Terms of Use]]**         | **/terms**                                          | Usage conditions and legal terms                          |
 
 ### Components
 
-- [[components/index|UI Components Overview]]
-- [[components/SearchBar|SearchBar Component]]
-- [[components/ServiceGrid|ServiceGrid Component]]
-- [[components/TagBar|TagBar Component]]
-- [[components/CommandBuilder|CommandBuilder Component]]
+| Component                                               | Description                                     |
+| ------------------------------------------------------- | ----------------------------------------------- |
+| [[components/index\|UI Components Overview]]            | Index of all UI components with relationships   |
+| [[components/SearchBar\|SearchBar Component]]           | Command input and autocomplete functionality    |
+| [[components/ServiceGrid\|ServiceGrid Component]]       | Grid display for command icons and organization |
+| [[components/TagBar\|TagBar Component]]                 | Label-based filtering and organization          |
+| [[components/CommandBuilder\|CommandBuilder Component]] | Interface for creating and editing commands     |
 
 ### Data Models
 
-- [[models/command|Command Model]]
-- [[models/service|Service Model]]
-- [[models/tag|Tag Model]]
-- [[models/user-profile|User Profile Model]]
-- [[models/user-preferences|User Preferences Model]]
+| Model                                               | Description                                   |
+| --------------------------------------------------- | --------------------------------------------- |
+| [[models/command\|Command Model]]                   | Structure and properties of command objects   |
+| [[models/service\|Service Model]]                   | Service metadata and relationship definitions |
+| [[models/tag\|Tag Model]]                           | Label structure and organization system       |
+| [[models/user-profile\|User Profile Model]]         | User account and preference management        |
+| [[models/user-preferences\|User Preferences Model]] | User-specific settings and configurations     |
 
 ### Flow Documentation
 
-- [[flows/command-execution|Command Execution Flow]]
-- [[flows/command-management|Command Management Flow]]
-- [[flows/user-interaction|User Interaction Patterns]]
+| Flow                                                  | Description                                     |
+| ----------------------------------------------------- | ----------------------------------------------- |
+| [[flows/command-execution\|Command Execution Flow]]   | Process of command parsing and URL generation   |
+| [[flows/command-management\|Command Management Flow]] | Creation, editing, and organization of commands |
+| [[flows/user-interaction\|User Interaction Patterns]] | Common user workflows and interaction patterns  |

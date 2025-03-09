@@ -178,4 +178,4 @@ sequenceDiagram
 - [[../technical/technology|Technical Implementation]]
 - [[../technical/endpoints|API Endpoints]]
 - [[../components/index|UI Components]]
-- [[../flows/command-execution|Command Execution Flow]] 
+- [[../flows/command-execution|Command Execution Flow]]

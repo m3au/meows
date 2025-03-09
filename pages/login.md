@@ -16,7 +16,7 @@ The Login page provides an interface for users to authenticate with the meows.sp
 
 ## Route
 
-```
+```text
 /auth/login
 ```
 
@@ -41,9 +41,9 @@ The Login page provides an interface for users to authenticate with the meows.sp
 ### Security Features
 
 - Rate limiting for failed attempts
-- CAPTCHA for suspicious activity
 - Session management
 - Device verification
+- IP-based anomaly detection
 
 ## User Flow
 
