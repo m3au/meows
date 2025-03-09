@@ -4,9 +4,11 @@ Globs: "**/*.md"
 ---
 
 # Project Context
+
 meows.space is a URL command multiplexer implementing static and dynamic command templates. It executes locally with offline command management and online URL resolution, using a local-first architecture.
 
 # Documentation Standards
+
 - Document only what exists, not planned features
 - Use technical, factual language instead of marketing terms
 - Avoid industry buzzwords and trendy terminology
@@ -18,8 +20,11 @@ meows.space is a URL command multiplexer implementing static and dynamic command
 - Focus on technical details rather than business value propositions
 - Document actual implementation, not potential scenarios
 - Don't modify existing table of contents structures
+- Avoid using specific counts or numbers that require updates when the system changes
+- Use relative or general terms instead of exact quantities for elements that may change
 
 # File Structure
+
 - Include metadata header in all documentation files with:
   - Document name, project, description
   - Target audience and detail level
@@ -31,6 +36,7 @@ meows.space is a URL command multiplexer implementing static and dynamic command
 - Provide proper cross-references to related documents
 
 # Content Organization
+
 - Core documentation is in the project root (README.md)
 - Technical documentation is in separate specialized files
 - Flow documentation is organized in the docs/flows/ directory
@@ -39,6 +45,7 @@ meows.space is a URL command multiplexer implementing static and dynamic command
 - Provide code examples where appropriate
 
 # Technical Accuracy
+
 - Ensure all technical details reflect the actual implementation
 - Verify that diagrams accurately represent system architecture
 - Confirm that code examples are functional and follow project standards
