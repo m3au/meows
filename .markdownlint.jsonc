@@ -1,0 +1,76 @@
+{
+  "$schema": "https://raw.githubusercontent.com/DavidAnson/markdownlint/main/schema/markdownlint-config-schema.json",
+  "default": true,
+
+  // MD001: Heading levels should only increment by one level at a time
+  "MD001": true,
+
+  // MD003: Heading style
+  "MD003": {
+    "style": "atx"
+  },
+
+  // MD004: Unordered list style
+  "MD004": {
+    "style": "consistent"
+  },
+
+  // MD007: Unordered list indentation
+  "MD007": {
+    "indent": 2,
+    "start_indented": false
+  },
+
+  // MD013: Line length - disabled for Obsidian
+  "MD013": false,
+
+  // MD022: Headings should be surrounded by blank lines
+  "MD022": {
+    "lines_above": 1,
+    "lines_below": 1
+  },
+
+  // MD024: Multiple headings with the same content
+  "MD024": {
+    "siblings_only": true
+  },
+
+  // MD025: Single title/h1 per document - disabled for Obsidian
+  "MD025": false,
+
+  // MD031: Fenced code blocks should be surrounded by blank lines
+  "MD031": true,
+
+  // MD032: Lists should be surrounded by blank lines
+  "MD032": true,
+
+  // MD033: Inline HTML - allow some elements for Obsidian
+  "MD033": {
+    "allowed_elements": [
+      "img",
+      "table",
+      "tr",
+      "td",
+      "br",
+      "sub",
+      "a",
+      "b",
+      "div",
+      "blockquote"
+    ]
+  },
+
+  // MD034: Bare URL used - disabled for Obsidian
+  "MD034": false,
+
+  // MD040: Fenced code blocks should have a language specified
+  "MD040": true,
+
+  // MD041: First line in a file should be a top-level heading - disabled for Obsidian frontmatter
+  "MD041": false,
+
+  // MD046: Code block style
+  "MD046": {
+    "style": "fenced"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "folders": [
+    {
+      "name": "meows",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "LICENSE": true,
+      ".editorconfig": true,
+      ".eslintrc.json": true,
+      ".eslintignore": true,
+      ".prettierrc": true,
+      ".gitattributes": true,
+      ".npmrc": true,
+      ".nvmrc": true,
+      ".markdownlint.jsonc": true,
+      ".cspell.jsonc": true,
+      ".gitignore": true,
+      ".git": true
+    },
+    "files.associations": {
+      "*.json": "jsonc",
+      "*.md": "markdown"
+    },
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "markdownlint.config": {
+      "MD033": false,
+      "MD041": false,
+      "MD025": false
+    },
+    "[markdown]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[jsonc]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
+  }
+}

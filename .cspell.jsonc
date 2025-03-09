@@ -1,0 +1,51 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": [
+    "meows",
+    "CRDT",
+    "parameterized",
+    "favicon",
+    "IndexedDB",
+    "mermaid",
+    "gmail",
+    "npmjs",
+    "devdocs",
+    "stackoverflow",
+    "caniuse",
+    "spotify",
+    "netflix",
+    "imdb",
+    "soundcloud",
+    "wikipedia",
+    "wolfram",
+    "arxiv",
+    "pubmed"
+  ],
+  "ignorePaths": [
+    "meows.code-workspace",
+    ".editorconfig",
+    ".markdownlint.jsonc",
+    ".gitattributes",
+    ".gitignore",
+    "LICENSE",
+    ".cspell.jsonc",
+    ".obsidian/**"
+  ],
+  "languageSettings": [
+    {
+      "languageId": "*",
+      "locale": "en",
+      "caseSensitive": false
+    }
+  ],
+  "dictionaries": [
+    "en_US",
+    "softwareTerms",
+    "typescript",
+    "node",
+    "npm",
+    "html",
+    "css"
+  ]
+}
