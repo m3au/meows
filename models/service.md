@@ -1,38 +1,63 @@
 ---
 title: Service Model
 project: meows
-description: Service data model specification and implementation details
-target: Developers (frontend and backend)
-detail_level: Technical implementation details
+description: Service data model specification
+target: Developers
+detail_level: Data structure
 last_updated: 2024
-tags: [models, data, service]
+tags: [model, service, data]
 ---
 
 # Service Model
 
-The Service model represents the core entity for services in meows.space. A service is a command template that can be executed to generate a URL.
+The Service model represents metadata for a command or service in the system, including visual representation, usage statistics, and categorization.
 
-## Data Structure
+## Schema
 
 ```typescript
 interface Service {
-  id: string;                 // Unique identifier
-  name: string;               // Display name
-  icon: string;               // Icon URL or data URI
-  url: string;                // URL template with parameter placeholders
-  tags: string[];             // Associated tags/labels
+  id: string;
+  name: string;
+  icon: string;
+  url: string;
+  tags: string[];
   metadata: {
-    description: string;      // User-friendly description
-    provider: string;         // Service provider
+    description: string;
+    provider: string;
     metrics: {
-      uses: number;           // Usage count
-      rating: number;         // Community rating (1-5)
+      uses: number;
+      rating: number;
     };
   };
-  created_at: string;         // Creation timestamp
-  updated_at: string;         // Last update timestamp
+  created_at: string;
+  updated_at: string;
 }
 ```
+
+## Properties
+
+| Property                  | Type     | Description                                   |
+| ------------------------- | -------- | --------------------------------------------- |
+| `id`                      | string   | Unique identifier for the service             |
+| `name`                    | string   | Display name of the service                   |
+| `icon`                    | string   | URL or data URI for the service icon          |
+| `url`                     | string   | URL template for the service                  |
+| `tags`                    | string[] | Array of tag IDs associated with this service |
+| `metadata.description`    | string   | Detailed description of the service           |
+| `metadata.provider`       | string   | Provider or creator of the service            |
+| `metadata.metrics.uses`   | number   | Count of service usage                        |
+| `metadata.metrics.rating` | number   | Average user rating (1-5)                     |
+| `created_at`              | string   | ISO timestamp of creation                     |
+| `updated_at`              | string   | ISO timestamp of last update                  |
+
+## Usage
+
+Services are used to represent commands in the UI, providing visual and descriptive information for the user. They connect to the underlying Command model which handles the actual URL template and parameter extraction.
+
+## Related Models
+
+- [[command|Command]] - Defines the URL template and parameter extraction logic
+- [[tag|Tag]] - Provides categorization for services
 
 ## Service Types
 
@@ -112,14 +137,8 @@ Services are visually represented as:
 - **Command Items**: In command history
 - **Search Results**: In search interfaces
 
-## Related Models
-
-- [[command|Command Model]] - Legacy model (Service is the newer implementation)
-- [[tag|Tag Model]] - For service categorization
-- [[user-profile|User Profile Model]] - For service ownership
-
 ## Related Documentation
 
 - [[../components/ServiceGrid|ServiceGrid Component]]
 - [[../pages/personal-catalog|Personal Catalog Page]]
-- [[../pages/global-catalog|Global Catalog Page]] 
+- [[../pages/global-catalog|Global Catalog Page]]

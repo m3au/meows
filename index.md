@@ -23,10 +23,11 @@ Welcome to the meows.space documentation. This knowledge base contains detailed 
   - [Personal Catalog](#personal-catalog)
   - [User Profiles](#user-profiles)
 - [Artifacts](#artifacts)
-  - [Pages](#pages)
-  - [Components](#components)
-  - [Data Models](#data-models)
-  - [Flow Documentation](#flow-documentation)
+- [Flow Documentation](#flow-documentation)
+- [Data Models](#data-models)
+- [Pages](#pages)
+- [Components](#components)
+- [API Endpoints](#api-endpoints)
 
 ---
 
@@ -195,23 +196,26 @@ Each profile functions as a separate workspace, allowing users to maintain diffe
 | **[[technical/endpoints\|API Endpoints]]**               | Documentation of the API endpoints, request/response formats, and authentication requirements.       | REST endpoints, GraphQL schema, authentication, rate limiting, error handling   |
 | **[[technical/system-integration\|System Integration]]** | Guidelines for integrating with external systems, including webhooks, extensions, and data exchange. | Extension points, webhook specifications, data formats, security considerations |
 
-These technical documents are designed for developers and system architects who need to understand the inner workings of the system, whether for maintenance, extension, or integration purposes.
+## Flow Documentation
 
-### Pages
+| Flow                                                  | Description                                                                                                                      | Key Steps                                                                                   |
+| ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| [[flows/command-execution\|Command Execution]]        | Traces the journey from user input to URL navigation, showing how commands are parsed, parameters extracted, and URLs generated. | Input parsing → Command lookup → Parameter extraction → URL generation → Browser navigation |
+| [[flows/command-management\|Command Management]]      | Documents the creation, editing, and organization of commands, including validation, storage, and synchronization processes.     | Command creation → Validation → Storage → Synchronization → Organization                    |
+| [[flows/user-interaction\|User Interaction Patterns]] | Illustrates common user workflows across different pages, highlighting interaction patterns and navigation flows.                | Search → Execute → Organize → Customize → Share                                             |
 
-```mermaid
-graph TD
-    MainSearch[Main Search] --> CommandExecution[Command Execution]
-    PersonalCatalog[Personal Catalog] --> CommandManagement[Command Management]
-    GlobalCatalog[Global Catalog] --> CommandDiscovery[Command Discovery]
-    Settings[Settings] --> UserPreferences[User Preferences]
+## Data Models
 
-    PersonalCatalog --> CreateCommand[Create Command]
-    GlobalCatalog --> ServiceDetails[Service Details]
+| Model                                         | Description                                                                                                                                                                     | Key Properties                          |
+| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
+| [[models/command\|Command]]                   | Defines the structure of command objects, including static and dynamic variants. Commands connect user input to URL templates and manage parameter extraction.                  | id, key, url, type, params, metadata    |
+| [[models/service\|Service]]                   | Represents service metadata including icons, descriptions, and usage statistics. Services provide the visual representation of commands in the UI.                              | id, name, icon, description, popularity |
+| [[models/tag\|Tag]]                           | Implements the label-based organization system, allowing commands to be categorized and filtered. Tags can be applied to multiple commands and commands can have multiple tags. | id, name, color, commands               |
+| [[models/user-profile\|User Profile]]         | Manages user account information, authentication state, and cross-device synchronization. Profiles store user-specific data and preferences.                                    | id, displayName, email, preferences     |
+| [[models/user-preferences\|User Preferences]] | Stores user-specific settings including theme preferences, default behaviors, and interface configurations.                                                                     | theme, defaultBrowser, commandsPerPage  |
+| [[models/error-response\|Error Response]]     | Defines the standardized format for API error responses across the system.                                                                                                      | code, message, details, status          |
 
-    Auth[Authentication] --> UserAccess[User Access]
-    Help[Help] --> UserGuidance[User Guidance]
-```
+## Pages
 
 | Page                                             | Route                                               | Description                                                                                                             | Key Features                                                |
 | ------------------------------------------------ | --------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
@@ -231,7 +235,7 @@ graph TD
 | **[[pages/privacy-policy\|Privacy Policy]]**     | **/privacy**                                        | Legal information about data handling practices, user rights, and compliance measures.                                  | Data collection, user rights, security measures             |
 | **[[pages/terms-of-use\|Terms of Use]]**         | **/terms**                                          | Legal terms governing the use of the service, user responsibilities, and limitations.                                   | Usage terms, user obligations, liability limitations        |
 
-### Components
+## Components
 
 | Component                                     | Description                                                                                                                                  | Usage                                         |
 | --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
@@ -240,20 +244,38 @@ graph TD
 | [[components/TagBar\|TagBar]]                 | Label-based filtering system allowing users to organize and filter commands by categories. Implements multi-select filtering with AND logic. | Personal Catalog, Global Catalog              |
 | [[components/CommandBuilder\|CommandBuilder]] | Form interface for creating and editing command templates. Includes parameter configuration, validation, and preview functionality.          | Personal Catalog, Service Details             |
 
-### Data Models
+## API Endpoints
 
-| Model                                         | Description                                                                                                                                                                     | Key Properties                          |
-| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
-| [[models/command\|Command]]                   | Defines the structure of command objects, including static and dynamic variants. Commands connect user input to URL templates and manage parameter extraction.                  | id, key, url, type, params, metadata    |
-| [[models/service\|Service]]                   | Represents service metadata including icons, descriptions, and usage statistics. Services provide the visual representation of commands in the UI.                              | id, name, icon, description, popularity |
-| [[models/tag\|Tag]]                           | Implements the label-based organization system, allowing commands to be categorized and filtered. Tags can be applied to multiple commands and commands can have multiple tags. | id, name, color, commands               |
-| [[models/user-profile\|User Profile]]         | Manages user account information, authentication state, and cross-device synchronization. Profiles store user-specific data and preferences.                                    | id, displayName, email, preferences     |
-| [[models/user-preferences\|User Preferences]] | Stores user-specific settings including theme preferences, default behaviors, and interface configurations.                                                                     | theme, defaultBrowser, commandsPerPage  |
-
-### Flow Documentation
-
-| Flow                                                  | Description                                                                                                                      | Key Steps                                                                                   |
-| ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| [[flows/command-execution\|Command Execution]]        | Traces the journey from user input to URL navigation, showing how commands are parsed, parameters extracted, and URLs generated. | Input parsing → Command lookup → Parameter extraction → URL generation → Browser navigation |
-| [[flows/command-management\|Command Management]]      | Documents the creation, editing, and organization of commands, including validation, storage, and synchronization processes.     | Command creation → Validation → Storage → Synchronization → Organization                    |
-| [[flows/user-interaction\|User Interaction Patterns]] | Illustrates common user workflows across different pages, highlighting interaction patterns and navigation flows.                | Search → Execute → Organize → Customize → Share                                             |
+| Endpoint                    | Method | Description             | Cached   |
+| --------------------------- | ------ | ----------------------- | -------- |
+| `/api/auth/login`           | POST   | User login              | No       |
+| `/api/auth/logout`          | POST   | User logout             | No       |
+| `/api/auth/register`        | POST   | New user registration   | No       |
+| `/api/auth/session`         | GET    | Get current session     | No       |
+| `/api/auth/refresh`         | POST   | Refresh access token    | No       |
+| `/api/services`             | GET    | List all services       | Yes (5m) |
+| `/api/services/:id`         | GET    | Get service details     | No       |
+| `/api/services`             | POST   | Create new service      | No       |
+| `/api/services/:id`         | PUT    | Update service          | No       |
+| `/api/services/:id`         | DELETE | Delete service          | No       |
+| `/api/services/search`      | GET    | Search services         | No       |
+| `/api/tags`                 | GET    | List all tags           | Yes (5m) |
+| `/api/tags`                 | POST   | Create new tag          | No       |
+| `/api/tags/:id`             | PUT    | Update tag              | No       |
+| `/api/tags/:id`             | DELETE | Delete tag              | No       |
+| `/api/tags/trending`        | GET    | Get trending tags       | No       |
+| `/api/user/preferences`     | GET    | Get user preferences    | No       |
+| `/api/user/preferences`     | PUT    | Update preferences      | No       |
+| `/api/user/history`         | GET    | Get search history      | No       |
+| `/api/user/history`         | DELETE | Clear history           | No       |
+| `/api/user/favorites`       | GET    | Get favorite services   | No       |
+| `/api/user/favorites/:id`   | POST   | Add to favorites        | No       |
+| `/api/user/favorites/:id`   | DELETE | Remove from favorites   | No       |
+| `/api/providers`            | GET    | List search providers   | Yes (1h) |
+| `/api/providers/:id/search` | GET    | Execute provider search | No       |
+| `/api/providers/default`    | GET    | Get default provider    | No       |
+| `/api/providers/default`    | PUT    | Set default provider    | No       |
+| `/api/analytics/event`      | POST   | Log user event          | No       |
+| `/api/analytics/trending`   | GET    | Get trending services   | Yes (1h) |
+| `/api/analytics/popular`    | GET    | Get popular services    | No       |
+| `/api/analytics/metrics`    | GET    | Get usage metrics       | No       |

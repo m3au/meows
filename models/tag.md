@@ -1,30 +1,47 @@
 ---
 title: Tag Model
 project: meows
-description: Tag data model specification and implementation details
-target: Developers (frontend and backend)
-detail_level: Technical implementation details
+description: Tag data model specification
+target: Developers
+detail_level: Data structure
 last_updated: 2024
-tags: [models, data, tag]
+tags: [model, tag, data]
 ---
 
 # Tag Model
 
-The Tag model represents the categorization system for commands in meows.space. Tags provide a flexible way to organize and filter commands across the application.
+The Tag model implements the label-based organization system, allowing commands to be categorized and filtered. Tags can be applied to multiple commands and commands can have multiple tags.
 
-## Data Structure
+## Schema
 
 ```typescript
 interface Tag {
-  id: string;                 // Unique identifier
-  name: string;               // Display name
-  color: string;              // Color code (hex)
-  services_count: number;     // Number of associated commands
-  created_at: string;         // Creation timestamp
-  updated_at: string;         // Last update timestamp
-  user_id?: string;           // Owner (null for system tags)
+  id: string;
+  name: string;
+  color: string;
+  services_count: number;
+  created_at: string;
 }
 ```
+
+## Properties
+
+| Property         | Type   | Description                                               |
+| ---------------- | ------ | --------------------------------------------------------- |
+| `id`             | string | Unique identifier for the tag                             |
+| `name`           | string | Display name of the tag                                   |
+| `color`          | string | Color code for visual representation (hex or named color) |
+| `services_count` | number | Count of services using this tag                          |
+| `created_at`     | string | ISO timestamp of creation                                 |
+
+## Usage
+
+Tags provide a flexible organization system for services, allowing users to categorize and filter their command collections. The system uses a flat label structure where each command can have multiple labels, enabling commands to appear in different contexts based on their categorization.
+
+## Related Models
+
+- [[service|Service]] - Services that can be tagged with this tag
+- [[user-preferences|User Preferences]] - Stores user's tag ordering preferences
 
 ## Tag Types
 
@@ -98,14 +115,8 @@ Tags are visually represented as:
 - **Tag Filters**: In search interfaces
 - **Tag Selectors**: In command editing forms
 
-## Related Models
-
-- [[command|Command Model]] - For tag associations
-- [[user-profile|User Profile Model]] - For tag ownership
-- [[user-preferences|User Preferences Model]] - For tag display preferences
-
 ## Related Documentation
 
 - [[../components/TagBar|TagBar Component]]
 - [[../pages/personal-catalog|Personal Catalog Page]]
-- [[../pages/global-catalog|Global Catalog Page]] 
+- [[../pages/global-catalog|Global Catalog Page]]
