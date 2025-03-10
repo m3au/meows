@@ -10,7 +10,7 @@ tags: [overview, documentation, architecture]
 
 Welcome to the meows.space documentation. This knowledge base contains detailed documentation for the meows.space URL command multiplexer project.
 
-![meows.space logo](https://cdn.midjourney.com/ba85aca6-a44e-4edd-9a03-020bfdd3ba7e/0_2.png)
+![meows.space logo](.obsidian/assets/meows.png)
 
 Table of Contents
 
