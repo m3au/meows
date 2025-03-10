@@ -50,19 +50,17 @@ The Create Command page provides an interface for users to create new command te
 
 ```mermaid
 flowchart TD
-    A[Enter Page] --> B{New or Edit?}
-    B -->|New| C[Empty Form]
-    B -->|Edit| D[Load Command Data]
-    C --> E[Fill Command Details]
-    D --> E
-    E --> F[Configure Parameters]
-    F --> G[Assign Labels]
-    G --> H[Preview & Test]
-    H --> I{Valid?}
-    I -->|No| J[Show Validation Errors]
-    J --> E
-    I -->|Yes| K[Save Command]
-    K --> L[Redirect to Personal Catalog]
+    A[Create Command] --> B[Enter Basic Info]
+    B --> C[Define URL Template]
+    C --> D[Add Parameters]
+    D --> E[Set Labels]
+    E --> F[Preview]
+    F --> G{Valid?}
+    G -->|Yes| H[Save Command]
+    G -->|No| I[Show Errors]
+    I --> D
+    H --> J[Success Message]
+    J --> K[Return to Inventory]
 ```
 
 ## Functionality
@@ -94,8 +92,8 @@ flowchart TD
 - [[../components/ParameterEditor|ParameterEditor Component]]
 - [[../components/IconSelector|IconSelector Component]]
 
-## Related Documentation
+## Related Pages
 
-- [[../models/command|Command Model]]
-- [[../flows/command-management|Command Management Flow]]
-- [[personal-catalog|Personal Catalog Page]]
+- [[inventory|Inventory]]
+- [[global-catalog|Global Catalog]]
+- [[service-details|Service Details]]

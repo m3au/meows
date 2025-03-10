@@ -25,6 +25,7 @@ The SearchBar consists of three main sub-components:
 ### Command Input
 
 The CommandInput field accepts text input from the user and performs real-time parsing to identify:
+
 - Command keywords
 - Parameters
 - Special operators
@@ -32,6 +33,7 @@ The CommandInput field accepts text input from the user and performs real-time p
 ### Auto-suggestions
 
 As users type, the component provides suggestions based on:
+
 - Command history
 - Available commands
 - Parameter hints
@@ -39,6 +41,7 @@ As users type, the component provides suggestions based on:
 ### Provider Selection
 
 The ProviderSelect dropdown allows users to:
+
 - Choose default search engines
 - Override the default search provider for the current command
 - Access recently used providers
@@ -46,6 +49,7 @@ The ProviderSelect dropdown allows users to:
 ### Action Controls
 
 The ActionBar provides buttons for:
+
 - Executing the current command
 - Clearing the input field
 - Accessing settings
@@ -70,6 +74,7 @@ The SearchBar implements several key features:
 ## Usage in Pages
 
 The SearchBar appears on multiple pages:
+
 - Main Search (/)
-- Personal Catalog (/personal)
-- Global Catalog (/catalog) 
+- Inventory (/personal)
+- Global Catalog (/catalog)

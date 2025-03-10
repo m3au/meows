@@ -117,6 +117,7 @@ Labels are visually represented as:
 
 ## Related Documentation
 
-- [[../components/LabelBar|LabelBar Component]]
-- [[../pages/personal-catalog|Personal Catalog Page]]
+- [[../flows/command-management|Command Management Flow]]
+- [[../pages/inventory|Inventory Page]]
 - [[../pages/global-catalog|Global Catalog Page]]
+- [[../components/LabelBar|LabelBar Component]]

@@ -97,7 +97,7 @@ The CommandBuilder implements several key features:
 
 ## Usage in Pages
 
-The CommandBuilder appears on:
+The CommandBuilder appears on multiple pages:
 
-- Personal Catalog (/personal) - for creating/editing commands
-- Service Details (/service/[id]) - for viewing/editing command details
+- Inventory (/personal) - for creating/editing commands
+- Service Details (/catalog/service/:id) - for customizing before import

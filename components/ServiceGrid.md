@@ -81,5 +81,5 @@ The ServiceGrid implements several key features:
 The ServiceGrid appears on multiple pages:
 
 - Main Search (/)
-- Personal Catalog (/personal)
+- Inventory (/personal)
 - Global Catalog (/catalog)

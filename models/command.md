@@ -16,34 +16,34 @@ The Command model represents the core data structure for command definitions in 
 
 ```typescript
 interface Command {
-  id: string;                 // Unique identifier
-  name: string;               // Display name
-  prefix: string;             // Command prefix (e.g., "g" for Google)
-  url: string;                // URL template with parameter placeholders
-  icon: string;               // Icon URL or data URI
-  description: string;        // User-friendly description
-  tags: string[];             // Associated tags/labels
-  parameters: Parameter[];    // Parameter definitions
-  metadata: Metadata;         // Additional metadata
-  created_at: string;         // Creation timestamp
-  updated_at: string;         // Last update timestamp
-  user_id?: string;           // Owner (null for system commands)
+  id: string; // Unique identifier
+  name: string; // Display name
+  prefix: string; // Command prefix (e.g., "g" for Google)
+  url: string; // URL template with parameter placeholders
+  icon: string; // Icon URL or data URI
+  description: string; // User-friendly description
+  tags: string[]; // Associated tags/labels
+  parameters: Parameter[]; // Parameter definitions
+  metadata: Metadata; // Additional metadata
+  created_at: string; // Creation timestamp
+  updated_at: string; // Last update timestamp
+  user_id?: string; // Owner (null for system commands)
 }
 
 interface Parameter {
-  name: string;               // Parameter name
-  description: string;        // Parameter description
-  default_value?: string;     // Optional default value
-  required: boolean;          // Whether parameter is required
-  position: number;           // Position in command string
+  name: string; // Parameter name
+  description: string; // Parameter description
+  default_value?: string; // Optional default value
+  required: boolean; // Whether parameter is required
+  position: number; // Position in command string
 }
 
 interface Metadata {
-  source: "system" | "user" | "community";  // Command origin
-  visibility: "private" | "public";         // Visibility setting
-  usage_count: number;                      // Usage statistics
-  rating: number;                           // Community rating (1-5)
-  version: number;                          // Version for sync
+  source: "system" | "user" | "community"; // Command origin
+  visibility: "private" | "public"; // Visibility setting
+  usage_count: number; // Usage statistics
+  rating: number; // Community rating (1-5)
+  version: number; // Version for sync
 }
 ```
 
@@ -129,6 +129,7 @@ Synchronization uses a CRDT-based approach with version tracking to resolve conf
 
 ## Related Documentation
 
-- [[../pages/main-search|Main Search Page]]
-- [[../pages/personal-catalog|Personal Catalog Page]]
-- [[../flows/command-execution|Command Execution Flow]] 
+- [[../flows/command-execution|Command Execution Flow]]
+- [[../flows/command-management|Command Management Flow]]
+- [[../pages/inventory|Inventory Page]]
+- [[../pages/global-catalog|Global Catalog Page]]

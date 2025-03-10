@@ -559,15 +559,34 @@ The database schema mirrors the data models with tables for commands, users, and
 #### Security Implementation
 
 ```mermaid
-graph TD
-    A[Security] --> B[Authentication]
-    A --> C[Data Storage]
+sequenceDiagram
+    participant User
+    participant Client
+    participant API
+    participant Auth
+    participant Database
 
-    B --> D[Session Tokens]
-    C --> E[Encrypted Storage]
+    User->>Client: Login Request
+    Client->>API: Authentication Request
+    API->>Auth: Validate Credentials
+    Auth->>Database: Verify User
+    Database-->>Auth: User Data
+    Auth-->>API: Generate JWT Token
+    API-->>Client: Set HTTP-only Cookie
+    Client-->>User: Authentication Complete
+
+    Note over Client,API: Subsequent Requests
+    Client->>API: Request with Cookie
+    API->>Auth: Validate Token
+    Auth-->>API: Token Valid
+    API->>Database: Authorized Request
+    Database-->>API: Response Data
+    API-->>Client: Protected Resource
 ```
 
-Authentication uses session-based tokens stored in HTTP-only cookies. User passwords are hashed using appropriate algorithms with suitable work factors. HTTPS is required for all API communications.
+Authentication uses session-based tokens stored in HTTP-only cookies with secure and SameSite attributes. User passwords are hashed using bcrypt with appropriate work factors. All API communications require HTTPS, with HSTS headers enforcing secure connections. The system implements rate limiting for authentication endpoints and uses CSRF tokens for state-changing operations.
+
+For data at rest, the database implements field-level encryption for sensitive information. Access controls enforce user-specific data boundaries, preventing unauthorized access to other users' commands and settings.
 
 ## Glossary
 
@@ -744,62 +763,61 @@ classDiagram
 
 ### Components
 
-| Component                                       | Description                                                                                                                                  | Usage                                  |
-| ----------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
-| [[components/Header\|Header]]                   | Primary navigation interface with logo, navigation menu, search bar, and user menu. Maintains consistent placement across all pages.         | All pages                              |
-| [[components/Footer\|Footer]]                   | Secondary navigation with legal links, support resources, and copyright information. Provides access to terms, privacy policy, and help.     | All pages                              |
-| [[components/SearchBar\|SearchBar]]             | Primary command input with autocomplete and history. Processes user text input and triggers command execution.                               | Main Search, Inventory, Global Catalog |
-| [[components/ServiceGrid\|ServiceGrid]]         | Windows 95-style icon grid displaying commands as interactive tiles. Supports drag-and-drop organization and visual categorization.          | Main Search, Inventory, Global Catalog |
-| [[components/LabelBar\|LabelBar]]               | Label-based filtering system allowing users to organize and filter commands by categories. Implements multi-select filtering with AND logic. | Inventory, Global Catalog              |
-| [[components/CommandBuilder\|CommandBuilder]]   | Form interface for creating and editing command templates. Includes parameter configuration, validation, and preview functionality.          | Inventory, Service Details             |
-| [[components/CommandIcon\|CommandIcon]]         | Visual representation of a command with favicon and label. Displays the command's icon and name in the ServiceGrid.                          | ServiceGrid, Inventory, Global Catalog |
-| [[components/CatalogView\|CatalogView]]         | Container component for displaying and managing catalogs. Handles catalog navigation, filtering, and command display.                        | Inventory, Global Catalog              |
-| [[components/CommandCard\|CommandCard]]         | Card component displaying command information, including icon, name, description, and usage statistics.                                      | Inventory, Global Catalog              |
-| [[components/ImportButton\|ImportButton]]       | Button for importing commands from the global catalog to a user's inventory. Includes confirmation and success states.                       | Global Catalog                         |
-| [[components/CatalogSettings\|CatalogSettings]] | Interface for managing catalog properties, including name, description, visibility, and sharing options.                                     | Personal Inventory                     |
+| Component                                     | Description                                                                                                                                  | Usage                                  |
+| --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| [[components/Header\|Header]]                 | Primary navigation interface with logo, navigation menu, search bar, and user menu. Maintains consistent placement across all pages.         | All pages                              |
+| [[components/Footer\|Footer]]                 | Secondary navigation with legal links, support resources, and copyright information. Provides access to terms, privacy policy, and help.     | All pages                              |
+| [[components/SearchBar\|SearchBar]]           | Primary command input with autocomplete and history. Processes user text input and triggers command execution.                               | Main Search, Inventory, Global Catalog |
+| [[components/ServiceGrid\|ServiceGrid]]       | Windows 95-style icon grid displaying commands as interactive tiles. Supports drag-and-drop organization and visual categorization.          | Main Search, Inventory, Global Catalog |
+| [[components/LabelBar\|LabelBar]]             | Label-based filtering system allowing users to organize and filter commands by categories. Implements multi-select filtering with AND logic. | Inventory, Global Catalog              |
+| [[components/CommandBuilder\|CommandBuilder]] | Form interface for creating and editing command templates. Includes parameter configuration, validation, and preview functionality.          | Inventory, Service Details             |
+| [[components/CommandIcon\|CommandIcon]]       | Visual representation of a command with favicon and label. Displays the command's icon and name in the ServiceGrid.                          | ServiceGrid, Inventory, Global Catalog |
+| [[components/CatalogView\|CatalogView]]       | Container component for displaying and managing catalogs. Handles catalog navigation, filtering, and command display.                        | Inventory, Global Catalog              |
+| [[components/CommandCard\|CommandCard]]       | Card component displaying command information, including icon, name, description, and usage statistics.                                      | Inventory, Global Catalog              |
+| [[components/ImportButton\|ImportButton]]     | Button for importing commands from the global catalog to a user's inventory. Includes confirmation and success states.                       | Global Catalog                         |
 
 ### API Endpoints
 
-| Endpoint                    | Method | Description                   | Cached   | Auth Required |
-| --------------------------- | ------ | ----------------------------- | -------- | ------------- |
-| `/api/auth/login`           | POST   | User login                    | No       | No            |
-| `/api/auth/logout`          | POST   | User logout                   | No       | Yes           |
-| `/api/auth/logoff`          | POST   | User log-off from all devices | No       | Yes           |
-| `/api/auth/register`        | POST   | New user registration         | No       | No            |
-| `/api/auth/session`         | GET    | Get current session           | No       | Yes           |
-| `/api/auth/refresh`         | POST   | Refresh access token          | No       | Yes           |
-| `/api/services`             | GET    | List all services             | Yes (5m) | No            |
-| `/api/services/:id`         | GET    | Get service details           | No       | No            |
-| `/api/services`             | POST   | Create new service            | No       | Yes           |
-| `/api/services/:id`         | PUT    | Update service                | No       | Yes           |
-| `/api/services/:id`         | DELETE | Delete service                | No       | Yes           |
-| `/api/services/search`      | GET    | Search services               | No       | No            |
-| `/api/labels`               | GET    | List all labels               | Yes (5m) | No            |
-| `/api/labels`               | POST   | Create new label              | No       | Yes           |
-| `/api/labels/:id`           | PUT    | Update label                  | No       | Yes           |
-| `/api/labels/:id`           | DELETE | Delete label                  | No       | Yes           |
-| `/api/labels/trending`      | GET    | Get trending labels           | No       | No            |
-| `/api/catalogs`             | GET    | List user's catalogs          | No       | Yes           |
-| `/api/catalogs/:id`         | GET    | Get catalog details           | No       | Conditional\* |
-| `/api/catalogs`             | POST   | Create new catalog            | No       | Yes           |
-| `/api/catalogs/:id`         | PUT    | Update catalog                | No       | Yes           |
-| `/api/catalogs/:id`         | DELETE | Delete catalog                | No       | Yes           |
-| `/api/catalogs/:id/share`   | POST   | Share catalog                 | No       | Yes           |
-| `/api/catalogs/global`      | GET    | Get global catalog            | Yes (1h) | No            |
-| `/api/user/preferences`     | GET    | Get user preferences          | No       | Yes           |
-| `/api/user/preferences`     | PUT    | Update preferences            | No       | Yes           |
-| `/api/user/history`         | GET    | Get search history            | No       | Yes           |
-| `/api/user/history`         | DELETE | Clear history                 | No       | Yes           |
-| `/api/user/favorites`       | GET    | Get favorite services         | No       | Yes           |
-| `/api/user/favorites/:id`   | POST   | Add to favorites              | No       | Yes           |
-| `/api/user/favorites/:id`   | DELETE | Remove from favorites         | No       | Yes           |
-| `/api/providers`            | GET    | List search providers         | Yes (1h) | No            |
-| `/api/providers/:id/search` | GET    | Execute provider search       | No       | No            |
-| `/api/providers/default`    | GET    | Get default provider          | No       | Yes           |
-| `/api/providers/default`    | PUT    | Set default provider          | No       | Yes           |
-| `/api/analytics/event`      | POST   | Log user event                | No       | No            |
-| `/api/analytics/trending`   | GET    | Get trending services         | Yes (1h) | No            |
-| `/api/analytics/popular`    | GET    | Get popular services          | No       | No            |
-| `/api/analytics/metrics`    | GET    | Get usage metrics             | No       | Yes           |
+| Endpoint                      | Method | Description                   | Cached   | Auth Required |
+| ----------------------------- | ------ | ----------------------------- | -------- | ------------- |
+| `/api/auth/login`             | POST   | User login                    | No       | No            |
+| `/api/auth/logout`            | POST   | User logout                   | No       | Yes           |
+| `/api/auth/logoff`            | POST   | User log-off from all devices | No       | Yes           |
+| `/api/auth/register`          | POST   | New user registration         | No       | No            |
+| `/api/auth/session`           | GET    | Get current session           | No       | Yes           |
+| `/api/auth/refresh`           | POST   | Refresh access token          | No       | Yes           |
+| `/api/services`               | GET    | List all services             | Yes (5m) | No            |
+| `/api/services/:id`           | GET    | Get service details           | No       | No            |
+| `/api/services`               | POST   | Create new service            | No       | Yes           |
+| `/api/services/:id`           | PUT    | Update service                | No       | Yes           |
+| `/api/services/:id`           | DELETE | Delete service                | No       | Yes           |
+| `/api/services/search`        | GET    | Search services               | No       | No            |
+| `/api/labels`                 | GET    | List all labels               | Yes (5m) | No            |
+| `/api/labels`                 | POST   | Create new label              | No       | Yes           |
+| `/api/labels/:id`             | PUT    | Update label                  | No       | Yes           |
+| `/api/labels/:id`             | DELETE | Delete label                  | No       | Yes           |
+| `/api/labels/trending`        | GET    | Get trending labels           | No       | No            |
+| `/api/inventory`              | GET    | Get user's inventory          | No       | Yes           |
+| `/api/inventory/commands`     | GET    | Get inventory commands        | No       | Yes           |
+| `/api/inventory/commands`     | POST   | Add command to inventory      | No       | Yes           |
+| `/api/inventory/commands/:id` | PUT    | Update inventory command      | No       | Yes           |
+| `/api/inventory/commands/:id` | DELETE | Remove command from inventory | No       | Yes           |
+| `/api/inventory/share/:id`    | POST   | Share command                 | No       | Yes           |
+| `/api/catalogs/global`        | GET    | Get global catalog            | Yes (1h) | No            |
+| `/api/user/preferences`       | GET    | Get user preferences          | No       | Yes           |
+| `/api/user/preferences`       | PUT    | Update preferences            | No       | Yes           |
+| `/api/user/history`           | GET    | Get search history            | No       | Yes           |
+| `/api/user/history`           | DELETE | Clear history                 | No       | Yes           |
+| `/api/user/favorites`         | GET    | Get favorite services         | No       | Yes           |
+| `/api/user/favorites/:id`     | POST   | Add to favorites              | No       | Yes           |
+| `/api/user/favorites/:id`     | DELETE | Remove from favorites         | No       | Yes           |
+| `/api/providers`              | GET    | List search providers         | Yes (1h) | No            |
+| `/api/providers/:id/search`   | GET    | Execute provider search       | No       | No            |
+| `/api/providers/default`      | GET    | Get default provider          | No       | Yes           |
+| `/api/providers/default`      | PUT    | Set default provider          | No       | Yes           |
+| `/api/analytics/event`        | POST   | Log user event                | No       | No            |
+| `/api/analytics/trending`     | GET    | Get trending services         | Yes (1h) | No            |
+| `/api/analytics/popular`      | GET    | Get popular services          | No       | No            |
+| `/api/analytics/metrics`      | GET    | Get usage metrics             | No       | Yes           |
 
-\* Public catalogs can be accessed without authentication, private catalogs require authentication and appropriate permissions.
+\* The global catalog can be accessed without authentication, but the user's inventory requires authentication.

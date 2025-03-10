@@ -30,7 +30,7 @@ Where `id` is the unique identifier for the service.
 - Creator information
 - Creation/update date
 - Rating and popularity metrics
-- Action buttons (add to personal catalog, share, report)
+- Action buttons (add to inventory, share, report)
 
 ### Command Information
 
@@ -62,7 +62,7 @@ flowchart TD
     A[Enter Page] --> B[Load Service Data]
     B --> C[Display Service Details]
     C --> D{User Action}
-    D -->|Add to Personal| E[Save to Personal Catalog]
+    D -->|Add to Inventory| E[Save to Inventory]
     D -->|Try Command| F[Execute Command]
     D -->|Share| G[Generate Share Link]
     D -->|Report| H[Open Report Form]
@@ -90,7 +90,7 @@ flowchart TD
 
 ### Service Management
 
-- Add to personal catalog
+- Add to inventory
 - Customize before adding
 - Report issues or violations
 - Share with others
@@ -99,4 +99,28 @@ flowchart TD
 
 - [[../models/service|Service Model]]
 - [[global-catalog|Global Catalog Page]]
-- [[personal-catalog|Personal Catalog Page]]
+- [[inventory|Inventory]]
+
+## Interface Components
+
+| Component        | Description                 | Functionality                   |
+| ---------------- | --------------------------- | ------------------------------- |
+| Service Header   | Service name and icon       | Visual identification           |
+| Command Details  | URL template and parameters | Technical details               |
+| Usage Statistics | Popularity and ratings      | Social proof                    |
+| Action Buttons   | Primary interactions        | Add to inventory, share, report |
+
+## User Interactions
+
+The Service Details page supports several key user interactions:
+
+1. **Viewing Details**: Users can view the command's URL template, parameters, and usage statistics
+2. **Adding to Inventory**: Users can add the command to their personal inventory
+3. **Sharing**: Users can generate a share link for the command
+4. **Reporting**: Users can report issues with the command
+
+## Related Pages
+
+- [[global-catalog|Global Catalog]]
+- [[inventory|Inventory]]
+- [[create-command|Create Command]]

@@ -139,6 +139,7 @@ Services are visually represented as:
 
 ## Related Documentation
 
-- [[../components/ServiceGrid|ServiceGrid Component]]
-- [[../pages/personal-catalog|Personal Catalog Page]]
+- [[../flows/command-execution|Command Execution Flow]]
+- [[../pages/service-details|Service Details Page]]
+- [[../pages/inventory|Inventory Page]]
 - [[../pages/global-catalog|Global Catalog Page]]
