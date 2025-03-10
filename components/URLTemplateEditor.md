@@ -1,10 +1,7 @@
 ---
 title: URLTemplateEditor Component
-project: meows
 description: Component for editing URL templates with parameter placeholders
-target: Developers
 detail_level: Component
-last_updated: 2024
 tags: [component, UI, URL, template, editor]
 ---
 

@@ -1,10 +1,7 @@
 ---
 title: User Preferences Model
-project: meows
 description: User Preferences data model specification
-target: Developers
 detail_level: Data structure
-last_updated: 2024
 tags: [model, user-preferences, data]
 ---
 

@@ -1,10 +1,7 @@
 ---
 title: Authentication Registration Flow
-project: meows
 description: Technical documentation of user registration process
-target: Technical stakeholders
 detail_level: Implementation details
-last_updated: 2024
 tags: [flow, authentication, registration, verification]
 ---
 

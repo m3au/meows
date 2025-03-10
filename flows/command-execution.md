@@ -1,10 +1,7 @@
 ---
 title: Command Execution Flow
-project: meows
 description: Technical documentation of command execution process
-target: Technical stakeholders
 detail_level: Implementation details
-last_updated: 2024
 tags: [flow, command, execution]
 ---
 

@@ -1,10 +1,7 @@
 ---
 title: Settings Page
-project: meows
 description: Settings page structure, components, and functionality
-target: Frontend developers and UX designers
 detail_level: Page-level technical details
-last_updated: 2024
 tags: [pages, frontend, settings]
 ---
 

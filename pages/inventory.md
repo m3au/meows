@@ -1,10 +1,7 @@
 ---
 title: Inventory Page
-project: meows
 description: User's personal command inventory interface
-target: Developers
 detail_level: UI/UX
-last_updated: 2024
 tags: [page, inventory, commands, organization]
 ---
 
@@ -89,6 +86,7 @@ The Inventory page can exist in several states:
 - [LabelBar](../components/LabelBar.md)
 - [ServiceBuilder](../components/ServiceBuilder.md)
 - [ServiceIcon](../components/ServiceIcon.md)
+- [InventoryView](../components/InventoryView.md)
 
 ## Related Pages
 

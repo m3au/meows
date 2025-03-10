@@ -1,10 +1,7 @@
 ---
 title: Profile Management Flow
-project: meows
 description: Technical documentation of user profile management
-target: Technical stakeholders
 detail_level: Implementation details
-last_updated: 2024
 tags: [flow, profile, preferences, settings, customization]
 ---
 

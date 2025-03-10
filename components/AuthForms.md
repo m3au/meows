@@ -1,10 +1,7 @@
 ---
 title: Authentication Form Components
-project: meows
 description: Form components for user authentication
-target: Developers
 detail_level: Component
-last_updated: 2024
 tags: [component, UI, authentication, forms, login, register]
 ---
 

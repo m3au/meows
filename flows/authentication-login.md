@@ -1,10 +1,7 @@
 ---
 title: Authentication Login/Logout Flow
-project: meows
 description: Technical documentation of user login and logout processes
-target: Technical stakeholders
 detail_level: Implementation details
-last_updated: 2024
 tags: [flow, authentication, login, logout, session]
 ---
 

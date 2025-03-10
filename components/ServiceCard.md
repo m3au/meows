@@ -1,10 +1,7 @@
 ---
 title: ServiceCard Component
-project: meows
 description: Card component displaying command information
-target: Developers
 detail_level: Component
-last_updated: 2024
 tags: [component, UI, service, card, display]
 ---
 

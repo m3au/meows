@@ -1,10 +1,7 @@
 ---
 title: Feedback Page
-project: meows
 description: User feedback collection and issue reporting interface
-target: All users
 detail_level: User interaction and data collection
-last_updated: 2024
 tags: [frontend, pages, feedback, support]
 ---
 

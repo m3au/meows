@@ -1,10 +1,7 @@
 ---
 title: User Interaction Patterns
-project: meows
 description: Technical documentation of user interaction patterns
-target: Technical stakeholders
 detail_level: Implementation details
-last_updated: 2024
 tags: [flow, user, interaction, UI]
 ---
 

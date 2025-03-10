@@ -1,10 +1,7 @@
 ---
 title: Command Model
-project: meows
 description: Command data model specification and implementation details
-target: Developers (frontend and backend)
 detail_level: Technical implementation details
-last_updated: 2024
 tags: [models, data, command]
 ---
 

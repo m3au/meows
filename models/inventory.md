@@ -1,10 +1,7 @@
 ---
 title: Inventory Model
-project: meows
 description: Inventory data model specification
-target: Developers
 detail_level: Data structure
-last_updated: 2024
 tags: [model, inventory, data, commands, organization]
 ---
 

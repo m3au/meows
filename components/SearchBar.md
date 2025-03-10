@@ -1,10 +1,7 @@
 ---
 title: SearchBar Component
-project: meows
 description: Documentation for the SearchBar component
-target: Technical implementers
 detail_level: Component details
-last_updated: 2024
 tags: [component, UI, search]
 ---
 

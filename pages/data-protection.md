@@ -1,10 +1,7 @@
 ---
 title: Data Protection
-project: meows
 description: Data protection practices and user rights
-target: End users and legal stakeholders
 detail_level: Detailed information
-last_updated: 2024
 tags: [legal, privacy, data, protection, GDPR]
 ---
 

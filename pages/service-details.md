@@ -1,10 +1,7 @@
 ---
 title: Service Details Page
-project: meows
 description: Detailed view of a specific service or command
-target: End users and command creators
 detail_level: Page-level technical details and user flow
-last_updated: 2024
 tags: [frontend, pages, service, details, command]
 ---
 

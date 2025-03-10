@@ -1,10 +1,7 @@
 ---
 title: ParameterEditor Component
-project: meows
 description: Component for configuring command parameters
-target: Developers
 detail_level: Component
-last_updated: 2024
 tags: [component, UI, parameters, editor, command]
 ---
 

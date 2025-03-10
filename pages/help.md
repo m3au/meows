@@ -1,10 +1,7 @@
 ---
 title: Help Page
-project: meows
 description: Documentation for the Help page
-target: Technical stakeholders and developers
 detail_level: Page implementation
-last_updated: 2024
 tags: [page, documentation, support]
 ---
 

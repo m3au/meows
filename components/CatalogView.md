@@ -1,10 +1,7 @@
 ---
 title: CatalogView Component
-project: meows
 description: Container component for displaying and managing catalogs
-target: Developers
 detail_level: Component
-last_updated: 2024
 tags: [component, UI, catalog, discovery]
 ---
 

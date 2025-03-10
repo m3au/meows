@@ -1,10 +1,7 @@
 ---
 title: Global Catalog Model
-project: meows
 description: Global Catalog data model specification
-target: Developers
 detail_level: Data structure
-last_updated: 2024
 tags: [model, global catalog, data, commands, discovery]
 ---
 

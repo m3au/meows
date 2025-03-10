@@ -1,10 +1,7 @@
 ---
 title: Command Management Flow
-project: meows
 description: Technical documentation of command management process
-target: Technical stakeholders
 detail_level: Implementation details
-last_updated: 2024
 tags: [flow, command, management]
 ---
 

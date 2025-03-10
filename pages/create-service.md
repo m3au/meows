@@ -1,10 +1,7 @@
 ---
 title: Create Service Page
-project: meows
 description: Interface for creating and editing service definitions
-target: Frontend developers
 detail_level: Page-level technical details
-last_updated: 2024
 tags: [pages, frontend, service, creation]
 ---
 

@@ -1,10 +1,7 @@
 ---
 title: IconSelector Component
-project: meows
 description: Component for selecting and customizing service icons
-target: Developers
 detail_level: Component
-last_updated: 2024
 tags: [component, UI, icon, selector, service]
 ---
 

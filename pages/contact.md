@@ -1,10 +1,7 @@
 ---
 title: Contact Page
-project: meows
 description: Contact information and support channels
-target: End users
 detail_level: Basic information
-last_updated: 2024
 tags: [contact, support, help]
 ---
 

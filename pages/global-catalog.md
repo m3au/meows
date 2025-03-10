@@ -1,10 +1,7 @@
 ---
 title: Global Catalog Page
-project: meows
 description: Global catalog page structure, components, and functionality
-target: Frontend developers and UX designers
 detail_level: Page-level technical details
-last_updated: 2024
 tags: [pages, frontend, catalog, global]
 ---
 

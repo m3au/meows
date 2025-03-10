@@ -1,10 +1,7 @@
 ---
 title: Terms of Use Page
-project: meows
 description: Documentation for the Terms of Use page
-target: Technical stakeholders and developers
 detail_level: Page implementation
-last_updated: 2024
 tags: [page, legal, documentation]
 ---
 

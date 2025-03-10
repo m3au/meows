@@ -1,10 +1,7 @@
 ---
 title: ImportButton Component
-project: meows
 description: Button for importing commands from the global catalog
-target: Developers
 detail_level: Component
-last_updated: 2024
 tags: [component, UI, import, button, catalog]
 ---
 

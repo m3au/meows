@@ -1,10 +1,7 @@
 ---
 title: ServiceBuilder Component
-project: meows
 description: Documentation for the ServiceBuilder component
-target: Technical implementers
 detail_level: Component details
-last_updated: 2024
 tags: [component, UI, service, creation]
 ---
 

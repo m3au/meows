@@ -1,10 +1,7 @@
 ---
 title: UserMenu Component
-project: meows
 description: User-specific dropdown menu component
-target: Developers
 detail_level: Component
-last_updated: 2024
 tags: [component, UI, user, menu, navigation]
 ---
 

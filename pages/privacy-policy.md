@@ -1,10 +1,7 @@
 ---
 title: Privacy Policy Page
-project: meows
 description: Documentation for the Privacy Policy page
-target: Technical stakeholders and developers
 detail_level: Page implementation
-last_updated: 2024
 tags: [page, legal, documentation, privacy]
 ---
 

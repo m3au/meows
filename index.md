@@ -1,10 +1,7 @@
 ---
 title: meows.space Documentation
-project: meows
 description: Technical documentation for the meows.space project
-target: Technical stakeholders
 detail_level: System overview
-last_updated: 2024
 tags: [overview, documentation, architecture]
 ---
 

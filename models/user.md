@@ -1,10 +1,7 @@
 ---
 title: User Model
-project: meows
 description: User account data model specification
-target: Developers
 detail_level: Data structure
-last_updated: 2024
 tags: [model, user, authentication, data]
 ---
 

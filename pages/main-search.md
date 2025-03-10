@@ -1,10 +1,7 @@
 ---
 title: Main Search Page
-project: meows
 description: Main search page structure, components, and functionality
-target: Frontend developers and UX designers
 detail_level: Page-level technical details
-last_updated: 2024
 tags: [pages, frontend, search]
 ---
 

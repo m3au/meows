@@ -1,10 +1,7 @@
 ---
 title: Cookie Policy
-project: meows
 description: Information about cookie usage and management
-target: End users and legal stakeholders
 detail_level: Detailed information
-last_updated: 2024
 tags: [legal, privacy, cookies, data]
 ---
 

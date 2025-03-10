@@ -1,10 +1,7 @@
 ---
 title: ServiceGrid Component
-project: meows
 description: Documentation for the ServiceGrid component
-target: Technical implementers
 detail_level: Component details
-last_updated: 2024
 tags: [component, UI, grid]
 ---
 

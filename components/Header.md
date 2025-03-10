@@ -1,10 +1,7 @@
 ---
 title: Header Component
-project: meows
 description: Documentation for the application header component
-target: Technical stakeholders and developers
 detail_level: Component implementation
-last_updated: 2024
 tags: [component, navigation, ui]
 ---
 

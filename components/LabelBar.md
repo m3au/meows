@@ -1,10 +1,7 @@
 ---
 title: LabelBar Component
-project: meows
 description: Label-based filtering system for command organization
-target: Developers
 detail_level: Component
-last_updated: 2024
 tags: [component, UI, labels, filtering]
 ---
 

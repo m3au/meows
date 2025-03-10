@@ -1,10 +1,7 @@
 ---
 title: ProfileEditor Component
-project: meows
 description: Component for editing user profile information
-target: Developers
 detail_level: Component
-last_updated: 2024
 tags: [component, UI, profile, editor, user]
 ---
 
@@ -28,14 +25,14 @@ graph TD
         BasicInfo[Basic Information]
         Appearance[Appearance Settings]
         Preferences[User Preferences]
-        Security[Security Options]
+        Account[Account Options]
     end
 
     Header --> Form
     Form --> BasicInfo
     Form --> Appearance
     Form --> Preferences
-    Form --> Security
+    Form --> Account
     Form --> Actions
 ```
 
@@ -114,9 +111,9 @@ The user preferences section includes:
 - Label visibility options
 - Command execution preferences
 
-### Security Options
+### Account Options
 
-The security options section includes:
+The account options section includes:
 
 - Password change option (if applicable)
 - Two-factor authentication toggle
@@ -181,7 +178,6 @@ The ProfileEditor implements the following accessibility features:
 
 - [UserMenu](UserMenu.md) - Menu component that provides access to the ProfileEditor
 - [ThemeSelector](ThemeSelector.md) - Component for selecting interface themes
-- [SecuritySettings](SecuritySettings.md) - Component for managing security options
 
 ## Related Documentation
 

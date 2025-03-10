@@ -1,10 +1,7 @@
 ---
 title: ServiceIcon Component
-project: meows
 description: Visual representation of a service with favicon and label
-target: Developers
 detail_level: Component
-last_updated: 2024
 tags: [component, UI, service, icon, favicon]
 ---
 

@@ -1,10 +1,7 @@
 ---
 title: About Page
-project: meows
 description: Information about the meows.space project, team, and technology
-target: All users and stakeholders
 detail_level: General information
-last_updated: 2024
 tags: [frontend, pages, about, information]
 ---
 

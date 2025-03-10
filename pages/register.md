@@ -1,10 +1,7 @@
 ---
 title: Register Page
-project: meows
 description: New user registration interface
-target: End users and developers
 detail_level: Page-level technical details and user flow
-last_updated: 2024
 tags: [frontend, pages, authentication, registration]
 ---
 

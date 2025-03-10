@@ -1,10 +1,7 @@
 ---
 title: Error Response Model
-project: meows
 description: Error Response data model specification
-target: Developers
 detail_level: Data structure
-last_updated: 2024
 tags: [model, error, data]
 ---
 

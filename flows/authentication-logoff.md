@@ -1,10 +1,7 @@
 ---
 title: Authentication Logoff Flow
-project: meows
 description: Technical documentation of user logoff process from all devices
-target: Technical stakeholders
 detail_level: Implementation details
-last_updated: 2024
 tags: [flow, authentication, logoff, security, session]
 ---
 
