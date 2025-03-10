@@ -203,7 +203,7 @@ graph TD
     end
 
     subgraph "Command Display"
-        CommandCard[Command Card]
+        ServiceCard[Service Card]
         ImportButton[Import to Inventory]
         RatingStars[Rating Stars]
     end
@@ -211,9 +211,9 @@ graph TD
     SearchBar --> CommandGrid
     FilterBar --> CommandGrid
     CategoryList --> CommandGrid
-    CommandGrid --> CommandCard
-    CommandCard --> ImportButton
-    CommandCard --> RatingStars
+    CommandGrid --> ServiceCard
+    ServiceCard --> ImportButton
+    ServiceCard --> RatingStars
 ```
 
 ### Inventory
@@ -605,7 +605,7 @@ This glossary standardizes terminology used throughout the meows.space documenta
 | Profile            | A user's workspace containing their commands, preferences, and settings.                                                                                                                                                                                                              |
 | Static Command     | A command that maps directly to a URL without parameters.                                                                                                                                                                                                                             |
 | Dynamic Command    | A command that incorporates parameters into a URL template.                                                                                                                                                                                                                           |
-| ServiceGrid        | The Windows 95-style icon grid component that displays commands as interactive tiles.                                                                                                                                                                                                 |
+| ServiceGrid        | The Windows 95-style icon grid component that displays commands as interactive tiles. Supports drag-and-drop organization and visual categorization.                                                                                                                                  |
 | Command Execution  | The process of transforming a text command into a URL and navigating to it.                                                                                                                                                                                                           |
 | Command Management | The process of creating, editing, and organizing commands.                                                                                                                                                                                                                            |
 
@@ -772,9 +772,9 @@ classDiagram
 | [ServiceGrid](components/ServiceGrid.md)       | Windows 95-style icon grid displaying commands as interactive tiles. Supports drag-and-drop organization and visual categorization.          | Main Search, Inventory, Global Catalog |
 | [LabelBar](components/LabelBar.md)             | Label-based filtering system allowing users to organize and filter commands by categories. Implements multi-select filtering with AND logic. | Inventory, Global Catalog              |
 | [ServiceBuilder](components/ServiceBuilder.md) | Form interface for creating and editing service definitions. Includes parameter configuration, validation, and preview functionality.        | Inventory, Service Details             |
-| [CommandIcon](components/CommandIcon.md)       | Visual representation of a command with favicon and label. Displays the command's icon and name in the ServiceGrid.                          | ServiceGrid, Inventory, Global Catalog |
+| [ServiceIcon](components/ServiceIcon.md)       | Visual representation of a command with favicon and label. Displays the command's icon and name in the ServiceGrid.                          | ServiceGrid, Inventory, Global Catalog |
 | [CatalogView](components/CatalogView.md)       | Container component for displaying and managing catalogs. Handles catalog navigation, filtering, and command display.                        | Inventory, Global Catalog              |
-| [CommandCard](components/CommandCard.md)       | Card component displaying command information, including icon, name, description, and usage statistics.                                      | Inventory, Global Catalog              |
+| [ServiceCard](components/ServiceCard.md)       | Card component displaying command information, including icon, name, description, and usage statistics.                                      | Inventory, Global Catalog              |
 | [ImportButton](components/ImportButton.md)     | Button for importing commands from the global catalog to a user's inventory. Includes confirmation and success states.                       | Global Catalog                         |
 
 ### API Endpoints

@@ -101,7 +101,7 @@ The LabelBar implements the following accessibility features:
 ## Related Components
 
 - [ServiceGrid](ServiceGrid.md) - Displays commands filtered by the selected labels
-- [CommandIcon](CommandIcon.md) - Individual command icons displayed in the grid
+- [ServiceIcon](ServiceIcon.md) - Individual command icons displayed in the grid
 - [SearchBar](SearchBar.md) - Works in conjunction with label filtering
 
 ## Related Documentation
