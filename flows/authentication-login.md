@@ -1,11 +1,11 @@
 ---
-title: Authentication Login/Logout Flow
+title: Authentication Login Flow
 description: Technical documentation of user login and logout processes
 detail_level: Implementation details
 tags: [flow, authentication, login, logout, session]
 ---
 
-# Authentication Login/Logout Flow
+# Authentication Login Flow
 
 This document describes the login and logout processes in meows.space, including standard email/password authentication and OAuth provider authentication.
 

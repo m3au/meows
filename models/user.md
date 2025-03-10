@@ -30,26 +30,26 @@ interface User {
 
   // References
   profile_id: string; // Reference to user profile
-  active_catalog_id: string; // ID of the currently selected catalog/workspace
+  active_catalog_id: string; // ID of the currently selected inventory
 }
 ```
 
 ## Properties
 
-| Property            | Type    | Description                                                       |
-| ------------------- | ------- | ----------------------------------------------------------------- |
-| `id`                | string  | Unique identifier for the user account                            |
-| `email`             | string  | User's email address (unique)                                     |
-| `auth_provider`     | string  | Authentication method ("local", "github", "google", etc.)         |
-| `auth_provider_id`  | string  | ID from external auth provider (for OAuth)                        |
-| `password_hash`     | string  | Bcrypt hash of password (only for local auth)                     |
-| `is_verified`       | boolean | Whether email has been verified                                   |
-| `status`            | string  | Account status (active, inactive, pending_deletion)               |
-| `created_at`        | string  | ISO timestamp of account creation                                 |
-| `updated_at`        | string  | ISO timestamp of last update                                      |
-| `last_login`        | string  | ISO timestamp of last login                                       |
-| `profile_id`        | string  | Reference to associated UserProfile                               |
-| `active_catalog_id` | string  | Reference to the catalog/workspace currently selected by the user |
+| Property            | Type    | Description                                               |
+| ------------------- | ------- | --------------------------------------------------------- |
+| `id`                | string  | Unique identifier for the user account                    |
+| `email`             | string  | User's email address (unique)                             |
+| `auth_provider`     | string  | Authentication method ("local", "github", "google", etc.) |
+| `auth_provider_id`  | string  | ID from external auth provider (for OAuth)                |
+| `password_hash`     | string  | Bcrypt hash of password (only for local auth)             |
+| `is_verified`       | boolean | Whether email has been verified                           |
+| `status`            | string  | Account status (active, inactive, pending_deletion)       |
+| `created_at`        | string  | ISO timestamp of account creation                         |
+| `updated_at`        | string  | ISO timestamp of last update                              |
+| `last_login`        | string  | ISO timestamp of last login                               |
+| `profile_id`        | string  | Reference to associated UserProfile                       |
+| `active_catalog_id` | string  | Reference to the inventory currently selected by the user |
 
 ## Authentication Methods
 
@@ -92,7 +92,7 @@ The User model tracks the following account states:
 ## Related Models
 
 - [User Profile](user-profile.md) - Contains user's profile information
-- [Catalog](catalog.md) - User's command collections
+- [Inventory](inventory.md) - User's command collections
 - [User Preferences](user-preferences.md) - User's application settings
 
 ## Storage and Synchronization
