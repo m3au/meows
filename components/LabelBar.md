@@ -100,24 +100,24 @@ The LabelBar implements the following accessibility features:
 
 ## Related Components
 
-- [[ServiceGrid|ServiceGrid]] - Displays commands filtered by the selected labels
-- [[CommandIcon|CommandIcon]] - Individual command icons displayed in the grid
-- [[SearchBar|SearchBar]] - Works in conjunction with label filtering
+- [ServiceGrid](ServiceGrid.md) - Displays commands filtered by the selected labels
+- [CommandIcon](CommandIcon.md) - Individual command icons displayed in the grid
+- [SearchBar](SearchBar.md) - Works in conjunction with label filtering
 
 ## Related Documentation
 
-- [[../models/label|Label Model]]
-- [[../pages/inventory|Inventory Page]]
-- [[../flows/command-management|Command Management Flow]]
+- [Label Model](../models/label.md)
+- [Inventory Page](../pages/inventory.md)
+- [Command Management Flow](../flows/command-management.md)
 
 ## Structure
 
 The LabelBar implements a horizontal scrolling interface with the following features:
 
-- Horizontal scrolling tag list
-- Tag pills showing category names and command counts
+- Horizontal scrolling label list
+- Label pills showing category names and command counts
 - Multiple selection for combined filtering
-- Visual indicators for active tags
+- Visual indicators for active labels
 
 ## Functionality
 

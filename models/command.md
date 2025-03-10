@@ -22,7 +22,7 @@ interface Command {
   url: string; // URL template with parameter placeholders
   icon: string; // Icon URL or data URI
   description: string; // User-friendly description
-  tags: string[]; // Associated tags/labels
+  labels: string[]; // Associated labels
   parameters: Parameter[]; // Parameter definitions
   metadata: Metadata; // Additional metadata
   created_at: string; // Creation timestamp
@@ -61,7 +61,7 @@ Static commands have no parameters and map directly to a URL:
   "url": "https://mail.google.com",
   "icon": "https://mail.google.com/favicon.ico",
   "description": "Open Gmail",
-  "tags": ["email", "google"],
+  "labels": ["email", "google"],
   "parameters": [],
   "metadata": {
     "source": "system",
@@ -85,7 +85,7 @@ Dynamic commands include parameters that are interpolated into the URL:
   "url": "https://google.com/search?q={query}",
   "icon": "https://google.com/favicon.ico",
   "description": "Search Google for {query}",
-  "tags": ["search", "google"],
+  "labels": ["search", "google"],
   "parameters": [
     {
       "name": "query",
@@ -123,13 +123,13 @@ Synchronization uses a CRDT-based approach with version tracking to resolve conf
 
 ## Related Models
 
-- [[tag|Tag Model]] - For command categorization
-- [[user-profile|User Profile Model]] - For command ownership
-- [[user-preferences|User Preferences Model]] - For command defaults
+- [Label Model](label.md) - For command categorization
+- [User Profile Model](user-profile.md) - For command ownership
+- [User Preferences Model](user-preferences.md) - For command defaults
 
 ## Related Documentation
 
-- [[../flows/command-execution|Command Execution Flow]]
-- [[../flows/command-management|Command Management Flow]]
-- [[../pages/inventory|Inventory Page]]
-- [[../pages/global-catalog|Global Catalog Page]]
+- [Command Execution Flow](../flows/command-execution.md)
+- [Command Management Flow](../flows/command-management.md)
+- [Inventory Page](../pages/inventory.md)
+- [Global Catalog Page](../pages/global-catalog.md)

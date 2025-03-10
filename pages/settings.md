@@ -99,6 +99,6 @@ The Settings page manages the following state:
 
 ## Related Documentation
 
-- [[../technical/technology|Technical Implementation]]
-- [[../models/user-preferences|User Preferences Model]]
-- [[../models/user-profile|User Profile Model]] 
+- Technical Implementation (Documentation moved)
+- [User Preferences Model](../models/user-preferences.md)
+- [User Profile Model](../models/user-profile.md)

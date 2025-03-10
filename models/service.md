@@ -20,7 +20,7 @@ interface Service {
   name: string;
   icon: string;
   url: string;
-  tags: string[];
+  labels: string[];
   metadata: {
     description: string;
     provider: string;
@@ -36,19 +36,19 @@ interface Service {
 
 ## Properties
 
-| Property                  | Type     | Description                                   |
-| ------------------------- | -------- | --------------------------------------------- |
-| `id`                      | string   | Unique identifier for the service             |
-| `name`                    | string   | Display name of the service                   |
-| `icon`                    | string   | URL or data URI for the service icon          |
-| `url`                     | string   | URL template for the service                  |
-| `tags`                    | string[] | Array of tag IDs associated with this service |
-| `metadata.description`    | string   | Detailed description of the service           |
-| `metadata.provider`       | string   | Provider or creator of the service            |
-| `metadata.metrics.uses`   | number   | Count of service usage                        |
-| `metadata.metrics.rating` | number   | Average user rating (1-5)                     |
-| `created_at`              | string   | ISO timestamp of creation                     |
-| `updated_at`              | string   | ISO timestamp of last update                  |
+| Property                  | Type     | Description                                     |
+| ------------------------- | -------- | ----------------------------------------------- |
+| `id`                      | string   | Unique identifier for the service               |
+| `name`                    | string   | Display name of the service                     |
+| `icon`                    | string   | URL or data URI for the service icon            |
+| `url`                     | string   | URL template for the service                    |
+| `labels`                  | string[] | Array of label IDs associated with this service |
+| `metadata.description`    | string   | Detailed description of the service             |
+| `metadata.provider`       | string   | Provider or creator of the service              |
+| `metadata.metrics.uses`   | number   | Count of service usage                          |
+| `metadata.metrics.rating` | number   | Average user rating (1-5)                       |
+| `created_at`              | string   | ISO timestamp of creation                       |
+| `updated_at`              | string   | ISO timestamp of last update                    |
 
 ## Usage
 
@@ -56,8 +56,8 @@ Services are used to represent commands in the UI, providing visual and descript
 
 ## Related Models
 
-- [[command|Command]] - Defines the URL template and parameter extraction logic
-- [[tag|Tag]] - Provides categorization for services
+- [Command](command.md) - Defines the URL template and parameter extraction logic
+- [Label](label.md) - Provides categorization for services
 
 ## Service Types
 
@@ -71,7 +71,7 @@ Pre-defined services that come with the application:
   "name": "Google Search",
   "icon": "https://google.com/favicon.ico",
   "url": "https://google.com/search?q={query}",
-  "tags": ["search", "google"],
+  "labels": ["search", "google"],
   "metadata": {
     "description": "Search Google for {query}",
     "provider": "Google",
@@ -95,7 +95,7 @@ Custom services created by users:
   "name": "JIRA Ticket",
   "icon": "https://jira.atlassian.com/favicon.ico",
   "url": "https://company.atlassian.net/browse/{ticket}",
-  "tags": ["work", "development"],
+  "labels": ["work", "development"],
   "metadata": {
     "description": "Open JIRA ticket {ticket}",
     "provider": "Atlassian",
@@ -139,7 +139,7 @@ Services are visually represented as:
 
 ## Related Documentation
 
-- [[../flows/command-execution|Command Execution Flow]]
-- [[../pages/service-details|Service Details Page]]
-- [[../pages/inventory|Inventory Page]]
-- [[../pages/global-catalog|Global Catalog Page]]
+- [Command Execution Flow](../flows/command-execution.md)
+- [Service Details Page](../pages/service-details.md)
+- [Inventory Page](../pages/inventory.md)
+- [Global Catalog Page](../pages/global-catalog.md)

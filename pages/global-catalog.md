@@ -18,7 +18,7 @@ The Global Catalog page serves as a discovery platform for community-shared comm
 graph TD
     A[GlobalCatalog] --> B[CatalogHeader]
     A --> C[ServiceGrid]
-    A --> D[TagBar]
+    A --> D[LabelBar]
 
     B --> E[SearchInput]
     B --> F[SortControls]
@@ -39,7 +39,7 @@ graph TD
   - `ServiceCard` - Service preview
     - `AddButton` - Add to personal
     - `MetricsBar` - Usage stats
-- [TagBar](../components/TagBar.md) - Category navigation
+- [LabelBar](../components/LabelBar.md) - Category navigation
 
 ### Functionality
 
@@ -86,12 +86,12 @@ The Global Catalog page manages the following state:
 ## Related Components
 
 - [ServiceGrid Component](../components/ServiceGrid.md)
-- [TagBar Component](../components/TagBar.md)
+- [LabelBar Component](../components/LabelBar.md)
 - [CommandBuilder Component](../components/CommandBuilder.md)
 
 ## Related Documentation
 
 - [Command Management Flow](../flows/command-management.md)
-- [Technical Implementation](../technical/technology.md)
+- Technical Implementation (Documentation moved)
 - [Command Model](../models/command.md)
-- [Tag Model](../models/tag.md)
+- [Label Model](../models/label.md)

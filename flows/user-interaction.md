@@ -140,9 +140,9 @@ graph TD
 
 ## Related Documentation
 
-- [Command Organization Overview](../index.md#command-organization-and-catalog)
-- [User Interface Architecture](../technical/technology.md#31-user-interface)
-- [UI Components Overview](../components/index.md)
+- Command Organization Overview (Documentation moved)
+- User Interface Architecture (Documentation moved)
+- UI Components Overview (Documentation moved)
 - [SearchBar Component](../components/SearchBar.md)
 - [ServiceGrid Component](../components/ServiceGrid.md)
 - [Command Execution Flow](command-execution.md)

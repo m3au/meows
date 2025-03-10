@@ -94,9 +94,9 @@ The User model tracks the following account states:
 
 ## Related Models
 
-- [[user-profile|User Profile]] - Contains user's profile information
-- [[catalog|Catalog]] - User's command collections
-- [[user-preferences|User Preferences]] - User's application settings
+- [User Profile](user-profile.md) - Contains user's profile information
+- [Catalog](catalog.md) - User's command collections
+- [User Preferences](user-preferences.md) - User's application settings
 
 ## Storage and Synchronization
 
@@ -109,7 +109,7 @@ Authentication data is never synchronized to client storage in raw form.
 
 ## Related Documentation
 
-- [[../flows/authentication-registration|Registration Flow]]
-- [[../flows/authentication-login|Login Flow]]
-- [[../flows/account-deletion|Account Deletion Flow]]
-- [[../technical/security#authentication|Authentication Security]]
+- [Registration Flow](../flows/authentication-registration.md)
+- [Login Flow](../flows/authentication-login.md)
+- [Account Deletion Flow](../flows/account-deletion.md)
+- Authentication Security (Documentation moved)

@@ -598,7 +598,7 @@ This glossary standardizes terminology used throughout the meows.space documenta
 | Service            | A web destination that can be accessed via commands. Represented visually as an icon in the ServiceGrid.                                                                  |
 | Parameter          | A variable portion of a command that gets interpolated into the final URL.                                                                                                |
 | Template           | The URL pattern associated with a command, containing placeholders for parameters.                                                                                        |
-| Label              | A categorization tag applied to commands for organization and filtering.                                                                                                  |
+| Label              | A categorization label applied to commands for organization and filtering.                                                                                                |
 | Global Catalog     | A shared, community-maintained collection of commands available to all users. Contains verified, popular commands that can be imported to a user's inventory.             |
 | Inventory          | A user's private collection of commands, customized to their specific needs and preferences. Commands in the inventory can be created, edited, and organized by the user. |
 | Profile            | A user's workspace containing their commands, preferences, and settings.                                                                                                  |

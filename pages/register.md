@@ -96,6 +96,6 @@ flowchart TD
 ## Related Documentation
 
 - [Login Page](login.md)
-- [API Endpoints](../technical/endpoints.md)
+- API Endpoints (Documentation moved)
 - [User Profile Model](../models/user-profile.md)
 - [Tutorial and Help Page](help.md)

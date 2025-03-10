@@ -138,12 +138,12 @@ No personally identifiable information is stored with these metrics. Usage data 
 
 ## Related Models
 
-- [[inventory|Inventory]] - User's personal collection of commands
-- [[command|Command]] - Command structure and properties
-- [[label|Label]] - Categories used to organize commands
+- [Inventory](inventory.md) - User's personal collection of commands
+- [Command](command.md) - Command structure and properties
+- [Label](label.md) - Categories used to organize commands
 
 ## Related Documentation
 
-- [[../pages/global-catalog|Global Catalog Page]]
-- [[../components/CatalogView|Catalog View Component]]
-- [[../components/CommandCard|Command Card Component]]
+- [Global Catalog Page](../pages/global-catalog.md)
+- [Catalog View Component](../components/CatalogView.md)
+- [Command Card Component](../components/CommandCard.md)

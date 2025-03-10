@@ -40,8 +40,8 @@ Labels provide a flexible organization system for services, allowing users to ca
 
 ## Related Models
 
-- [[service|Service]] - Services that can be labeled with this label
-- [[user-preferences|User Preferences]] - Stores user's label ordering preferences
+- [Service](service.md) - Services that can be labeled with this label
+- [User Preferences](user-preferences.md) - Stores user's label ordering preferences
 
 ## Label Types
 
@@ -117,7 +117,7 @@ Labels are visually represented as:
 
 ## Related Documentation
 
-- [[../flows/command-management|Command Management Flow]]
-- [[../pages/inventory|Inventory Page]]
-- [[../pages/global-catalog|Global Catalog Page]]
-- [[../components/LabelBar|LabelBar Component]]
+- [Command Management Flow](../flows/command-management.md)
+- [Inventory Page](../pages/inventory.md)
+- [Global Catalog Page](../pages/global-catalog.md)
+- [LabelBar Component](../components/LabelBar.md)

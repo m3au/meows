@@ -97,9 +97,9 @@ flowchart TD
 
 ## Related Documentation
 
-- [[../models/service|Service Model]]
-- [[global-catalog|Global Catalog Page]]
-- [[inventory|Inventory]]
+- [Service Model](../models/service.md)
+- [Global Catalog Page](global-catalog.md)
+- [Inventory](inventory.md)
 
 ## Interface Components
 
@@ -121,6 +121,6 @@ The Service Details page supports several key user interactions:
 
 ## Related Pages
 
-- [[global-catalog|Global Catalog]]
-- [[inventory|Inventory]]
-- [[create-command|Create Command]]
+- [Global Catalog](global-catalog.md)
+- [Inventory](inventory.md)
+- [Create Command](create-command.md)

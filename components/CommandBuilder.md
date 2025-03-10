@@ -91,9 +91,9 @@ The CommandBuilder implements several key features:
 
 ## Related Components
 
-- [[SearchBar|SearchBar Component]]
-- [[ServiceGrid|ServiceGrid Component]]
-- [[TagBar|TagBar Component]]
+- [SearchBar Component](SearchBar.md)
+- [ServiceGrid Component](ServiceGrid.md)
+- [LabelBar Component](LabelBar.md)
 
 ## Usage in Pages
 

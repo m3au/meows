@@ -84,5 +84,5 @@ The Main Search page manages the following state:
 ## Related Documentation
 
 - [Command Execution Flow](../flows/command-execution.md)
-- [Technical Implementation](../technical/technology.md)
+- Technical Implementation (Documentation moved)
 - [Command Model](../models/command.md)

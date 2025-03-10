@@ -159,6 +159,6 @@ The global logoff feature is particularly useful in several scenarios:
 ## Related Documentation
 
 - [Login/Logout Flow](./authentication-login.md)
-- [Session Management](../technical/security.md#session-management)
-- [Token Revocation](../technical/security.md#token-revocation)
+- Session Management (Documentation moved)
+- Token Revocation (Documentation moved)
 - [Security Settings](../pages/settings.md#security)

@@ -68,6 +68,6 @@ The About page provides information about the meows.space project, its purpose, 
 
 ## Related Documentation
 
-- [Technical Implementation](../technical/technology.md)
-- [Component Architecture](../technical/components.md)
-- [System Integration & Feedback](../technical/system-integration.md)
+- Technical Implementation (Documentation moved)
+- Component Architecture (Documentation moved)
+- System Integration & Feedback (Documentation moved)

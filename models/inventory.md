@@ -99,13 +99,13 @@ Synchronization uses a transaction-based approach with conflict resolution for c
 
 ## Related Models
 
-- [[user|User]] - Owner of the inventory
-- [[command|Command]] - Commands contained in the inventory
-- [[label|Label]] - Labels used to organize commands in the inventory
-- [[global-catalog|Global Catalog]] - System-wide catalog of shared commands
+- [User](user.md) - Owner of the inventory
+- [Command](command.md) - Commands contained in the inventory
+- [Label](label.md) - Labels used to organize commands in the inventory
+- [Global Catalog](global-catalog.md) - System-wide catalog of shared commands
 
 ## Related Documentation
 
-- [[../flows/command-management|Command Management Flow]]
-- [[../pages/inventory|Inventory Page]]
-- [[../components/CommandIcon|Command Icon Component]]
+- [Command Management Flow](../flows/command-management.md)
+- [Inventory Page](../pages/inventory.md)
+- [Command Icon Component](../components/CommandIcon.md)

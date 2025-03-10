@@ -48,4 +48,4 @@ Error responses are returned by API endpoints when an error occurs. The standard
 
 ## Related Documentation
 
-- [[technical/system-integration|System Integration]] - For API integration guidelines
+- System Integration (Documentation moved) - For API integration guidelines

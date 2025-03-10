@@ -112,9 +112,9 @@ sequenceDiagram
 
 ## Related Documentation
 
-- [Command Organization Overview](../index.md#command-organization-and-catalog)
-- [Command Types](../technical/technology.md#command-types)
+- Command Organization Overview (Documentation moved)
+- Command Types (Documentation moved)
 - [CommandBuilder Component](../components/CommandBuilder.md)
-- [TagBar Component](../components/TagBar.md)
+- [LabelBar Component](../components/LabelBar.md)
 - [Command Execution Flow](command-execution.md)
 - [User Interaction Patterns](user-interaction.md)

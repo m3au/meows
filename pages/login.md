@@ -91,5 +91,5 @@ flowchart TD
 ## Related Documentation
 
 - [Register Page](register.md)
-- [API Endpoints](../technical/endpoints.md)
+- API Endpoints (Documentation moved)
 - [User Profile Model](../models/user-profile.md)

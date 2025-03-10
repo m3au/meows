@@ -162,8 +162,8 @@ sequenceDiagram
 
 ## Related Documentation
 
-- [Authentication Integration Overview](../index.md#authentication-integration)
+- Authentication Integration Overview (Documentation moved)
 - [Registration Flow](./authentication-registration.md)
-- [Authentication Security](../technical/security.md#authentication)
+- Authentication Security (Documentation moved)
 - [Login Page](../pages/login.md)
 - [Authentication Form Components](../components/AuthForms.md)

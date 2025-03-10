@@ -21,7 +21,7 @@ interface UserPreferences {
     columns: number;
     spacing: number;
   };
-  tags_order: string[];
+  labels_order: string[];
   theme: "light" | "dark" | "system";
   behavior: {
     click_action: "single" | "double";
@@ -37,7 +37,7 @@ interface UserPreferences {
 | `default_provider`      | string   | ID of the default search provider                  |
 | `grid_layout.columns`   | number   | Number of columns in the service grid              |
 | `grid_layout.spacing`   | number   | Spacing between grid items (in pixels)             |
-| `tags_order`            | string[] | Ordered array of tag IDs for display               |
+| `labels_order`          | string[] | Ordered array of label IDs for display             |
 | `theme`                 | string   | UI theme preference ("light", "dark", or "system") |
 | `behavior.click_action` | string   | Action trigger type ("single" or "double" click)   |
 | `behavior.new_tab`      | boolean  | Whether to open services in a new tab              |
@@ -48,10 +48,10 @@ User preferences control the appearance and behavior of the application for each
 
 ## Related Models
 
-- [[user-profile|User Profile]] - The user profile that owns these preferences
-- [[tag|Tag]] - Tags referenced in the tags_order property
+- [User Profile](user-profile.md) - The user profile that owns these preferences
+- [Label](label.md) - Labels referenced in the labels_order property
 
 ## Related Documentation
 
-- [[../pages/settings|Settings Page]]
-- [[../technical/technology|Technical Implementation]]
+- [Settings Page](../pages/settings.md)
+- Technical Implementation (Documentation moved)
