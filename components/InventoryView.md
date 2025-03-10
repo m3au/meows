@@ -69,10 +69,27 @@ The InventoryView implements the following behaviors:
 - **Inventory Display**: Shows a grid of services from the user's inventory
 - **Filtering**: Allows filtering services by search terms, labels, and other criteria
 - **Sorting**: Enables sorting services by various attributes
-- **Service Management**: Provides options to select, edit, and delete services
-- **Empty States**: Displays appropriate messaging when no services match filters or the inventory is empty
-- **Drag and Drop**: Supports drag-and-drop organization of services
-- **Context Menu**: Provides right-click context menu for service actions
+- **Custom Ordering**: Supports drag-and-drop reordering of services with persistence
+- **Service Management**: Provides interfaces for adding, editing, and removing services
+- **Empty States**: Displays appropriate messaging when no services match filters
+
+## Custom Service Ordering
+
+The InventoryView supports custom ordering of services through drag-and-drop:
+
+- Users can drag services to any position in the grid
+- The custom order is saved to user preferences automatically
+- Different orders can be maintained for different label selections
+- The order persists across sessions and devices
+- When a label is selected, its specific custom order is applied
+- Default sorting options are available when no custom order exists
+
+The custom ordering is implemented through:
+
+1. Drag-and-drop event handling in the ServiceGrid
+2. Order persistence in the UserPreferences model
+3. Order synchronization across devices
+4. Label-specific ordering support
 
 ## States
 
