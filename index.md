@@ -24,7 +24,7 @@ Table of Contents
   - [Command Execution](#command-execution)
 - [Command Organization and Catalog](#command-organization-and-catalog)
   - [Global Catalog](#global-catalog)
-  - [Personal Catalog](#personal-catalog)
+  - [Inventory](#inventory)
   - [Social Sharing](#social-sharing)
   - [User Profiles](#user-profiles)
 - [System Integration \& Feedback](#system-integration--feedback)
@@ -187,35 +187,38 @@ Once the final URL is constructed, the browser opens it in a new tab, and focus 
 
 ## Command Organization and Catalog
 
-The system provides both global and personal command catalogs with a flexible organization system. Users can have multiple profiles, each with its own set of commands and labels.
+The system provides both global catalog and user inventory with a flexible organization system. Users can have multiple profiles, each with its own set of commands and labels.
 
 ### Global Catalog
 
 The global catalog serves as a distributed registry for command discovery and sharing. It contains commands created and shared by the community:
 
-```text
-[Development]
-gh, npm, devdocs, stackoverflow, caniuse
+```mermaid
+graph TD
+    subgraph "Global Catalog Interface"
+        SearchBar[Search Commands]
+        FilterBar["Filter: All / Popular / Recent"]
+        CategoryList[Category List]
+        CommandGrid[Command Grid]
+    end
 
-[Media]
-yt, spotify, netflix, imdb, soundcloud
+    subgraph "Command Display"
+        CommandCard[Command Card]
+        ImportButton[Import to Inventory]
+        RatingStars[Rating Stars]
+    end
 
-[Knowledge]
-wikipedia, wolfram, scholar, arxiv, pubmed
+    SearchBar --> CommandGrid
+    FilterBar --> CommandGrid
+    CategoryList --> CommandGrid
+    CommandGrid --> CommandCard
+    CommandCard --> ImportButton
+    CommandCard --> RatingStars
 ```
 
-The catalog collects anonymous usage data and incorporates a star-based rating system. Users can rate commands from one to five stars, helping others discover the most useful and reliable commands. These ratings, combined with usage statistics, determine the popularity sorting in the catalog.
+### Inventory
 
-Commands are organized by labels and can be sorted by:
-
-- Star rating (highest to lowest)
-- Popularity (most used)
-- Recency (newest first)
-- Alphabetically (A to Z)
-
-### Personal Catalog
-
-Each user has a personal catalog where they can create, customize, and organize their own commands. The personal catalog uses a label-based indexing system:
+Each user has a personal inventory where they can create, customize, and organize their own commands. The inventory uses a label-based indexing system:
 
 ```text
 [Search]
@@ -241,7 +244,7 @@ The system enables command sharing between users, enhancing collaboration and di
 - Users can share individual commands or collections via direct links
 - Commands can be liked or favorited to build personal collections
 - Popular commands rise to the top of the global catalog
-- Users can import shared commands directly to their personal catalog
+- Users can import shared commands directly to their personal inventory
 - Command creators receive attribution when their commands are shared
 - Privacy settings allow users to control which commands are publicly visible
 
@@ -361,23 +364,27 @@ This architecture enables the local-first approach, where commands can be manage
 ### State Management
 
 ```mermaid
-graph TD
-    A[App State] --> B[Runtime State]
-    A --> C[Persistent State]
-
-    B --> D[Command Context]
-    B --> E[Search State]
-    B --> F[Navigation State]
-
-    C --> G[IndexedDB]
-    C --> H[Local Storage]
+block-beta
+    block:App State
+        block:Runtime State
+            columns 3
+            Command Context
+            Search State
+            Navigation State
+        end
+        block:Persistent State
+            columns 2
+            IndexedDB
+            Local Storage
+        end
+    end
 ```
 
 The state management system handles data persistence and retrieval across different storage layers. It maintains application state during runtime and across sessions.
 
 #### State Architecture
 
-The state architecture consists of two primary components: runtime state in memory and persistent state in IndexedDB. Runtime state provides fast access to frequently used data, while persistent state ensures data durability across sessions.
+The state architecture consists of two primary components: runtime state in memory and persistent state in storage. Runtime state provides fast access to frequently used data, while persistent state ensures data durability across sessions.
 
 #### Runtime State
 
@@ -451,17 +458,17 @@ This diagram shows the data flow during command management and execution. Comman
 
 ### Frontend Architecture
 
-The frontend architecture implements a React-based single-page application with a focus on performance, offline capabilities, and responsive design.
+The frontend architecture implements a single-page application with a focus on performance, offline capabilities, and responsive design.
 
 #### Technical Implementation
 
-The frontend is built using:
+The frontend architecture is designed around these principles:
 
-- **React** for component-based UI development
-- **TypeScript** for type safety and developer experience
-- **CSS Modules** for component-scoped styling
-- **IndexedDB** for client-side storage
-- **Service Workers** for offline capabilities
+- Component-based UI architecture
+- Strong type safety throughout the codebase
+- Scoped styling to prevent conflicts
+- Client-side storage for offline functionality
+- Service workers for offline capabilities and caching
 
 #### Loading & Performance
 
@@ -522,7 +529,7 @@ The application implements multiple optimization techniques:
 **Caching Strategy** uses multiple storage mechanisms:
 
 - Browser cache for static assets
-- IndexedDB for command data and user preferences
+- Client-side database for command data and user preferences
 - Memory cache for frequently accessed data
 - Service worker for offline functionality
 
@@ -544,8 +551,8 @@ For detailed information about API endpoints, see the [API Endpoints](#api-endpo
 
 Data is stored in two layers:
 
-- IndexedDB for local client-side persistence
-- PostgreSQL for server-side storage
+- Client-side storage for local persistence
+- Server-side database for remote storage
 
 The database schema mirrors the data models with tables for commands, users, and usage data. Indexes are implemented on frequently queried fields to optimize read performance.
 
@@ -560,38 +567,42 @@ graph TD
     C --> E[Encrypted Storage]
 ```
 
-Authentication uses session-based tokens stored in HTTP-only cookies. User passwords are hashed using bcrypt with a work factor of 10. HTTPS is required for all API communications.
+Authentication uses session-based tokens stored in HTTP-only cookies. User passwords are hashed using appropriate algorithms with suitable work factors. HTTPS is required for all API communications.
 
 ## Glossary
 
 This glossary standardizes terminology used throughout the meows.space documentation to ensure consistency and clarity.
 
-| Term               | Definition                                                                                                                                                                       |
-| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Command            | A text shortcut that expands to a full URL, optionally with parameters. The core unit of functionality in meows.space.                                                           |
-| Service            | A web destination that can be accessed via commands. Represented visually as an icon in the ServiceGrid.                                                                         |
-| Parameter          | A variable portion of a command that gets interpolated into the final URL.                                                                                                       |
-| Template           | The URL pattern associated with a command, containing placeholders for parameters.                                                                                               |
-| Label              | A categorization tag applied to commands for organization and filtering.                                                                                                         |
-| Global Catalog     | A shared, community-maintained collection of commands available to all users. Contains verified, popular commands that can be imported to a user's personal catalog.             |
-| Personal Catalog   | A user's private collection of commands, customized to their specific needs and preferences. Commands in the personal catalog can be created, edited, and organized by the user. |
-| Profile            | A user's workspace containing their personal commands, preferences, and settings.                                                                                                |
-| Static Command     | A command that maps directly to a URL without parameters.                                                                                                                        |
-| Dynamic Command    | A command that incorporates parameters into a URL template.                                                                                                                      |
-| ServiceGrid        | The Windows 95-style icon grid component that displays commands as interactive tiles.                                                                                            |
-| Command Execution  | The process of transforming a text command into a URL and navigating to it.                                                                                                      |
-| Command Management | The process of creating, editing, and organizing commands.                                                                                                                       |
+| Term               | Definition                                                                                                                                                                |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Command            | A text shortcut that expands to a full URL, optionally with parameters. The core unit of functionality in meows.space.                                                    |
+| Service            | A web destination that can be accessed via commands. Represented visually as an icon in the ServiceGrid.                                                                  |
+| Parameter          | A variable portion of a command that gets interpolated into the final URL.                                                                                                |
+| Template           | The URL pattern associated with a command, containing placeholders for parameters.                                                                                        |
+| Label              | A categorization tag applied to commands for organization and filtering.                                                                                                  |
+| Global Catalog     | A shared, community-maintained collection of commands available to all users. Contains verified, popular commands that can be imported to a user's inventory.             |
+| Inventory          | A user's private collection of commands, customized to their specific needs and preferences. Commands in the inventory can be created, edited, and organized by the user. |
+| Profile            | A user's workspace containing their commands, preferences, and settings.                                                                                                  |
+| Static Command     | A command that maps directly to a URL without parameters.                                                                                                                 |
+| Dynamic Command    | A command that incorporates parameters into a URL template.                                                                                                               |
+| ServiceGrid        | The Windows 95-style icon grid component that displays commands as interactive tiles.                                                                                     |
+| Command Execution  | The process of transforming a text command into a URL and navigating to it.                                                                                               |
+| Command Management | The process of creating, editing, and organizing commands.                                                                                                                |
 
 ## Artifacts
 
 ### Flow charts
 
-| Flow                                                  | Description                                                                                                                      | Key Steps                                                                                   |
-| ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| [[flows/command-execution\|Command Execution]]        | Traces the journey from user input to URL navigation, showing how commands are parsed, parameters extracted, and URLs generated. | Input parsing → Command lookup → Parameter extraction → URL generation → Browser navigation |
-| [[flows/command-management\|Command Management]]      | Documents the creation, editing, and organization of commands, including validation, storage, and synchronization processes.     | Command creation → Validation → Storage → Synchronization → Organization                    |
-| [[flows/user-interaction\|User Interaction Patterns]] | Illustrates common user workflows across different pages, highlighting interaction patterns and navigation flows.                | Search → Execute → Organize → Customize → Share                                             |
-| [[flows/profile-management\|Profile Management]]      | Details the user authentication processes including login, logout, and registration flows with security considerations.          | Registration → Email verification → Login → Session management → Logout                     |
+| Flow                                                   | Description                                                                                                                      | Key Steps                                                                                   |
+| ------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| [[flows/command-execution\|Command Execution]]         | Traces the journey from user input to URL navigation, showing how commands are parsed, parameters extracted, and URLs generated. | Input parsing → Command lookup → Parameter extraction → URL generation → Browser navigation |
+| [[flows/command-management\|Command Management]]       | Documents the creation, editing, and organization of commands, including validation, storage, and synchronization processes.     | Command creation → Validation → Storage → Synchronization → Organization                    |
+| [[flows/user-interaction\|User Interaction Patterns]]  | Illustrates common user workflows across different pages, highlighting interaction patterns and navigation flows.                | Search → Execute → Organize → Customize → Share                                             |
+| [[flows/profile-management\|Profile Management]]       | Details the user profile management processes including preferences, settings, and profile data management.                      | Profile creation → Customization → Settings management → Data synchronization               |
+| [[flows/authentication-login\|Authentication Login]]   | Documents the login and logout processes, including standard and OAuth authentication flows with security considerations.        | Credential submission → Validation → Token generation → Session management → Logout         |
+| [[flows/authentication-logoff\|Authentication Logoff]] | Details the process of terminating all active sessions across all devices simultaneously for security purposes.                  | Access security settings → Verification → Session termination → Security notification       |
+| [[flows/authentication-registration\|Registration]]    | Describes the user registration process including account creation, email verification, and initial profile setup.               | Account creation → Email verification → Profile setup → Dashboard access                    |
+| [[flows/account-deletion\|Account Deletion]]           | Details the account deletion process including verification, data removal, grace period, and privacy considerations.             | Deletion request → Verification → Data marking → Grace period → Permanent deletion          |
 
 ### Data Models
 
@@ -603,8 +614,11 @@ classDiagram
     Command "0..*" -- "0..*" Label: categorized by
     Command "0..*" -- "1" Service: represents
     User "1" -- "1" UserProfile: has
+    User "1" -- "0..*" Catalog: owns
     UserProfile "1" -- "0..*" Command: owns
     UserProfile "1" -- "1" UserPreferences: configures
+    Catalog "1" -- "0..*" Command: contains
+    GlobalCatalog "1" -- "0..*" Command: contains
 
     class Command {
         +String id
@@ -655,6 +669,25 @@ classDiagram
         +String email
         +String authProvider
         +Date createdAt
+        +Boolean isVerified
+        +Date lastLogin
+    }
+
+    class Catalog {
+        +String id
+        +String name
+        +String ownerId
+        +Command[] commands
+        +Label[] labels
+        +Date createdAt
+        +Date updatedAt
+    }
+
+    class GlobalCatalog {
+        +Command[] commands
+        +Number totalCommands
+        +Number popularityThreshold
+        +Date lastUpdated
     }
 ```
 
@@ -683,73 +716,90 @@ classDiagram
 | [[models/command\|Command]]                   | Defines the structure of command objects, including static and dynamic variants. Commands connect user input to URL templates and manage parameter extraction.                      | id, key, url, type, params, metadata    |
 | [[models/service\|Service]]                   | Represents service metadata including icons, descriptions, and usage statistics. Services provide the visual representation of commands in the UI.                                  | id, name, icon, description, popularity |
 | [[models/label\|Label]]                       | Implements the label-based organization system, allowing commands to be categorized and filtered. Labels can be applied to multiple commands and commands can have multiple labels. | id, name, color, commands               |
-| [[models/user-profile\|User Profile]]         | Manages user account information, authentication state, and cross-device synchronization. Profiles store user-specific data and preferences.                                        | id, displayName, email, preferences     |
+| [[models/user\|User]]                         | Stores core user account information including authentication details, email verification status, and account creation metadata.                                                    | id, email, authProvider, isVerified     |
+| [[models/user-profile\|User Profile]]         | Manages user profile information, display preferences, and interface settings. Connected to the core User model.                                                                    | id, displayName, email, preferences     |
 | [[models/user-preferences\|User Preferences]] | Stores user-specific settings including theme preferences, default behaviors, and interface configurations.                                                                         | theme, defaultBrowser, commandsPerPage  |
+| [[models/inventory\|Inventory]]               | Represents a user's personal collection of commands, organized with labels and metadata.                                                                                            | id, name, ownerId, commands, labels     |
+| [[models/global-catalog\|Global Catalog]]     | Implements the shared, community-maintained collection of commands available to all users. Contains popularity metrics and curation data.                                           | commands, totalCommands, lastUpdated    |
 | [[models/error-response\|Error Response]]     | Defines the standardized format for API error responses across the system.                                                                                                          | code, message, details, status          |
 
 ### Pages
 
-| Page                                             | Route                                               | Description                                                                                                             | Key Features                                                |
-| ------------------------------------------------ | --------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
-| **[[pages/main-search\|Main Search]]**           | **/**                                               | Primary interface for command execution, featuring a prominent search bar and quick access to frequently used commands. | Command input, history, suggestions, quick execution        |
-| **[[pages/personal-catalog\|Personal Catalog]]** | **/personal**                                       | User's workspace for managing personal commands, with organization tools and customization options.                     | Command grid, label filtering, drag-and-drop organization   |
-| [[pages/settings\|Settings]]                     | &nbsp;&nbsp;&nbsp;&nbsp;/personal/settings          | Configuration interface for user preferences, appearance settings, and default behaviors.                               | Theme selection, display options, default settings          |
-| [[pages/create-command\|Create Command]]         | &nbsp;&nbsp;&nbsp;&nbsp;/personal/command/create    | Form interface for creating new command templates with parameter configuration and validation.                          | Template builder, parameter editor, preview functionality   |
-| [[pages/create-command\|Edit Command]]           | &nbsp;&nbsp;&nbsp;&nbsp;/personal/command/edit/[id] | Editing interface for existing commands, allowing modification of templates and parameters.                             | Template editing, parameter configuration, usage statistics |
-| **[[pages/global-catalog\|Global Catalog]]**     | **/catalog**                                        | Discovery interface for community-shared commands, with filtering, sorting, and import capabilities.                    | Command discovery, popularity sorting, import functionality |
-| [[pages/service-details\|Service Details]]       | &nbsp;&nbsp;&nbsp;&nbsp;/catalog/service/[id]       | Detailed view of a specific service or command, showing metadata, usage information, and related commands.              | Command details, usage statistics, related commands         |
-| **Authentication**                               | **/auth**                                           | User authentication and registration flows, supporting both email/password and OAuth providers.                         | Login, registration, account management                     |
-| [[pages/login\|Login]]                           | &nbsp;&nbsp;&nbsp;&nbsp;/auth/login                 | Authentication interface for existing users, with multiple login options and security features.                         | Email/password login, OAuth providers, security measures    |
-| [[pages/register\|Register]]                     | &nbsp;&nbsp;&nbsp;&nbsp;/auth/register              | Registration interface for new users, with account creation and verification processes.                                 | Account creation, email verification, initial setup         |
-| **[[pages/help\|Help]]**                         | **/help**                                           | User guidance with visual demonstrations and explanations of key features and workflows.                                | GIF demonstrations, feature explanations, usage tips        |
-| **[[pages/about\|About]]**                       | **/about**                                          | Information about the project, team, and technology stack, with links to resources and documentation.                   | Project information, team details, technology overview      |
-| **[[pages/feedback\|Feedback]]**                 | **/feedback**                                       | Interface for users to submit feedback, report issues, and suggest improvements.                                        | Feedback form, issue reporting, feature requests            |
-| **[[pages/privacy-policy\|Privacy Policy]]**     | **/privacy**                                        | Legal information about data handling practices, user rights, and compliance measures.                                  | Data collection, user rights, security measures             |
-| **[[pages/terms-of-use\|Terms of Use]]**         | **/terms**                                          | Legal terms governing the use of the service, user responsibilities, and limitations.                                   | Usage terms, user obligations, liability limitations        |
+| Page                                         | Route                                               | Description                                                                                                             | Key Features                                                |
+| -------------------------------------------- | --------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| **[[pages/main-search\|Main Search]]**       | **/**                                               | Primary interface for command execution, featuring a prominent search bar and quick access to frequently used commands. | Command input, history, suggestions, quick execution        |
+| **[[pages/inventory\|Inventory]]**           | **/personal**                                       | User's workspace for managing personal commands, with organization tools and customization options.                     | Command grid, label filtering, drag-and-drop organization   |
+| [[pages/settings\|Settings]]                 | &nbsp;&nbsp;&nbsp;&nbsp;/personal/settings          | Configuration interface for user preferences, appearance settings, and default behaviors.                               | Theme selection, display options, default settings          |
+| [[pages/create-command\|Create Command]]     | &nbsp;&nbsp;&nbsp;&nbsp;/personal/command/create    | Form interface for creating new command templates with parameter configuration and validation.                          | Template builder, parameter editor, preview functionality   |
+| [[pages/create-command\|Edit Command]]       | &nbsp;&nbsp;&nbsp;&nbsp;/personal/command/edit/[id] | Editing interface for existing commands, allowing modification of templates and parameters.                             | Template editing, parameter configuration, usage statistics |
+| **[[pages/global-catalog\|Global Catalog]]** | **/catalog**                                        | Discovery interface for community-shared commands, with filtering, sorting, and import capabilities.                    | Command discovery, popularity sorting, import functionality |
+| [[pages/service-details\|Service Details]]   | &nbsp;&nbsp;&nbsp;&nbsp;/catalog/service/[id]       | Detailed view of a specific service or command, showing metadata, usage information, and related commands.              | Command details, usage statistics, related commands         |
+| [[pages/login\|Login]]                       | **/auth/login**                                     | Authentication interface for existing users, with multiple login options and security features.                         | Email/password login, OAuth providers, security measures    |
+| [[pages/register\|Register]]                 | **/auth/register**                                  | Registration interface for new users, with account creation and verification processes.                                 | Account creation, email verification, initial setup         |
+| **[[pages/help\|Help]]**                     | **/help**                                           | User guidance with visual demonstrations and explanations of key features and workflows.                                | GIF demonstrations, feature explanations, usage tips        |
+| **[[pages/about\|About]]**                   | **/about**                                          | Information about the project, team, and technology stack, with links to resources and documentation.                   | Project information, team details, technology overview      |
+| **[[pages/feedback\|Feedback]]**             | **/feedback**                                       | Interface for users to submit feedback, report issues, and suggest improvements.                                        | Feedback form, issue reporting, feature requests            |
+| **[[pages/privacy-policy\|Privacy Policy]]** | **/privacy**                                        | Legal information about data handling practices, user rights, and compliance measures.                                  | Data collection, user rights, security measures             |
+| **[[pages/terms-of-use\|Terms of Use]]**     | **/terms**                                          | Legal terms governing the use of the service, user responsibilities, and limitations.                                   | Usage terms, user obligations, liability limitations        |
 
 ### Components
 
-| Component                                     | Description                                                                                                                                  | Usage                                         |
-| --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
-| [[components/Header\|Header]]                 | Primary navigation interface with logo, navigation menu, search bar, and user menu. Maintains consistent placement across all pages.         | All pages                                     |
-| [[components/Footer\|Footer]]                 | Secondary navigation with legal links, support resources, and copyright information. Provides access to terms, privacy policy, and help.     | All pages                                     |
-| [[components/SearchBar\|SearchBar]]           | Primary command input with autocomplete and history. Processes user text input and triggers command execution.                               | Main Search, Personal Catalog, Global Catalog |
-| [[components/ServiceGrid\|ServiceGrid]]       | Windows 95-style icon grid displaying commands as interactive tiles. Supports drag-and-drop organization and visual categorization.          | Main Search, Personal Catalog, Global Catalog |
-| [[components/TagBar\|TagBar]]                 | Label-based filtering system allowing users to organize and filter commands by categories. Implements multi-select filtering with AND logic. | Personal Catalog, Global Catalog              |
-| [[components/CommandBuilder\|CommandBuilder]] | Form interface for creating and editing command templates. Includes parameter configuration, validation, and preview functionality.          | Personal Catalog, Service Details             |
+| Component                                       | Description                                                                                                                                  | Usage                                  |
+| ----------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| [[components/Header\|Header]]                   | Primary navigation interface with logo, navigation menu, search bar, and user menu. Maintains consistent placement across all pages.         | All pages                              |
+| [[components/Footer\|Footer]]                   | Secondary navigation with legal links, support resources, and copyright information. Provides access to terms, privacy policy, and help.     | All pages                              |
+| [[components/SearchBar\|SearchBar]]             | Primary command input with autocomplete and history. Processes user text input and triggers command execution.                               | Main Search, Inventory, Global Catalog |
+| [[components/ServiceGrid\|ServiceGrid]]         | Windows 95-style icon grid displaying commands as interactive tiles. Supports drag-and-drop organization and visual categorization.          | Main Search, Inventory, Global Catalog |
+| [[components/LabelBar\|LabelBar]]               | Label-based filtering system allowing users to organize and filter commands by categories. Implements multi-select filtering with AND logic. | Inventory, Global Catalog              |
+| [[components/CommandBuilder\|CommandBuilder]]   | Form interface for creating and editing command templates. Includes parameter configuration, validation, and preview functionality.          | Inventory, Service Details             |
+| [[components/CommandIcon\|CommandIcon]]         | Visual representation of a command with favicon and label. Displays the command's icon and name in the ServiceGrid.                          | ServiceGrid, Inventory, Global Catalog |
+| [[components/CatalogView\|CatalogView]]         | Container component for displaying and managing catalogs. Handles catalog navigation, filtering, and command display.                        | Inventory, Global Catalog              |
+| [[components/CommandCard\|CommandCard]]         | Card component displaying command information, including icon, name, description, and usage statistics.                                      | Inventory, Global Catalog              |
+| [[components/ImportButton\|ImportButton]]       | Button for importing commands from the global catalog to a user's inventory. Includes confirmation and success states.                       | Global Catalog                         |
+| [[components/CatalogSettings\|CatalogSettings]] | Interface for managing catalog properties, including name, description, visibility, and sharing options.                                     | Personal Inventory                     |
 
 ### API Endpoints
 
-| Endpoint                    | Method | Description             | Cached   |
-| --------------------------- | ------ | ----------------------- | -------- |
-| `/api/auth/login`           | POST   | User login              | No       |
-| `/api/auth/logout`          | POST   | User logout             | No       |
-| `/api/auth/register`        | POST   | New user registration   | No       |
-| `/api/auth/session`         | GET    | Get current session     | No       |
-| `/api/auth/refresh`         | POST   | Refresh access token    | No       |
-| `/api/services`             | GET    | List all services       | Yes (5m) |
-| `/api/services/:id`         | GET    | Get service details     | No       |
-| `/api/services`             | POST   | Create new service      | No       |
-| `/api/services/:id`         | PUT    | Update service          | No       |
-| `/api/services/:id`         | DELETE | Delete service          | No       |
-| `/api/services/search`      | GET    | Search services         | No       |
-| `/api/tags`                 | GET    | List all tags           | Yes (5m) |
-| `/api/tags`                 | POST   | Create new tag          | No       |
-| `/api/tags/:id`             | PUT    | Update tag              | No       |
-| `/api/tags/:id`             | DELETE | Delete tag              | No       |
-| `/api/tags/trending`        | GET    | Get trending tags       | No       |
-| `/api/user/preferences`     | GET    | Get user preferences    | No       |
-| `/api/user/preferences`     | PUT    | Update preferences      | No       |
-| `/api/user/history`         | GET    | Get search history      | No       |
-| `/api/user/history`         | DELETE | Clear history           | No       |
-| `/api/user/favorites`       | GET    | Get favorite services   | No       |
-| `/api/user/favorites/:id`   | POST   | Add to favorites        | No       |
-| `/api/user/favorites/:id`   | DELETE | Remove from favorites   | No       |
-| `/api/providers`            | GET    | List search providers   | Yes (1h) |
-| `/api/providers/:id/search` | GET    | Execute provider search | No       |
-| `/api/providers/default`    | GET    | Get default provider    | No       |
-| `/api/providers/default`    | PUT    | Set default provider    | No       |
-| `/api/analytics/event`      | POST   | Log user event          | No       |
-| `/api/analytics/trending`   | GET    | Get trending services   | Yes (1h) |
-| `/api/analytics/popular`    | GET    | Get popular services    | No       |
-| `/api/analytics/metrics`    | GET    | Get usage metrics       | No       |
+| Endpoint                    | Method | Description                   | Cached   | Auth Required |
+| --------------------------- | ------ | ----------------------------- | -------- | ------------- |
+| `/api/auth/login`           | POST   | User login                    | No       | No            |
+| `/api/auth/logout`          | POST   | User logout                   | No       | Yes           |
+| `/api/auth/logoff`          | POST   | User log-off from all devices | No       | Yes           |
+| `/api/auth/register`        | POST   | New user registration         | No       | No            |
+| `/api/auth/session`         | GET    | Get current session           | No       | Yes           |
+| `/api/auth/refresh`         | POST   | Refresh access token          | No       | Yes           |
+| `/api/services`             | GET    | List all services             | Yes (5m) | No            |
+| `/api/services/:id`         | GET    | Get service details           | No       | No            |
+| `/api/services`             | POST   | Create new service            | No       | Yes           |
+| `/api/services/:id`         | PUT    | Update service                | No       | Yes           |
+| `/api/services/:id`         | DELETE | Delete service                | No       | Yes           |
+| `/api/services/search`      | GET    | Search services               | No       | No            |
+| `/api/labels`               | GET    | List all labels               | Yes (5m) | No            |
+| `/api/labels`               | POST   | Create new label              | No       | Yes           |
+| `/api/labels/:id`           | PUT    | Update label                  | No       | Yes           |
+| `/api/labels/:id`           | DELETE | Delete label                  | No       | Yes           |
+| `/api/labels/trending`      | GET    | Get trending labels           | No       | No            |
+| `/api/catalogs`             | GET    | List user's catalogs          | No       | Yes           |
+| `/api/catalogs/:id`         | GET    | Get catalog details           | No       | Conditional\* |
+| `/api/catalogs`             | POST   | Create new catalog            | No       | Yes           |
+| `/api/catalogs/:id`         | PUT    | Update catalog                | No       | Yes           |
+| `/api/catalogs/:id`         | DELETE | Delete catalog                | No       | Yes           |
+| `/api/catalogs/:id/share`   | POST   | Share catalog                 | No       | Yes           |
+| `/api/catalogs/global`      | GET    | Get global catalog            | Yes (1h) | No            |
+| `/api/user/preferences`     | GET    | Get user preferences          | No       | Yes           |
+| `/api/user/preferences`     | PUT    | Update preferences            | No       | Yes           |
+| `/api/user/history`         | GET    | Get search history            | No       | Yes           |
+| `/api/user/history`         | DELETE | Clear history                 | No       | Yes           |
+| `/api/user/favorites`       | GET    | Get favorite services         | No       | Yes           |
+| `/api/user/favorites/:id`   | POST   | Add to favorites              | No       | Yes           |
+| `/api/user/favorites/:id`   | DELETE | Remove from favorites         | No       | Yes           |
+| `/api/providers`            | GET    | List search providers         | Yes (1h) | No            |
+| `/api/providers/:id/search` | GET    | Execute provider search       | No       | No            |
+| `/api/providers/default`    | GET    | Get default provider          | No       | Yes           |
+| `/api/providers/default`    | PUT    | Set default provider          | No       | Yes           |
+| `/api/analytics/event`      | POST   | Log user event                | No       | No            |
+| `/api/analytics/trending`   | GET    | Get trending services         | Yes (1h) | No            |
+| `/api/analytics/popular`    | GET    | Get popular services          | No       | No            |
+| `/api/analytics/metrics`    | GET    | Get usage metrics             | No       | Yes           |
+
+\* Public catalogs can be accessed without authentication, private catalogs require authentication and appropriate permissions.
