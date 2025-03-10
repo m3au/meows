@@ -53,14 +53,6 @@ Navigation interactions allow users to move between different sections of the ap
 
 The page maintains minimal state, primarily managing UI states like hover effects on links, the mobile navigation menu toggle, and donation button interactions. These states are handled through CSS rather than JavaScript state management to minimize complexity.
 
-## Responsive Design Implementation
-
-The responsive design adapts to different screen sizes through a fluid layout system that adjusts component arrangements and spacing. On desktop displays, the layout uses multi-column arrangements for team profiles and wider content margins. Tablet layouts reduce margins and adjust spacing while maintaining the overall structure. Mobile layouts stack all content in a single column with condensed header navigation implemented as a collapsible menu.
-
-Typography scales proportionally across device sizes, with larger headings on desktop displays and more compact text on mobile devices. Images and media content are sized responsively using relative units and max-width constraints to maintain proper proportions while fitting available space.
-
-The responsive implementation uses CSS Grid and Flexbox layouts with media queries at standard breakpoints (768px for tablet, 480px for mobile). No JavaScript is required for the responsive behavior, ensuring fast performance across all devices.
-
 ## Content
 
 ```text
@@ -80,19 +72,19 @@ In a world where major tech companies compete to own your browser's homepage and
 
 meows.space is developed by [Bruno Palma](https://github.com/m3au) and [Gustavo Nips](https://github.com/gustavonips) under the Open Wings banner. This project stands as a tribute to our friend [Maurício Chicalski](https://github.com/mchicalski), whose passion for technology inspired us all to pursue software engineering. While Maurício is no longer with us, completing this project honors his memory and the impact he had on our lives.
 
-You can find us on Twitter: [@m3au](https://twitter.com/m3au) and [@gustavonips](https://twitter.com/gustavonips)
+You can find us on Twitter: [@m3au](https://twitter.com/brun0vop) and [@gustavonips](https://twitter.com/gustavonips)
 
 ## Contact & Support
 
 For legal inquiries and GDPR requests: legal@meows.space
 For everything else: hello@meows.space
 
-Found a bug? Open an issue on our [GitHub repository](https://github.com/meows-space/meows/issues).
+Found a bug? Open an issue on our [GitHub repository](https://github.com/m3au/meows/issues).
 
 ### Community Forums
 
 Join our community discussions:
-- [GitHub Discussions](https://github.com/meows-space/meows/discussions)
+- [GitHub Discussions](https://github.com/m3au/meows/discussions)
 
 ## Community & Support
 
