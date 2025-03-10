@@ -123,4 +123,4 @@ The Service Details page supports several key user interactions:
 
 - [Global Catalog](global-catalog.md)
 - [Inventory](inventory.md)
-- [Create Command](create-command.md)
+- [Create Service](create-service.md)

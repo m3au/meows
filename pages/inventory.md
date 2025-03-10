@@ -24,7 +24,7 @@ graph TD
     end
 
     subgraph "Command Management"
-        Create[Create Command]
+        Create[Create Service]
         Edit[Edit Command]
         Delete[Delete Command]
         Organize[Organize Commands]
@@ -92,7 +92,7 @@ The Inventory page can exist in several states:
 
 ## Related Pages
 
-- [Create Command](create-command.md)
+- [Create Service](create-service.md)
 - [Settings](settings.md)
 - [Global Catalog](global-catalog.md)
 

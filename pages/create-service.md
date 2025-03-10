@@ -1,31 +1,31 @@
 ---
-title: Create Command Page
+title: Create Service Page
 project: meows
 description: Interface for creating and editing service definitions
 target: Frontend developers
 detail_level: Page-level technical details
 last_updated: 2024
-tags: [pages, frontend, command, creation]
+tags: [pages, frontend, service, creation]
 ---
 
-# Create Command Page (/personal/command/create)
+# Create Service Page (/personal/service/create)
 
 ## Overview
 
-The Create Command page provides an interface for users to create new service definitions or edit existing ones. It offers a structured form with validation and preview capabilities to ensure services are properly configured.
+The Create Service page provides an interface for users to create new service definitions or edit existing ones. It offers a structured form with validation and preview capabilities to ensure services are properly configured.
 
 ## Route
 
 ```
-/command/create  // For new commands
-/command/edit/[id]  // For editing existing commands
+/service/create  // For new services
+/service/edit/[id]  // For editing existing services
 ```
 
 ## Page Components
 
-### Command Form
+### Service Form
 
-- Command name input
+- Service name input
 - Command shortcut input
 - URL template builder
 - Parameter configuration
@@ -41,7 +41,7 @@ The Create Command page provides an interface for users to create new service de
 
 ### Preview Section
 
-- Live command preview
+- Live service preview
 - Test execution capability
 - Validation feedback
 - Example usage
@@ -50,13 +50,13 @@ The Create Command page provides an interface for users to create new service de
 
 ```mermaid
 flowchart TD
-    A[Create Command] --> B[Enter Basic Info]
+    A[Create Service] --> B[Enter Basic Info]
     B --> C[Define URL Template]
     C --> D[Add Parameters]
     D --> E[Set Labels]
     E --> F[Preview]
     F --> G{Valid?}
-    G -->|Yes| H[Save Command]
+    G -->|Yes| H[Save Service]
     G -->|No| I[Show Errors]
     I --> D
     H --> J[Success Message]
@@ -65,7 +65,7 @@ flowchart TD
 
 ## Functionality
 
-### Command Validation
+### Service Validation
 
 - Required fields: name, shortcut, URL template
 - Shortcut uniqueness verification
