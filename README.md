@@ -756,8 +756,7 @@ classDiagram
 | [Login](pages/login.md)                         | **/auth/login**                                     | Authentication interface for existing users, with multiple login options and security features.                         | Email/password login, OAuth providers, security measures    |
 | [Register](pages/register.md)                   | **/auth/register**                                  | Registration interface for new users, with account creation and verification processes.                                 | Account creation, email verification, initial setup         |
 | **[Help](pages/help.md)**                       | **/help**                                           | User guidance with visual demonstrations and explanations of key features and workflows.                                | GIF demonstrations, feature explanations, usage tips        |
-| **[About](pages/about.md)**                     | **/about**                                          | Information about the project, team, and technology stack, with links to resources and documentation.                   | Project information, team details, technology overview      |
-| **[Contact](pages/contact.md)**                 | **/contact**                                        | Contact information and communication channels for reaching the project team.                                           | Contact form, email addresses, response expectations        |
+| **[About](pages/about.md)**                     | **/about**                                          | Information about the project, team, technology stack, and contact details with links to resources and documentation.   | Project information, team details, contact information      |
 | **[Feedback](pages/feedback.md)**               | **/feedback**                                       | Interface for users to submit feedback, report issues, and suggest improvements.                                        | Feedback form, issue reporting, feature requests            |
 | **[Privacy Policy](pages/privacy-policy.md)**   | **/privacy**                                        | Legal information about data handling practices, user rights, and compliance measures.                                  | Data collection, user rights, security measures             |
 | **[Cookie Policy](pages/cookie-policy.md)**     | **/cookie-policy**                                  | Information about how cookies are used, managed, and controlled within the application.                                 | Cookie usage, management options, third-party cookies       |
@@ -831,5 +830,3 @@ classDiagram
 | `/api/analytics/trending`     | GET    | Get trending services         | Yes (1h) | No            |
 | `/api/analytics/popular`      | GET    | Get popular services          | No       | No            |
 | `/api/analytics/metrics`      | GET    | Get usage metrics             | No       | Yes           |
-
-\* The global catalog can be accessed without authentication, but the user's inventory requires authentication.
