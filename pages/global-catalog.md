@@ -87,7 +87,7 @@ The Global Catalog page manages the following state:
 
 - [ServiceGrid Component](../components/ServiceGrid.md)
 - [LabelBar Component](../components/LabelBar.md)
-- [CommandBuilder Component](../components/CommandBuilder.md)
+- [ServiceBuilder Component](../components/ServiceBuilder.md)
 
 ## Related Documentation
 

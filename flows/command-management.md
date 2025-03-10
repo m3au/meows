@@ -114,7 +114,7 @@ sequenceDiagram
 
 - Command Organization Overview (Documentation moved)
 - Command Types (Documentation moved)
-- [CommandBuilder Component](../components/CommandBuilder.md)
+- [ServiceBuilder Component](../components/ServiceBuilder.md)
 - [LabelBar Component](../components/LabelBar.md)
 - [Command Execution Flow](command-execution.md)
 - [User Interaction Patterns](user-interaction.md)

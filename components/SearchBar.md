@@ -69,7 +69,7 @@ The SearchBar implements several key features:
 
 - [ServiceGrid Component](ServiceGrid.md)
 - [LabelBar Component](LabelBar.md)
-- [CommandBuilder Component](CommandBuilder.md)
+- [ServiceBuilder Component](ServiceBuilder.md)
 
 ## Usage in Pages
 

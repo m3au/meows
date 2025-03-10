@@ -74,7 +74,7 @@ The ServiceGrid implements several key features:
 
 - [SearchBar Component](SearchBar.md)
 - [LabelBar Component](LabelBar.md)
-- [CommandBuilder Component](CommandBuilder.md)
+- [ServiceBuilder Component](ServiceBuilder.md)
 
 ## Usage in Pages
 
