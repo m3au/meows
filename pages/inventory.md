@@ -88,7 +88,7 @@ The Inventory page can exist in several states:
 - [ServiceGrid](../components/ServiceGrid.md)
 - [LabelBar](../components/LabelBar.md)
 - [ServiceBuilder](../components/ServiceBuilder.md)
-- [CommandIcon](../components/CommandIcon.md)
+- [ServiceIcon](../components/ServiceIcon.md)
 
 ## Related Pages
 
