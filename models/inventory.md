@@ -108,4 +108,4 @@ Synchronization uses a transaction-based approach with conflict resolution for c
 
 - [Command Management Flow](../flows/command-management.md)
 - [Inventory Page](../pages/inventory.md)
-- [Command Icon Component](../components/CommandIcon.md)
+- [Service Icon Component](../components/ServiceIcon.md)

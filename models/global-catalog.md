@@ -146,4 +146,4 @@ No personally identifiable information is stored with these metrics. Usage data 
 
 - [Global Catalog Page](../pages/global-catalog.md)
 - [Catalog View Component](../components/CatalogView.md)
-- [Command Card Component](../components/CommandCard.md)
+- [Service Card Component](../components/ServiceCard.md)
