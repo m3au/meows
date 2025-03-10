@@ -3,6 +3,7 @@ title: Data Protection
 description: Data protection practices and user rights
 detail_level: Detailed information
 tags: [legal, privacy, data, protection, GDPR]
+revised: false
 ---
 
 # Data Protection

@@ -3,6 +3,7 @@ title: Label Model
 description: Label data model specification
 detail_level: Data structure
 tags: [model, label, data]
+revised: false
 ---
 
 # Label Model

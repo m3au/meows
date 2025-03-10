@@ -3,6 +3,7 @@ title: Authentication Login Flow
 description: Technical documentation of user login and logout processes
 detail_level: Implementation details
 tags: [flow, authentication, login, logout, session]
+revised: false
 ---
 
 # Authentication Login Flow

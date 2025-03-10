@@ -3,6 +3,7 @@ title: Create Service Page
 description: Interface for creating and editing service definitions
 detail_level: Page-level technical details
 tags: [pages, frontend, service, creation]
+revised: false
 ---
 
 # Create Service Page (/personal/service/create)

@@ -3,6 +3,7 @@ title: IconSelector Component
 description: Component for selecting and customizing service icons
 detail_level: Component
 tags: [component, UI, icon, selector, service]
+revised: false
 ---
 
 # IconSelector Component

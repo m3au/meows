@@ -3,6 +3,7 @@ title: InventoryView Component
 description: Container component for displaying and managing user's inventory
 detail_level: Component
 tags: [component, UI, inventory, management]
+revised: false
 ---
 
 # InventoryView Component

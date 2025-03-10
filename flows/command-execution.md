@@ -3,6 +3,8 @@ title: Command Execution Flow
 description: Technical documentation of command execution process
 detail_level: Implementation details
 tags: [flow, command, execution]
+revised: false
+revised: false
 ---
 
 # Command Execution Flow

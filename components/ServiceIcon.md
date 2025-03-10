@@ -3,6 +3,7 @@ title: ServiceIcon Component
 description: Visual representation of a service with favicon and label
 detail_level: Component
 tags: [component, UI, service, icon, favicon]
+revised: false
 ---
 
 # ServiceIcon Component

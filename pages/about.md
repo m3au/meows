@@ -3,6 +3,8 @@ title: About Page
 description: Information about the meows.space project, team, and technology
 detail_level: General information
 tags: [frontend, pages, about, information]
+revised: false
+revised: false
 ---
 
 # About Page

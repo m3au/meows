@@ -3,6 +3,7 @@ title: ThemeSelector Component
 description: Component for selecting and applying interface themes
 detail_level: Component
 tags: [component, UI, theme, appearance, settings]
+revised: false
 ---
 
 # ThemeSelector Component

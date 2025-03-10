@@ -3,6 +3,7 @@ title: User Profile Model
 description: User profile data model specification and implementation details
 detail_level: Technical implementation details
 tags: [models, data, user, profile]
+revised: false
 ---
 
 # User Profile Model

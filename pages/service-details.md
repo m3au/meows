@@ -3,6 +3,7 @@ title: Service Details Page
 description: Detailed view of a specific service or command
 detail_level: Page-level technical details and user flow
 tags: [frontend, pages, service, details, command]
+revised: false
 ---
 
 # Service Details Page

@@ -3,6 +3,7 @@ title: Header Component
 description: Documentation for the application header component
 detail_level: Component implementation
 tags: [component, navigation, ui]
+revised: false
 ---
 
 # Header Component

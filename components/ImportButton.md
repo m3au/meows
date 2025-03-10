@@ -3,6 +3,7 @@ title: ImportButton Component
 description: Button for importing commands from the global catalog
 detail_level: Component
 tags: [component, UI, import, button, catalog]
+revised: false
 ---
 
 # ImportButton Component

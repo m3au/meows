@@ -3,6 +3,7 @@ title: Authentication Registration Flow
 description: Technical documentation of user registration process
 detail_level: Implementation details
 tags: [flow, authentication, registration, verification]
+revised: false
 ---
 
 # Authentication Registration Flow

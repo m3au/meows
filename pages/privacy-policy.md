@@ -3,6 +3,7 @@ title: Privacy Policy Page
 description: Documentation for the Privacy Policy page
 detail_level: Page implementation
 tags: [page, legal, documentation, privacy]
+revised: false
 ---
 
 # Privacy Policy Page

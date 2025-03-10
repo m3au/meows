@@ -3,6 +3,7 @@ title: SearchBar Component
 description: Documentation for the SearchBar component
 detail_level: Component details
 tags: [component, UI, search]
+revised: false
 ---
 
 # SearchBar Component

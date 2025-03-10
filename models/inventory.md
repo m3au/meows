@@ -3,6 +3,7 @@ title: Inventory Model
 description: Inventory data model specification
 detail_level: Data structure
 tags: [model, inventory, data, commands, organization]
+revised: false
 ---
 
 # Inventory Model

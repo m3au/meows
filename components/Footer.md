@@ -3,6 +3,7 @@ title: Footer Component
 description: Documentation for the application footer component
 detail_level: Component implementation
 tags: [component, navigation, ui]
+revised: false
 ---
 
 # Footer Component

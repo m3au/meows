@@ -3,6 +3,7 @@ title: Global Catalog Model
 description: Global Catalog data model specification
 detail_level: Data structure
 tags: [model, global catalog, data, commands, discovery]
+revised: false
 ---
 
 # Global Catalog Model

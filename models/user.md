@@ -3,6 +3,7 @@ title: User Model
 description: User account data model specification
 detail_level: Data structure
 tags: [model, user, authentication, data]
+revised: false
 ---
 
 # User Model

@@ -3,6 +3,7 @@ title: Terms of Use Page
 description: Documentation for the Terms of Use page
 detail_level: Page implementation
 tags: [page, legal, documentation]
+revised: false
 ---
 
 # Terms of Use Page

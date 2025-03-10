@@ -3,6 +3,7 @@ title: LabelBar Component
 description: Label-based filtering system for command organization
 detail_level: Component
 tags: [component, UI, labels, filtering]
+revised: false
 ---
 
 # LabelBar Component

@@ -3,6 +3,7 @@ title: URLTemplateEditor Component
 description: Component for editing URL templates with parameter placeholders
 detail_level: Component
 tags: [component, UI, URL, template, editor]
+revised: false
 ---
 
 # URLTemplateEditor Component

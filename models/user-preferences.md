@@ -3,6 +3,7 @@ title: User Preferences Model
 description: User Preferences data model specification
 detail_level: Data structure
 tags: [model, user-preferences, data]
+revised: false
 ---
 
 # User Preferences Model

@@ -3,6 +3,7 @@ title: Authentication Logoff Flow
 description: Technical documentation of user logoff process from all devices
 detail_level: Implementation details
 tags: [flow, authentication, logoff, security, session]
+revised: false
 ---
 
 # Authentication Logoff Flow

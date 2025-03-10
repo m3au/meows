@@ -3,6 +3,7 @@ title: ServiceCard Component
 description: Card component displaying command information
 detail_level: Component
 tags: [component, UI, service, card, display]
+revised: false
 ---
 
 # ServiceCard Component

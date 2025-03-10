@@ -3,6 +3,7 @@ title: ProfileEditor Component
 description: Component for editing user profile information
 detail_level: Component
 tags: [component, UI, profile, editor, user]
+revised: false
 ---
 
 # ProfileEditor Component

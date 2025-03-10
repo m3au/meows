@@ -3,6 +3,8 @@ title: Main Search Page
 description: Main search page structure, components, and functionality
 detail_level: Page-level technical details
 tags: [pages, frontend, search]
+revised: false
+revised: false
 ---
 
 # Main Search Page (/)

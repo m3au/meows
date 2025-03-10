@@ -3,6 +3,7 @@ title: Error Response Model
 description: Error Response data model specification
 detail_level: Data structure
 tags: [model, error, data]
+revised: false
 ---
 
 # Error Response Model

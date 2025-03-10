@@ -3,6 +3,7 @@ title: User Profile Page
 description: User profile information and management interface
 detail_level: Page-level technical details
 tags: [page, profile, user, settings]
+revised: false
 ---
 
 # User Profile Page

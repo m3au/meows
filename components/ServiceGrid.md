@@ -3,6 +3,7 @@ title: ServiceGrid Component
 description: Documentation for the ServiceGrid component
 detail_level: Component details
 tags: [component, UI, grid]
+revised: false
 ---
 
 # ServiceGrid Component

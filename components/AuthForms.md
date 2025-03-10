@@ -3,6 +3,7 @@ title: Authentication Form Components
 description: Form components for user authentication
 detail_level: Component
 tags: [component, UI, authentication, forms, login, register]
+revised: false
 ---
 
 # Authentication Form Components

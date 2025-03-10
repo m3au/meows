@@ -3,6 +3,7 @@ title: URLPreview Component
 description: Component for previewing constructed URLs with parameters
 detail_level: Component
 tags: [component, UI, URL, preview, parameters]
+revised: false
 ---
 
 # URLPreview Component

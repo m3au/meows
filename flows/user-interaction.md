@@ -3,6 +3,7 @@ title: User Interaction Patterns
 description: Technical documentation of user interaction patterns
 detail_level: Implementation details
 tags: [flow, user, interaction, UI]
+revised: false
 ---
 
 # User Interaction Patterns

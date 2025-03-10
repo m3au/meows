@@ -3,6 +3,7 @@ title: Account Deletion Flow
 description: Technical documentation of user account deletion process
 detail_level: Implementation details
 tags: [flow, authentication, account, deletion, privacy]
+revised: false
 ---
 
 # Account Deletion Flow

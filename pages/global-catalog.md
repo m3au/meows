@@ -3,6 +3,7 @@ title: Global Catalog Page
 description: Global catalog page structure, components, and functionality
 detail_level: Page-level technical details
 tags: [pages, frontend, catalog, global]
+revised: false
 ---
 
 # Global Catalog Page (/catalog)

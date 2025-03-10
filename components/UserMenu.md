@@ -3,6 +3,7 @@ title: UserMenu Component
 description: User-specific dropdown menu component
 detail_level: Component
 tags: [component, UI, user, menu, navigation]
+revised: false
 ---
 
 # UserMenu Component

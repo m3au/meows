@@ -3,6 +3,8 @@ title: Command Model
 description: Command data model specification and implementation details
 detail_level: Technical implementation details
 tags: [models, data, command]
+revised: false
+revised: false
 ---
 
 # Command Model

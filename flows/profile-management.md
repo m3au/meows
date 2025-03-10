@@ -3,6 +3,7 @@ title: Profile Management Flow
 description: Technical documentation of user profile management
 detail_level: Implementation details
 tags: [flow, profile, preferences, settings, customization]
+revised: false
 ---
 
 # Profile Management Flow

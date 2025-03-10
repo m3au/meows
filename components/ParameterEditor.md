@@ -3,6 +3,7 @@ title: ParameterEditor Component
 description: Component for configuring command parameters
 detail_level: Component
 tags: [component, UI, parameters, editor, command]
+revised: false
 ---
 
 # ParameterEditor Component

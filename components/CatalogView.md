@@ -3,6 +3,7 @@ title: CatalogView Component
 description: Container component for displaying and managing catalogs
 detail_level: Component
 tags: [component, UI, catalog, discovery]
+revised: false
 ---
 
 # CatalogView Component

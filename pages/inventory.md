@@ -3,6 +3,7 @@ title: Inventory Page
 description: User's personal command inventory interface
 detail_level: UI/UX
 tags: [page, inventory, commands, organization]
+revised: false
 ---
 
 # Inventory Page

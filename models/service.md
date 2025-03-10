@@ -3,6 +3,7 @@ title: Service Model
 description: Service data model specification
 detail_level: Data structure
 tags: [model, service, data]
+revised: false
 ---
 
 # Service Model

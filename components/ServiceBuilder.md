@@ -3,6 +3,7 @@ title: ServiceBuilder Component
 description: Documentation for the ServiceBuilder component
 detail_level: Component details
 tags: [component, UI, service, creation]
+revised: false
 ---
 
 # ServiceBuilder Component

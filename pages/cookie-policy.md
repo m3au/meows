@@ -3,6 +3,7 @@ title: Cookie Policy
 description: Information about cookie usage and management
 detail_level: Detailed information
 tags: [legal, privacy, cookies, data]
+revised: false
 ---
 
 # Cookie Policy

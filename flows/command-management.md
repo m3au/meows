@@ -3,6 +3,7 @@ title: Command Management Flow
 description: Technical documentation of command management process
 detail_level: Implementation details
 tags: [flow, command, management]
+revised: false
 ---
 
 # Command Management Flow
