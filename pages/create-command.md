@@ -1,18 +1,18 @@
 ---
 title: Create Command Page
 project: meows
-description: Interface for creating and editing command templates
-target: End users and command creators
-detail_level: Page-level technical details and user flow
+description: Interface for creating and editing service definitions
+target: Frontend developers
+detail_level: Page-level technical details
 last_updated: 2024
-tags: [frontend, pages, command-creation, templates]
+tags: [pages, frontend, command, creation]
 ---
 
-# Create Command Page
+# Create Command Page (/personal/command/create)
 
 ## Overview
 
-The Create Command page provides an interface for users to create new command templates or edit existing ones. It offers a structured form with validation and preview capabilities to ensure commands are properly configured.
+The Create Command page provides an interface for users to create new service definitions or edit existing ones. It offers a structured form with validation and preview capabilities to ensure services are properly configured.
 
 ## Route
 
@@ -88,7 +88,7 @@ flowchart TD
 
 ## Related Components
 
-- [CommandBuilder Component](../components/CommandBuilder.md)
+- [ServiceBuilder Component](../components/ServiceBuilder.md)
 - [ParameterEditor Component](../components/ParameterEditor.md)
 - [IconSelector Component](../components/IconSelector.md)
 

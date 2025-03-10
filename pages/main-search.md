@@ -79,7 +79,7 @@ The Main Search page manages the following state:
 ## Related Components
 
 - [SearchBar Component](../components/SearchBar.md)
-- [CommandBuilder Component](../components/CommandBuilder.md)
+- [ServiceBuilder Component](../components/ServiceBuilder.md)
 
 ## Related Documentation
 
