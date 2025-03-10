@@ -10,7 +10,7 @@ tags: [model, global catalog, data, commands, discovery]
 
 # Global Catalog Model
 
-The Global Catalog model implements the shared, community-maintained collection of commands available to all users. It contains verified, popular commands that can be imported to a user's personal catalog.
+The Global Catalog model implements the shared, community-maintained collection of commands available to all users. It contains verified, popular commands that can be imported to a user's personal inventory.
 
 ## Schema
 
@@ -76,7 +76,7 @@ The Global Catalog serves as a discovery mechanism for users to find useful comm
 - A curated collection of high-quality commands
 - Popularity metrics to help users find valuable commands
 - Trending and featured sections to highlight noteworthy commands
-- A source for users to import commands to their personal catalogs
+- A source for users to import commands to their personal inventory
 
 ## Catalog Organization
 
@@ -120,7 +120,7 @@ The system supports the following operations on the Global Catalog:
 
 - **Browse**: View commands by category, popularity, or status
 - **Search**: Find commands by keyword, functionality, or domain
-- **Import**: Add commands from the global catalog to personal catalogs
+- **Import**: Add commands from the global catalog to personal inventory
 - **Rate**: Provide star ratings for commands
 - **Report**: Flag inappropriate or broken commands
 - **Suggest**: Submit commands for inclusion in the global catalog
@@ -138,7 +138,7 @@ No personally identifiable information is stored with these metrics. Usage data 
 
 ## Related Models
 
-- [[catalog|Catalog]] - User's personal collection of commands
+- [[inventory|Inventory]] - User's personal collection of commands
 - [[command|Command]] - Command structure and properties
 - [[label|Label]] - Categories used to organize commands
 

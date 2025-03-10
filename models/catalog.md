@@ -1,33 +1,29 @@
 ---
-title: Catalog Model
+title: Inventory Model
 project: meows
-description: Catalog data model specification
+description: Inventory data model specification
 target: Developers
 detail_level: Data structure
 last_updated: 2024
-tags: [model, catalog, data, commands, organization]
+tags: [model, inventory, data, commands, organization]
 ---
 
-# Catalog Model
+# Inventory Model
 
-The Catalog model represents a user's personal collection of commands, organized with labels and metadata. Each user can have multiple catalogs for different contexts or purposes.
+The Inventory model represents a user's personal collection of commands, organized with labels and metadata. Each user has a single inventory for their commands.
 
 ## Schema
 
 ```typescript
-interface Catalog {
+interface Inventory {
   id: string; // Unique identifier
   name: string; // Display name
   description?: string; // Optional description
-  owner_id: string; // Reference to user who owns this catalog
+  owner_id: string; // Reference to user who owns this inventory
 
   // Organization
-  commands: Command[]; // Commands in this catalog
-  labels: Label[]; // Labels used in this catalog
-
-  // Settings
-  is_default: boolean; // Whether this is the user's default catalog
-  is_public: boolean; // Whether this catalog is publicly visible
+  commands: Command[]; // Commands in this inventory
+  labels: Label[]; // Labels used in this inventory
 
   // Metadata
   created_at: string; // Creation timestamp
@@ -39,46 +35,40 @@ interface Catalog {
 
 ## Properties
 
-| Property      | Type      | Description                                               |
-| ------------- | --------- | --------------------------------------------------------- |
-| `id`          | string    | Unique identifier for the catalog                         |
-| `name`        | string    | Display name of the catalog                               |
-| `description` | string    | Optional description of the catalog's purpose             |
-| `owner_id`    | string    | Reference to the user who owns this catalog               |
-| `commands`    | Command[] | Array of commands contained in this catalog               |
-| `labels`      | Label[]   | Array of labels used to organize commands in this catalog |
-| `is_default`  | boolean   | Whether this is the user's default catalog                |
-| `is_public`   | boolean   | Whether this catalog is publicly visible to other users   |
-| `created_at`  | string    | ISO timestamp of creation                                 |
-| `updated_at`  | string    | ISO timestamp of last update                              |
-| `last_used`   | string    | ISO timestamp of last usage                               |
-| `view_count`  | number    | Number of views if the catalog is public                  |
+| Property      | Type      | Description                                                 |
+| ------------- | --------- | ----------------------------------------------------------- |
+| `id`          | string    | Unique identifier for the inventory                         |
+| `name`        | string    | Display name of the inventory                               |
+| `description` | string    | Optional description of the inventory's purpose             |
+| `owner_id`    | string    | Reference to the user who owns this inventory               |
+| `commands`    | Command[] | Array of commands contained in this inventory               |
+| `labels`      | Label[]   | Array of labels used to organize commands in this inventory |
+| `created_at`  | string    | ISO timestamp of creation                                   |
+| `updated_at`  | string    | ISO timestamp of last update                                |
+| `last_used`   | string    | ISO timestamp of last usage                                 |
+| `view_count`  | number    | Number of views if the inventory is public                  |
 
 ## Usage
 
-Catalogs provide a way for users to organize their commands into separate collections. This enables users to:
+The Inventory provides a way for users to organize their commands into a personal collection. This enables users to:
 
-- Create different command sets for different contexts (work, personal, projects)
-- Share specific collections with others
-- Maintain separate organization structures for different purposes
-- Switch between different command sets easily
+- Create different command sets for different contexts using labels
+- Share specific commands with others
+- Maintain organization structures for different purposes
+- Customize their command collection to match their workflow
 
-## Catalog Types
+## Inventory Example
 
-### Personal Catalogs
-
-Personal catalogs are private by default and contain commands created or imported by the user:
+A user's inventory contains commands created or imported by the user:
 
 ```json
 {
-  "id": "cat_personal",
-  "name": "Personal",
+  "id": "inv_personal",
+  "name": "My Commands",
   "description": "My everyday commands",
   "owner_id": "user123",
   "commands": [...],
   "labels": [...],
-  "is_default": true,
-  "is_public": false,
   "created_at": "2024-01-01T00:00:00Z",
   "updated_at": "2024-02-15T14:22:31Z",
   "last_used": "2024-03-01T09:15:42Z",
@@ -86,43 +76,21 @@ Personal catalogs are private by default and contain commands created or importe
 }
 ```
 
-### Shared Catalogs
+## Inventory Operations
 
-Catalogs can be shared with specific users or made public:
+The system supports the following operations on the inventory:
 
-```json
-{
-  "id": "cat_dev_tools",
-  "name": "Development Tools",
-  "description": "Common tools for web development",
-  "owner_id": "user123",
-  "commands": [...],
-  "labels": [...],
-  "is_default": false,
-  "is_public": true,
-  "created_at": "2024-01-15T00:00:00Z",
-  "updated_at": "2024-02-20T11:42:31Z",
-  "last_used": "2024-03-02T14:22:18Z",
-  "view_count": 156
-}
-```
-
-## Catalog Operations
-
-The system supports the following operations on catalogs:
-
-- **Create**: Add new catalogs
-- **Read**: Retrieve catalog information and contents
-- **Update**: Modify catalog properties and organization
-- **Delete**: Remove catalogs (with confirmation for non-empty catalogs)
-- **Share**: Make catalogs public or share with specific users
-- **Import**: Import commands from other catalogs
-- **Export**: Export catalogs for backup or sharing
-- **Clone**: Create a copy of a catalog
+- **Create**: Add new commands to the inventory
+- **Read**: Retrieve inventory information and contents
+- **Update**: Modify command properties and organization
+- **Delete**: Remove commands from the inventory
+- **Share**: Share specific commands with other users
+- **Import**: Import commands from the global catalog
+- **Export**: Export inventory for backup or sharing
 
 ## Storage and Synchronization
 
-Catalogs are stored in:
+The inventory is stored in:
 
 - **Client-side storage**: For offline access and performance
 - **Server database**: For persistence and sharing
@@ -131,13 +99,13 @@ Synchronization uses a transaction-based approach with conflict resolution for c
 
 ## Related Models
 
-- [[user|User]] - Owner of the catalog
-- [[command|Command]] - Commands contained in the catalog
-- [[label|Label]] - Labels used to organize commands in the catalog
+- [[user|User]] - Owner of the inventory
+- [[command|Command]] - Commands contained in the inventory
+- [[label|Label]] - Labels used to organize commands in the inventory
 - [[global-catalog|Global Catalog]] - System-wide catalog of shared commands
 
 ## Related Documentation
 
 - [[../flows/command-management|Command Management Flow]]
-- [[../pages/personal-catalog|Personal Catalog Page]]
-- [[../components/CatalogView|Catalog View Component]]
+- [[../pages/inventory|Inventory Page]]
+- [[../components/CommandIcon|Command Icon Component]]
