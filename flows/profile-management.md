@@ -130,7 +130,7 @@ sequenceDiagram
    - Server validates and applies changes
    - Synchronization status is reported to user
    - Conflicts are resolved using last-writer-wins
-   - Profile data is consistent across all devices
+   - Profile data is synchronized across all devices
 
 ## Multiple Profiles Support
 

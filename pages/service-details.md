@@ -12,7 +12,7 @@ tags: [frontend, pages, service, details, command]
 
 ## Overview
 
-The Service Details page provides comprehensive information about a specific service or command. It displays metadata, usage statistics, and related services, allowing users to understand and interact with the command.
+The Service Details page provides detailed information about a specific service or command. It displays metadata, usage statistics, and related services, allowing users to understand and interact with the command.
 
 ## Route
 

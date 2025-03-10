@@ -27,7 +27,7 @@ The ServiceGrid implements a responsive grid layout with the following features:
 
 The grid uses windowed rendering that creates DOM elements only for items in the viewport, providing:
 
-- Consistent performance with large command sets
+- Stable performance with large command sets
 - Reduced memory usage
 - Smooth scrolling experience
 

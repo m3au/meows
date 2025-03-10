@@ -44,7 +44,7 @@ interface ErrorResponse {
 
 ## Usage
 
-Error responses are returned by API endpoints when an error occurs. The standardized format ensures consistent error handling across the application.
+Error responses are returned by API endpoints when an error occurs. The standardized format enables uniform error handling across the application.
 
 ## Related Documentation
 

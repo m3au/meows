@@ -279,7 +279,7 @@ Synchronization is implemented selectively, focusing on command management rathe
 
 meows.space operates as a standalone web application without requiring browser extensions or plugins. This design decision simplifies deployment and reduces maintenance overhead while ensuring broad compatibility across browsers and platforms. The system maintains its own command history and state management, independent of browser history or bookmark systems.
 
-Future versions may implement optional browser integrations, such as bookmark synchronization or browser extension features, but these remain supplementary rather than core requirements. This approach maintains the system's independence while allowing for enhanced functionality for users who desire deeper browser integration.
+The system can be extended through optional browser integrations, such as bookmark synchronization or browser extension features, which remain supplementary rather than core requirements. This approach maintains the system's independence while allowing for enhanced functionality for users who desire deeper browser integration.
 
 ### External Services
 
@@ -402,7 +402,7 @@ Persistent state maintains durable data across browser sessions:
 - **Command definitions** store all user-defined commands, including their URLs, parameters, and metadata. This forms the core of the user's command library.
 - **User profiles** contain user information, including display name, email, and authentication details.
 - **User preferences** store interface settings, default behaviors, and personalization options that persist across sessions.
-- **Command history** maintains a comprehensive log of executed commands with timestamps and execution contexts.
+- **Command history** maintains a complete record of executed commands with timestamps and execution contexts.
 - **Organization structure** stores the folder hierarchy, labels, and categorization system for commands.
 - **Pending changes** queue modifications made while offline, ensuring they're synchronized when connectivity is restored.
 
@@ -520,7 +520,7 @@ The application implements multiple optimization techniques:
 
 **Code Splitting** divides the application into separate chunks that load on demand. Features like settings, command catalog, search functionality, and synchronization components load only when accessed, reducing initial load time.
 
-**Virtual Rendering** for grids and lists renders only visible items, maintaining consistent performance with large command sets. This uses windowed rendering that creates DOM elements only for items in the viewport.
+**Virtual Rendering** for grids and lists renders only visible items, providing stable performance with large command sets. This uses windowed rendering that creates DOM elements only for items in the viewport.
 
 **Bundle Optimization** includes tree-shaking to remove unused code, module deduplication to reduce redundancy, and critical CSS extraction. The delivery pipeline uses Brotli compression, cache control with ETags, and content-based versioning.
 
@@ -766,7 +766,7 @@ classDiagram
 
 | Component                                      | Description                                                                                                                                  | Usage                                  |
 | ---------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
-| [Header](components/Header.md)                 | Primary navigation interface with logo, navigation menu, search bar, and user menu. Maintains consistent placement across all pages.         | All pages                              |
+| [Header](components/Header.md)                 | Primary navigation interface with logo, navigation menu, search bar, and user menu. Fixed at the top of all pages.                           | All pages                              |
 | [Footer](components/Footer.md)                 | Secondary navigation with legal links, support resources, and copyright information. Provides access to terms, privacy policy, and help.     | All pages                              |
 | [SearchBar](components/SearchBar.md)           | Primary command input with autocomplete and history. Processes user text input and triggers command execution.                               | Main Search, Inventory, Global Catalog |
 | [ServiceGrid](components/ServiceGrid.md)       | Windows 95-style icon grid displaying commands as interactive tiles. Supports drag-and-drop organization and visual categorization.          | Main Search, Inventory, Global Catalog |

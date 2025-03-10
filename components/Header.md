@@ -10,7 +10,7 @@ tags: [component, navigation, ui]
 
 # Header Component
 
-The Header component provides the primary navigation interface for the meows.space application. It maintains consistent placement and functionality across all application pages.
+The Header component provides the primary navigation interface for the meows.space application. It appears at the top of all application pages with fixed positioning.
 
 ## Component Structure
 

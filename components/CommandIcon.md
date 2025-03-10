@@ -25,7 +25,7 @@ graph TD
     Icon --> Label
 ```
 
-The CommandIcon displays a favicon image at the top and the command name as a label below it. The component uses a consistent size and styling to create a uniform grid appearance, similar to desktop icons in traditional operating systems.
+The CommandIcon displays a favicon image at the top and the command name as a label below it. The component uses a standardized size and styling to create a uniform grid appearance, similar to desktop icons in traditional operating systems.
 
 ## Component API
 

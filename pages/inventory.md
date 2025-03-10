@@ -10,7 +10,7 @@ tags: [page, inventory, commands, organization]
 
 # Inventory Page
 
-The Inventory page serves as the user's primary workspace for managing their personal commands. It provides a comprehensive interface for organizing, editing, and customizing commands.
+The Inventory page serves as the user's primary workspace for managing their personal commands. It provides a complete interface for organizing, editing, and customizing commands.
 
 ## Overview
 

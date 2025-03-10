@@ -73,7 +73,7 @@ sequenceDiagram
    - User selects "Delete Account" option
    - System displays confirmation dialog with:
      - Warning about permanent data loss
-     - Information about what will be deleted
+     - Information about data to be deleted
      - Option to download personal data before deletion
      - Confirmation input field
 
@@ -101,7 +101,7 @@ sequenceDiagram
    - User receives email confirmation with:
      - Deletion confirmation
      - Instructions to cancel deletion if requested in error
-     - Date when deletion will be finalized
+     - Date when deletion is finalized
    - During grace period:
      - Account remains inaccessible
      - Data is preserved but unavailable

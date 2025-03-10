@@ -10,7 +10,7 @@ tags: [component, UI, service, creation]
 
 # ServiceBuilder Component
 
-The ServiceBuilder enables service creation and editing. It provides a comprehensive interface for defining and configuring service URL templates.
+The ServiceBuilder enables service creation and editing. It provides a multi-step interface for defining and configuring service URL templates.
 
 ## Structure
 
