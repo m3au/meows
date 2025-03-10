@@ -94,8 +94,8 @@ flowchart TD
 
 ## Related Documentation
 
-- [[../index#command-execution|Command Execution Overview]]
-- [[../technical/technology#command-processing-pipeline|Command Processing Pipeline]]
-- [[../components/SearchBar|SearchBar Component]]
-- [[../components/ServiceGrid|ServiceGrid Component]]
-- [[command-management|Command Management Flow]] 
+- [Command Execution Overview](../index.md#command-execution)
+- [Command Processing Pipeline](../technical/technology.md#command-processing-pipeline)
+- [SearchBar Component](../components/SearchBar.md)
+- [ServiceGrid Component](../components/ServiceGrid.md)
+- [Command Management Flow](command-management.md)

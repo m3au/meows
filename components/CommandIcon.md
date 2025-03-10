@@ -106,12 +106,12 @@ The CommandIcon implements the following accessibility features:
 
 ## Related Components
 
-- [[ServiceGrid|ServiceGrid]] - Container component that displays multiple CommandIcons
-- [[CommandCard|CommandCard]] - Expanded view of command information
-- [[LabelBar|LabelBar]] - Filtering system that affects which CommandIcons are displayed
+- [ServiceGrid](ServiceGrid.md) - Container component that displays multiple CommandIcons
+- [CommandCard](CommandCard.md) - Expanded view of command information
+- [LabelBar](LabelBar.md) - Filtering system that affects which CommandIcons are displayed
 
 ## Related Documentation
 
-- [[../models/command|Command Model]]
-- [[../pages/inventory|Inventory Page]]
-- [[../flows/command-execution|Command Execution Flow]]
+- [Command Model](../models/command.md)
+- [Inventory Page](../pages/inventory.md)
+- [Command Execution Flow](../flows/command-execution.md)

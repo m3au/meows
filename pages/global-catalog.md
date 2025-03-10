@@ -35,11 +35,11 @@ graph TD
 - `CatalogHeader` - Global search
   - `SearchInput` - Service search
   - `SortControls` - Popularity/recent
-- [[../components/ServiceGrid|ServiceGrid]] - Infinite loading grid
+- [ServiceGrid](../components/ServiceGrid.md) - Infinite loading grid
   - `ServiceCard` - Service preview
     - `AddButton` - Add to personal
     - `MetricsBar` - Usage stats
-- [[../components/TagBar|TagBar]] - Category navigation
+- [TagBar](../components/TagBar.md) - Category navigation
 
 ### Functionality
 
@@ -64,12 +64,14 @@ The Global Catalog page manages the following state:
 ## User Interactions
 
 1. **Command Discovery**
+
    - Browse trending commands
    - Filter by categories
    - Search by keyword
    - Sort by popularity/recency
 
 2. **Command Preview**
+
    - View command details
    - See usage statistics
    - Check community ratings
@@ -83,13 +85,13 @@ The Global Catalog page manages the following state:
 
 ## Related Components
 
-- [[../components/ServiceGrid|ServiceGrid Component]]
-- [[../components/TagBar|TagBar Component]]
-- [[../components/CommandBuilder|CommandBuilder Component]]
+- [ServiceGrid Component](../components/ServiceGrid.md)
+- [TagBar Component](../components/TagBar.md)
+- [CommandBuilder Component](../components/CommandBuilder.md)
 
 ## Related Documentation
 
-- [[../flows/command-management|Command Management Flow]]
-- [[../technical/technology|Technical Implementation]]
-- [[../models/command|Command Model]]
-- [[../models/tag|Tag Model]] 
+- [Command Management Flow](../flows/command-management.md)
+- [Technical Implementation](../technical/technology.md)
+- [Command Model](../models/command.md)
+- [Tag Model](../models/tag.md)

@@ -167,8 +167,8 @@ sequenceDiagram
 
 ## Related Documentation
 
-- [[../index#authentication-integration|Authentication Integration Overview]]
-- [[./authentication-login|Login/Logout Flow]]
-- [[../technical/security#authentication|Authentication Security]]
-- [[../pages/register|Registration Page]]
-- [[../components/AuthForms|Authentication Form Components]]
+- [Authentication Integration Overview](../index.md#authentication-integration)
+- [Login/Logout Flow](./authentication-login.md)
+- [Authentication Security](../technical/security.md#authentication)
+- [Registration Page](../pages/register.md)
+- [Authentication Form Components](../components/AuthForms.md)

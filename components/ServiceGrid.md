@@ -72,9 +72,9 @@ The ServiceGrid implements several key features:
 
 ## Related Components
 
-- [[SearchBar|SearchBar Component]]
-- [[TagBar|TagBar Component]]
-- [[CommandBuilder|CommandBuilder Component]]
+- [SearchBar Component](SearchBar.md)
+- [TagBar Component](TagBar.md)
+- [CommandBuilder Component](CommandBuilder.md)
 
 ## Usage in Pages
 

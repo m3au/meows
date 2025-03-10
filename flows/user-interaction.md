@@ -140,10 +140,10 @@ graph TD
 
 ## Related Documentation
 
-- [[../index#command-organization-and-catalog|Command Organization Overview]]
-- [[../technical/technology#31-user-interface|User Interface Architecture]]
-- [[../components/index|UI Components Overview]]
-- [[../components/SearchBar|SearchBar Component]]
-- [[../components/ServiceGrid|ServiceGrid Component]]
-- [[command-execution|Command Execution Flow]]
-- [[command-management|Command Management Flow]] 
+- [Command Organization Overview](../index.md#command-organization-and-catalog)
+- [User Interface Architecture](../technical/technology.md#31-user-interface)
+- [UI Components Overview](../components/index.md)
+- [SearchBar Component](../components/SearchBar.md)
+- [ServiceGrid Component](../components/ServiceGrid.md)
+- [Command Execution Flow](command-execution.md)
+- [Command Management Flow](command-management.md)

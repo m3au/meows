@@ -11,7 +11,7 @@ Check [[Important Concept]]
 
 # After
 
-Check [Important Concept](Important%20Concept.md)
+Check [Important Concept](Important-Concept.md)
 ```
 
 ### 2. **Hide Metadata from Rendered Files**

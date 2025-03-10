@@ -90,6 +90,6 @@ flowchart TD
 
 ## Related Documentation
 
-- [[register|Register Page]]
-- [[../technical/endpoints|API Endpoints]]
-- [[../models/user-profile|User Profile Model]]
+- [Register Page](register.md)
+- [API Endpoints](../technical/endpoints.md)
+- [User Profile Model](../models/user-profile.md)

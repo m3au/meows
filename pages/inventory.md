@@ -84,17 +84,17 @@ The Inventory page can exist in several states:
 
 ## Related Components
 
-- [[../components/SearchBar|SearchBar]]
-- [[../components/ServiceGrid|ServiceGrid]]
-- [[../components/LabelBar|LabelBar]]
-- [[../components/CommandBuilder|CommandBuilder]]
-- [[../components/CommandIcon|CommandIcon]]
+- [SearchBar](../components/SearchBar.md)
+- [ServiceGrid](../components/ServiceGrid.md)
+- [LabelBar](../components/LabelBar.md)
+- [CommandBuilder](../components/CommandBuilder.md)
+- [CommandIcon](../components/CommandIcon.md)
 
 ## Related Pages
 
-- [[create-command|Create Command]]
-- [[settings|Settings]]
-- [[global-catalog|Global Catalog]]
+- [Create Command](create-command.md)
+- [Settings](settings.md)
+- [Global Catalog](global-catalog.md)
 
 ## Technical Implementation
 
@@ -104,6 +104,6 @@ The drag-and-drop interface uses a grid-based positioning system that maintains 
 
 ## Related Documentation
 
-- [[../flows/command-management|Command Management Flow]]
-- [[../models/inventory|Inventory Model]]
-- [[../models/command|Command Model]]
+- [Command Management Flow](../flows/command-management.md)
+- [Inventory Model](../models/inventory.md)
+- [Command Model](../models/command.md)

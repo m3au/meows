@@ -154,8 +154,8 @@ sequenceDiagram
 
 ## Related Documentation
 
-- [[../index#authentication-integration|Authentication Integration Overview]]
-- [[./authentication-login|Login/Logout Flow]]
-- [[../technical/security#data-privacy|Data Privacy]]
-- [[../technical/security#data-retention|Data Retention Policy]]
-- [[../pages/settings#account-management|Account Management]]
+- [Authentication Integration Overview](../index.md#authentication-integration)
+- [Login/Logout Flow](./authentication-login.md)
+- [Data Privacy](../technical/security.md#data-privacy)
+- [Data Retention Policy](../technical/security.md#data-retention)
+- [Account Management](../pages/settings.md#account-management)

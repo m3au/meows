@@ -112,9 +112,9 @@ sequenceDiagram
 
 ## Related Documentation
 
-- [[../index#command-organization-and-catalog|Command Organization Overview]]
-- [[../technical/technology#command-types|Command Types]]
-- [[../components/CommandBuilder|CommandBuilder Component]]
-- [[../components/TagBar|TagBar Component]]
-- [[command-execution|Command Execution Flow]]
-- [[user-interaction|User Interaction Patterns]] 
+- [Command Organization Overview](../index.md#command-organization-and-catalog)
+- [Command Types](../technical/technology.md#command-types)
+- [CommandBuilder Component](../components/CommandBuilder.md)
+- [TagBar Component](../components/TagBar.md)
+- [Command Execution Flow](command-execution.md)
+- [User Interaction Patterns](user-interaction.md)

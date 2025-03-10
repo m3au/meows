@@ -31,7 +31,7 @@ graph TD
 
 ### Primary Components
 
-- [[../components/SearchBar|SearchBar]] - Main command input container
+- [SearchBar](../components/SearchBar.md) - Main command input container
   - `ProviderSelect` - Search engine dropdown
   - `CommandInput` - Command parsing & suggestions
   - `ActionBar` - Execute/clear/settings
@@ -60,11 +60,13 @@ The Main Search page manages the following state:
 ## User Interactions
 
 1. **Command Entry**
+
    - User types in the command input
    - System provides real-time suggestions
    - Command is parsed and validated
 
 2. **Command Execution**
+
    - User presses Enter or clicks Execute
    - Command is processed and URL is generated
    - Browser navigates to the target URL
@@ -76,11 +78,11 @@ The Main Search page manages the following state:
 
 ## Related Components
 
-- [[../components/SearchBar|SearchBar Component]]
-- [[../components/CommandBuilder|CommandBuilder Component]]
+- [SearchBar Component](../components/SearchBar.md)
+- [CommandBuilder Component](../components/CommandBuilder.md)
 
 ## Related Documentation
 
-- [[../flows/command-execution|Command Execution Flow]]
-- [[../technical/technology|Technical Implementation]]
-- [[../models/command|Command Model]] 
+- [Command Execution Flow](../flows/command-execution.md)
+- [Technical Implementation](../technical/technology.md)
+- [Command Model](../models/command.md)

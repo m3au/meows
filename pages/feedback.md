@@ -88,5 +88,5 @@ flowchart TD
 
 ## Related Documentation
 
-- [[help|Tutorial and Help Page]]
-- [[../technical/system-integration|System Integration & Feedback]]
+- [Tutorial and Help Page](help.md)
+- [System Integration & Feedback](../technical/system-integration.md)

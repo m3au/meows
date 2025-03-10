@@ -88,12 +88,12 @@ flowchart TD
 
 ## Related Components
 
-- [[../components/CommandBuilder|CommandBuilder Component]]
-- [[../components/ParameterEditor|ParameterEditor Component]]
-- [[../components/IconSelector|IconSelector Component]]
+- [CommandBuilder Component](../components/CommandBuilder.md)
+- [ParameterEditor Component](../components/ParameterEditor.md)
+- [IconSelector Component](../components/IconSelector.md)
 
 ## Related Pages
 
-- [[inventory|Inventory]]
-- [[global-catalog|Global Catalog]]
-- [[service-details|Service Details]]
+- [Inventory](inventory.md)
+- [Global Catalog](global-catalog.md)
+- [Service Details](service-details.md)
