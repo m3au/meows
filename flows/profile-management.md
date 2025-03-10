@@ -156,7 +156,7 @@ meows.space supports multiple profiles per user account:
 
 ## Related Documentation
 
-- [User Profiles Overview](../index.md#user-profiles)
+- [User Profiles Overview](../RE.md#user-profiles)
 - [Login/Logout Flow](./authentication-login.md)
 - [Registration Flow](./authentication-registration.md)
 - [Settings Page](../pages/settings.md)
