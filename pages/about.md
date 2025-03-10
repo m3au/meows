@@ -1,6 +1,6 @@
 ---
 title: About Page
-description: Information about the meows.space project, team, and technology
+description: Documentation of the About page UI structure, content sections, and layout
 detail_level: General information
 tags: [frontend, pages, about, information, contact]
 route: /about
@@ -20,8 +20,10 @@ This page consists of:
 
 ## Content
 
-```
+```text
 # About meows.space
+
+meows.space is a URL command multiplexer that transforms simple text commands into fully-formed URLs. It allows you to navigate the web faster using shorthand commands like "g cats" to search Google for cats, or "gh profile" to go to your GitHub profile.
 
 ## Our Story
 

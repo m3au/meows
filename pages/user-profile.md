@@ -1,9 +1,9 @@
 ---
 title: User Profile Page
-description: User profile information and management interface
+description: Documentation of the User Profile page UI structure, components, and functionality
 detail_level: Page-level technical details
-tags: [page, profile, user, settings]
-revised: false
+tags: [pages, frontend, profile, user]
+revised: true
 ---
 
 # User Profile Page

@@ -1,9 +1,9 @@
 ---
 title: Login Page
-description: User authentication interface
-detail_level: Page-level technical details and user flow
-tags: [frontend, pages, authentication, login]
-revised: false
+description: Documentation of the Login page UI structure, components, and functionality
+detail_level: Page-level technical details
+tags: [pages, frontend, auth, login]
+revised: true
 ---
 
 # Login Page

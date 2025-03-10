@@ -1,9 +1,9 @@
 ---
 title: Register Page
-description: New user registration interface
-detail_level: Page-level technical details and user flow
-tags: [frontend, pages, authentication, registration]
-revised: false
+description: Documentation of the Register page UI structure, components, and functionality
+detail_level: Page-level technical details
+tags: [pages, frontend, auth, register]
+revised: true
 ---
 
 # Register Page

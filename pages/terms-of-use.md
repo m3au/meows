@@ -1,9 +1,9 @@
 ---
 title: Terms of Use Page
-description: Documentation for the Terms of Use page
-detail_level: Page implementation
-tags: [page, legal, documentation]
-revised: false
+description: Documentation of the Terms of Use page UI structure, content sections, and layout
+detail_level: Page-level technical details
+tags: [pages, frontend, legal, terms]
+revised: true
 ---
 
 # Terms of Use Page

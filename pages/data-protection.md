@@ -1,9 +1,9 @@
 ---
-title: Data Protection
-description: Data protection practices and user rights
-detail_level: Detailed information
-tags: [legal, privacy, data, protection, GDPR]
-revised: false
+title: Data Protection Page
+description: Documentation of the Data Protection page UI structure, content sections, and layout
+detail_level: Page-level technical details
+tags: [pages, frontend, legal, data-protection]
+revised: true
 ---
 
 # Data Protection

@@ -1,9 +1,9 @@
 ---
 title: Privacy Policy Page
-description: Documentation for the Privacy Policy page
-detail_level: Page implementation
-tags: [page, legal, documentation, privacy]
-revised: false
+description: Documentation of the Privacy Policy page UI structure, content sections, and layout
+detail_level: Page-level technical details
+tags: [pages, frontend, legal, privacy]
+revised: true
 ---
 
 # Privacy Policy Page

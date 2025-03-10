@@ -1,9 +1,9 @@
 ---
 title: Settings Page
-description: Settings page structure, components, and functionality
+description: Documentation of the Settings page UI structure, components, and functionality
 detail_level: Page-level technical details
-tags: [pages, frontend, settings]
-revised: false
+tags: [pages, frontend, settings, preferences]
+revised: true
 ---
 
 # Settings Page (/settings)

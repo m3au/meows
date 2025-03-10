@@ -1,9 +1,9 @@
 ---
 title: Feedback Page
-description: User feedback collection and issue reporting interface
-detail_level: User interaction and data collection
-tags: [frontend, pages, feedback, support]
-revised: false
+description: Documentation of the Feedback page UI structure, components, and functionality
+detail_level: Page-level technical details
+tags: [pages, frontend, feedback, support]
+revised: true
 ---
 
 # Feedback Page

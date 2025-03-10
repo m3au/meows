@@ -1,9 +1,9 @@
 ---
 title: Global Catalog Page
-description: Global catalog page structure, components, and functionality
+description: Documentation of the Global Catalog page UI structure, components, and functionality
 detail_level: Page-level technical details
-tags: [pages, frontend, catalog, global]
-revised: false
+tags: [pages, frontend, catalog, commands]
+revised: true
 ---
 
 # Global Catalog Page (/catalog)

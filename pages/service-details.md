@@ -1,9 +1,9 @@
 ---
 title: Service Details Page
-description: Detailed view of a specific service or command
-detail_level: Page-level technical details and user flow
-tags: [frontend, pages, service, details, command]
-revised: false
+description: Documentation of the Service Details page UI structure, components, and functionality
+detail_level: Page-level technical details
+tags: [pages, frontend, service, details]
+revised: true
 ---
 
 # Service Details Page

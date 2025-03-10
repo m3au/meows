@@ -1,9 +1,9 @@
 ---
-title: Cookie Policy
-description: Information about cookie usage and management
-detail_level: Detailed information
-tags: [legal, privacy, cookies, data]
-revised: false
+title: Cookie Policy Page
+description: Documentation of the Cookie Policy page UI structure, content sections, and layout
+detail_level: Page-level technical details
+tags: [pages, frontend, legal, cookies]
+revised: true
 ---
 
 # Cookie Policy

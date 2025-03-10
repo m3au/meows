@@ -1,9 +1,9 @@
 ---
 title: Help Page
-description: Documentation for the Help page
-detail_level: Page implementation
-tags: [page, documentation, support]
-revised: false
+description: Documentation of the Help page UI structure, content sections, and layout
+detail_level: Page-level technical details
+tags: [pages, frontend, help, documentation]
+revised: true
 ---
 
 # Help Page
