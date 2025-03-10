@@ -13,7 +13,7 @@ The User Profile page provides users with a view of their account information an
 
 ## Route
 
-```
+```text
 /profile
 ```
 

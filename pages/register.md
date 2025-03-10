@@ -13,7 +13,7 @@ The Register page provides an interface for new users to create accounts on meow
 
 ## Route
 
-```
+```text
 /auth/register
 ```
 

@@ -13,7 +13,7 @@ The About page provides information about the meows.space project, its purpose, 
 
 ## Route
 
-```
+```text
 /about
 ```
 

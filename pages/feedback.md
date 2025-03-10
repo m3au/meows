@@ -13,7 +13,7 @@ The Feedback page provides an interface for users to submit feedback, report iss
 
 ## Route
 
-```
+```text
 /feedback
 ```
 

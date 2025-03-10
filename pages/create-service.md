@@ -13,7 +13,7 @@ The Create Service page provides an interface for users to create new service de
 
 ## Route
 
-```
+```text
 /service/create  // For new services
 /service/edit/[id]  // For editing existing services
 ```

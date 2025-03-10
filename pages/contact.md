@@ -32,7 +32,7 @@ Users can access community support through:
 
 The meows.space team maintains a presence on:
 
-- Twitter: [@meowsspace](https://twitter.com/meowsspace)
+- Twitter: [@meows-space](https://twitter.com/meowsspace)
 - Discord: [meows.space Community](https://discord.gg/meowsspace)
 
 ## Support Hours
